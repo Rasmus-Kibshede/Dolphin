@@ -1,7 +1,9 @@
 package system;
 
-import system.menus.AdminMenu;
-import system.menus.Menu;
+import system.member.Member;
+import system.member.Payment;
+
+import java.time.LocalDate;
 
 public class Controller {
     public void run() {
@@ -12,7 +14,15 @@ public class Controller {
         //Menu menu = new Menu("Menu", "Choose", menuChoices);
 
         //adminMenu.startMenu();
-        
+        Payment payment = new Payment();
+        LocalDate birth = LocalDate.parse("1997-06-18");
+        Member member = new Member("Michala",
+                birth,
+                "michalanim2gmail.com",
+                "50932812",
+                true,
+                payment.getPrice(birth, true));
+        System.out.println(member.getMembershipPrice());
     }
 
     public String logIn() {
