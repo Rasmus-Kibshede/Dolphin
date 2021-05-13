@@ -1,5 +1,6 @@
 package system;
 
+import system.commands.Command;
 import system.member.Member;
 import system.member.Payment;
 import system.commands.menus.MainMenu;
@@ -11,6 +12,13 @@ public class Application {
     private MemberManager memberManager;
     private MainMenu mainMenu;
     private UI ui;
+    private Command command;
+
+    public Application(){
+        memberManager = new MemberManager();
+
+    }
+
 
     public void start() {
         //AdminMenu adminMenu = new AdminMenu(logIn());
