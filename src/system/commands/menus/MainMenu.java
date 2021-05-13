@@ -1,10 +1,10 @@
-package system.menus;
+package system.commands.menus;
 
-public class AdminMenu {
+public class MainMenu extends MenuCommand {
 
     private String logInType;
 
-    public AdminMenu(String logInType) {
+    public MainMenu(String logInType) {
         this.logInType = logInType;
     }
 

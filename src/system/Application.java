@@ -2,11 +2,17 @@ package system;
 
 import system.member.Member;
 import system.member.Payment;
+import system.commands.menus.MainMenu;
+import system.ui.UI;
 
 import java.time.LocalDate;
 
-public class Controller {
-    public void run() {
+public class Application {
+    private MemberManager memberManager;
+    private MainMenu mainMenu;
+    private UI ui;
+
+    public void start() {
         //AdminMenu adminMenu = new AdminMenu(logIn());
 
         //Creates a menu that can display choices
