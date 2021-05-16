@@ -8,7 +8,7 @@ public abstract class MenuCommand implements Command {
 
   @Override
   public void execute(UI ui) {
-
+    ui.display(this.getName());
 
 
 

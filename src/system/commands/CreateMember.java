@@ -18,7 +18,7 @@ public class CreateMember implements Command {
         boolean active;
         double memberShipPrice = 0;
 
-        memberManager.getMembers().add(new Member(memberName, dateOfBirth, email, phoneNumber, active, memberShipPrice));
+        //memberManager.getMembers().add(new Member(memberName, dateOfBirth, email, phoneNumber, active, memberShipPrice));
     }
 
     @Override
@@ -26,7 +26,7 @@ public class CreateMember implements Command {
         ui.display("Enter member name: ");
         ui.getString();
         ui.display("Enter members date of birth: ");
-        ui.getDate();
+        //ui.getDate();
         ui.display("Enter members email: ");
         ui.getString();
         ui.display("Enter members phone number: ");
