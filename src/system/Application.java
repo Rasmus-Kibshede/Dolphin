@@ -9,14 +9,14 @@ import system.ui.UI;
 import java.time.LocalDate;
 
 public class Application {
-    private MemberManager memberManager;
-    private MainMenu mainMenu;
+    private MemberManager memberManager = new MemberManager();
+    private MainMenu mainMenu = new MainMenu();
     private UI ui;
     //private Command command;
 
-    public Application(){
-        memberManager = new MemberManager();
-        ui = new UI();
+    public Application(MemberManager memberManager, UI ui){
+       this.memberManager = memberManager;
+       this.ui = ui;
 
     }
 
