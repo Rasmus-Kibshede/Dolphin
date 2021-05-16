@@ -12,15 +12,19 @@ public class Application {
     private MemberManager memberManager;
     private MainMenu mainMenu;
     private UI ui;
-    private Command command;
+    //private Command command;
 
     public Application(){
         memberManager = new MemberManager();
+        ui = new UI();
 
     }
 
 
     public void start() {
+        mainMenu.startMenu();
+
+        /*
         //AdminMenu adminMenu = new AdminMenu(logIn());
 
         //Creates a menu that can display choices
@@ -37,6 +41,8 @@ public class Application {
                 true,
                 payment.getPrice(birth, true));
         System.out.println(member.getMembershipPrice());
+
+         */
     }
 
     public String logIn() {
