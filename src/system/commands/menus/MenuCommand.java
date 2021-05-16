@@ -3,11 +3,14 @@ package system.commands.menus;
 import system.commands.Command;
 import system.ui.UI;
 
-public class MenuCommand implements Command {
-  private String name;
-  private Command[] commands;
+public abstract class MenuCommand implements Command {
+  protected abstract Command[] getCommands();
 
-  private void printMenu(UI ui, Command[] commands) {
+  @Override
+  public void execute(UI ui) {
+
+
+
 
   }
 
@@ -15,17 +18,8 @@ public class MenuCommand implements Command {
     return 0;
   }
 
-  @Override
-  public void execute(UI ui) {
 
-  }
+  private void printMenu(UI ui, Command[] commands) {
 
-  @Override
-  public String getName() {
-    return null;
-  }
-
-  protected Command[] getCommands() {
-    return commands;
   }
 }

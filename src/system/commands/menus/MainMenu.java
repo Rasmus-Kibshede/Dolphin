@@ -1,25 +1,29 @@
 package system.commands.menus;
 
+import system.Application;
+import system.commands.Command;
+
 public class MainMenu extends MenuCommand {
 
-    private String logInType;
+  private Application application;
 
-    public MainMenu(String logInType) {
-        this.logInType = logInType;
-    }
+  public MainMenu(Application application) {
+    this.application = application;
+  }
 
-    public void startMenu(){
-        switch (logInType){
-            case "chairman":
-                //call chairman menu
-                break;
-            case "cashier":
-                //call cashier menu
-                break;
-            case "coach":
-                //call coach menu
-                break;
-        }
-    }
+  @Override
+  public String getName() {
+    //Todo Find a better name?
+    return "Person select menu";
+  }
 
+  @Override
+  protected Command[] getCommands() {
+    //Todo make all classes take application
+    return new Command[]{
+        new ChairmanMenu(application),
+        new CashierMenu(),
+        new CoachMenu()
+    };
+  }
 }
