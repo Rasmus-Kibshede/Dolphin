@@ -9,20 +9,20 @@ import system.ui.UI;
 import java.time.LocalDate;
 
 public class Application {
-    private MemberManager memberManager = new MemberManager();
-    private MainMenu mainMenu = new MainMenu();
+    private MemberManager memberManager;
     private UI ui;
-    //private Command command;
+    private Command command;
 
-    public Application(MemberManager memberManager, UI ui){
-       this.memberManager = memberManager;
-       this.ui = ui;
+    public Application(){
+       memberManager = new MemberManager();
+       ui = new UI();
+       command = new MainMenu(this);
 
     }
 
 
     public void start() {
-        mainMenu.startMenu();
+        this.command.execute(this.ui);
 
         /*
         //AdminMenu adminMenu = new AdminMenu(logIn());
