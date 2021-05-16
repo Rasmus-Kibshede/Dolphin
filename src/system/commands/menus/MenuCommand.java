@@ -5,21 +5,30 @@ import system.ui.UI;
 
 public abstract class MenuCommand implements Command {
   protected abstract Command[] getCommands();
+  private UI ui;
 
   @Override
   public void execute(UI ui) {
-    ui.display(this.getName());
+    this.ui = ui;
+    ui.displayLn(this.getName());
+
+    printMenu(this.getCommands());
+
+    int menuOption = this.chooseMenuNumber(this.getCommands());
+
 
 
 
   }
 
-  private int chooseMenuNumber(UI ui, Command[] commands) {
-    return 0;
+  private void printMenu(Command[] commands) {
+    for (int i = 0; i < commands.length; i++) {
+      int menuOptionIndex = ((i)+1);
+      ui.displayLn(menuOptionIndex + ". " + commands[i].getName());
+    }
   }
 
-
-  private void printMenu(UI ui, Command[] commands) {
-
+  private int chooseMenuNumber(Command[] commands) {
+    return ui.validateRange0ToMax(commands.length);
   }
 }

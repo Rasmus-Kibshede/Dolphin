@@ -1,7 +1,6 @@
 package system.commands;
 
 import system.MemberManager;
-import system.member.Member;
 import system.ui.UI;
 
 import java.time.LocalDate;
@@ -23,13 +22,13 @@ public class CreateMember implements Command {
 
     @Override
     public void execute(UI ui) {
-        ui.display("Enter member name: ");
+        ui.displayLn("Enter member name: ");
         ui.getString();
-        ui.display("Enter members date of birth: ");
+        ui.displayLn("Enter members date of birth: ");
         //ui.getDate();
-        ui.display("Enter members email: ");
+        ui.displayLn("Enter members email: ");
         ui.getString();
-        ui.display("Enter members phone number: ");
+        ui.displayLn("Enter members phone number: ");
         ui.getString();
 
     }
