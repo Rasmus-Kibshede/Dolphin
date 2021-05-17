@@ -6,6 +6,7 @@ import system.ui.UI;
 
 import java.util.ArrayList;
 
+// Kamille
 public class EditMemberActive implements Command{
     private MemberManager memberManager;
 

@@ -20,6 +20,7 @@ public class Member {
                   String phoneNumber,
                   boolean active,
                   int memberNumber) {
+
         setName(name);
         setDateOfBirth(dateOfBirth);
         setEmail(email);
@@ -28,7 +29,6 @@ public class Member {
         this.notFlagged = true;
         setMembershipPrice();
         setMemberNumber(memberNumber);
-
     }
 
     //SETTER
@@ -60,7 +60,9 @@ public class Member {
         this.membershipPrice = payment.getPrice(this.dateOfBirth, this.active);
     }
 
-    public void setMemberNumber(int memberNumber){ this.memberNumber = memberNumber; }
+    public void setMemberNumber(int memberNumber) {
+        this.memberNumber = memberNumber;
+    }
 
     //GETTER
     public double getMembershipPrice() {
@@ -87,6 +89,28 @@ public class Member {
         return active;
     }
 
-    public int getMemberNumber(){ return memberNumber; }
+    public int getMemberNumber() {
+        return memberNumber;
+    }
 
+    @Override
+    public String toString() {
+        return "Member number: "
+                + memberNumber
+                + " "
+                + name
+                + " "
+                + dateOfBirth
+                + ". Email: "
+                + email
+                + " Phone Number: "
+                + phoneNumber
+                + ". Membership "
+                + active
+                + ". In debt: "
+                + notFlagged
+                + "Memberprice: "
+                + membershipPrice
+        ;
+    }
 }

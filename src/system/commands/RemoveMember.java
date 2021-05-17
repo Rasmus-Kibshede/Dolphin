@@ -3,6 +3,7 @@ package system.commands;
 import system.MemberManager;
 import system.ui.UI;
 
+//Michala
 public class RemoveMember implements Command {
     private MemberManager memberManager;
 
