@@ -4,7 +4,6 @@ import system.Application;
 import system.commands.Command;
 
 public class MainMenu extends MenuCommand {
-
   private Application application;
 
   public MainMenu(Application application) {
@@ -14,16 +13,15 @@ public class MainMenu extends MenuCommand {
   @Override
   public String getName() {
     //Todo Find a better name?
-    return "Person select menu";
+    return "Administration";
   }
 
   @Override
   protected Command[] getCommands() {
-    //Todo make all classes take application
     return new Command[]{
-        new ChairmanMenu(application),
-        new CashierMenu(),
-        new CoachMenu()
+        new MemberAdministration(application),
+        new EconomyAdministration(application),
+        new CompetitiveAdministration(application)
     };
   }
 }

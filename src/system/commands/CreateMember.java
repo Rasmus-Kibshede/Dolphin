@@ -2,7 +2,6 @@ package system.commands;
 
 import system.MemberManager;
 import system.ui.UI;
-
 import java.time.LocalDate;
 
 public class CreateMember implements Command {

@@ -31,7 +31,7 @@ public class UI {
       scanner.next();
     }
     int number = scanner.nextInt();
-    scanner.nextLine(); //<--- scanner bug handler
+    scanner.nextLine();
     return number;
   }
 
@@ -39,7 +39,7 @@ public class UI {
     return scanner.nextLine();
   }
 
-  public int validateRange0ToMax(int maxRange) {
+  public int validateRange(int maxRange) {
     int choice = getInt();
     while (choice <= 0 || choice > maxRange) {
       displayLn("Out of range, try again");

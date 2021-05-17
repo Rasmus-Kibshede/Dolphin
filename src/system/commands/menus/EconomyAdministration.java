@@ -1,13 +1,13 @@
 package system.commands.menus;
 
-import system.MemberManager;
+import system.Application;
 import system.commands.Command;
 
-public class EditMemberMenu extends MenuCommand {
-  private MemberManager memberManager;
+public class EconomyAdministration extends MenuCommand {
+  private Application application;
 
-  public EditMemberMenu(MemberManager memberManager) {
-    this.memberManager = memberManager;
+  public EconomyAdministration(Application application) {
+    this.application = application;
   }
 
   @Override

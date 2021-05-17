@@ -5,18 +5,17 @@ import system.commands.Command;
 import system.commands.CreateMember;
 import system.commands.RemoveMember;
 
-public class ChairmanMenu extends MenuCommand {
+public class MemberAdministration extends MenuCommand {
 
   private Application application;
 
-  public ChairmanMenu(Application application) {
+  public MemberAdministration(Application application) {
     this.application = application;
   }
 
   @Override
   public String getName() {
-    //TODO Find another name for it, mic hates it! xD
-    return "Chairman menu";
+    return "Member Administration";
   }
 
   @Override
@@ -24,7 +23,7 @@ public class ChairmanMenu extends MenuCommand {
     return new Command[]{
         new RemoveMember(this.application.getMemberManager()),
         new CreateMember(this.application.getMemberManager()),
-        new EditMemberMenu(),
+        new EditMemberMenu(this.application.getMemberManager()),
     };
   }
 }
