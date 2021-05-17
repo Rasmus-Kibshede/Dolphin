@@ -13,9 +13,8 @@ public class UI {
     System.out.println(message);
   }
 
-
   public void display(String message) {
-    System.out.println(message);
+    System.out.print(message);
   }
 
   public void display(int message) {
@@ -48,5 +47,4 @@ public class UI {
     }
     return choice;
   }
-
 }
