@@ -59,4 +59,24 @@ public class Member {
     public double getMembershipPrice() {
         return membershipPrice;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public boolean getActive() {
+        return active;
+    }
 }
