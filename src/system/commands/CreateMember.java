@@ -1,6 +1,7 @@
 package system.commands;
 
 import system.MemberManager;
+import system.member.Member;
 import system.ui.UI;
 
 import java.time.LocalDate;
@@ -10,27 +11,21 @@ public class CreateMember implements Command {
     private MemberManager memberManager;
 
     public CreateMember(MemberManager memberManager) {
-        String memberName = null;
-        LocalDate dateOfBirth = null;
-        String email = null;
-        String phoneNumber = null;
-        boolean active;
-        double memberShipPrice = 0;
-
-        //memberManager.getMembers().add(new Member(memberName, dateOfBirth, email, phoneNumber, active, memberShipPrice));
+        this.memberManager = memberManager;
     }
 
     @Override
     public void execute(UI ui) {
         ui.displayLn("Enter member name: ");
-        ui.getString();
+        String memberName = ui.getString();
         ui.displayLn("Enter members date of birth: ");
-        //ui.getDate();
+        LocalDate dateOfBirth = ui.getDate();
         ui.displayLn("Enter members email: ");
-        ui.getString();
+        String email = ui.getString();
         ui.displayLn("Enter members phone number: ");
-        ui.getString();
+        String phoneNumber = ui.getString();
 
+        memberManager.getMembers().add(new Member(memberName, dateOfBirth, email, phoneNumber, active, membershipPrice));
     }
 
     @Override
