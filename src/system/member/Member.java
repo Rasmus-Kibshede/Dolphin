@@ -107,9 +107,9 @@ public class Member {
                 + phoneNumber
                 + ". Membership "
                 + active
-                + ". In debt: "
+                + ". Not in debt: "
                 + notFlagged
-                + "Memberprice: "
+                + ". Memberprice: "
                 + membershipPrice
                 + "\n"
         ;

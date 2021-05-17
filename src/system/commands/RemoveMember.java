@@ -20,8 +20,8 @@ public class RemoveMember implements Command {
         for (int i = 0; i < memberManager.getMembers().size(); i++) {
             if (memberNumber == memberManager.getMembers().get(i).getMemberNumber()) {
                 memberManager.getMembers().remove(memberManager.getMembers().get(i));
-                
             }
+            memberManager.getFileHandler().saveFile(memberManager.getMembers());
         }
     }
 

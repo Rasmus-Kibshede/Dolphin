@@ -1,6 +1,5 @@
 package system.commands;
 
-import system.MemberManager;
 import system.member.Member;
 import system.ui.UI;
 

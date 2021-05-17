@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 // Michala
 public class MemberManager {
-    private ArrayList<Member> members = new ArrayList<>();
     private FileHandler fileHandler = new FileHandler();
+    private ArrayList<Member> members = fileHandler.loadFile();
     private ShowMembers showMembers = new ShowMembers(getMembers());
 
     public ArrayList<Member> getMembers(){
