@@ -18,14 +18,14 @@ public class EditMemberName implements Command{
     public void execute(UI ui) {
         ArrayList<Member> members = memberManager.getMembers();
         ui.displayLn("Enter the Member Number of the member you want to edit: ");
-        int memberNumber = ui.getInt();
+        int memberNumber = ui.getInt("Not a valid number");
         for(Member m : members){
-            if (m.getMemberNumber() == memberNumber)
-            ui.displayLn("Enter member name: ");
-            String newName = ui.getString();
-            m.setName(newName);
+            if (m.getMemberNumber() == memberNumber) {
+                ui.displayLn("Enter member name: ");
+                String newName = ui.getString();
+                m.setName(newName);
+            }
         }
-
     }
 
     @Override

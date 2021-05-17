@@ -4,7 +4,6 @@ import system.commands.Command;
 import system.ui.UI;
 
 //Rasmus
-
 public abstract class MenuCommand implements Command {
   protected abstract Command[] getCommands();
   private UI ui;
