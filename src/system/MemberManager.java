@@ -4,7 +4,7 @@ import system.commands.FileHandler;
 import system.member.Member;
 import java.util.ArrayList;
 
-//Michala
+// Michala
 public class MemberManager {
     private ArrayList<Member> members;
     private FileHandler fileHandler = new FileHandler();

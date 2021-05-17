@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// Michala
 public class FileHandler {
     private final File MEMBER_FILE = new File("Members.txt");
 
@@ -28,6 +29,8 @@ public class FileHandler {
                                 + members.get(i).getActive()
                                 + " "
                                 + members.get(i).getMembershipPrice()
+                                + " "
+                                + members.get(i).getMemberNumber()
                                 + "\n"
                 );
                 fileWriter.close();
@@ -50,8 +53,9 @@ public class FileHandler {
                 String phoneNumber = fileReader.next();
                 Boolean active = Boolean.parseBoolean(fileReader.next());
                 String payment = fileReader.next();
+                int memberNumber = fileReader.nextInt();
 
-                members.add(new Member(memberName, dateOfBirth, email, phoneNumber, active));
+                members.add(new Member(memberName, dateOfBirth, email, phoneNumber, active, memberNumber));
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
