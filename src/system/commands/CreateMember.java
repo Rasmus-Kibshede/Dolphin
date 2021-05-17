@@ -4,6 +4,7 @@ import system.MemberManager;
 import system.member.Member;
 import system.ui.UI;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 //Kamille
 public class CreateMember implements Command {
@@ -25,8 +26,9 @@ public class CreateMember implements Command {
         String phoneNumber = ui.getString();
         ui.displayLn("Enter A for active and P for passive");
         boolean active = setActive(Character.toLowerCase(ui.getChar()));
+        int memberNumber = setMemberNumber();
 
-        memberManager.getMembers().add(new Member(memberName, dateOfBirth, email, phoneNumber, active));
+        memberManager.getMembers().add(new Member(memberName, dateOfBirth, email, phoneNumber, active, memberNumber));
 
         //Update file
     }
@@ -41,5 +43,11 @@ public class CreateMember implements Command {
             return false;
         }
         return true;
+    }
+
+    public int setMemberNumber(){
+        int lastMember = memberManager.getMembers().size();
+        int memberNumber = memberManager.getMembers().get(lastMember).getMemberNumber();
+        return memberNumber++;
     }
 }

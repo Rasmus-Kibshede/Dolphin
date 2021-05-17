@@ -11,14 +11,15 @@ public class Member {
     private boolean active;
     private boolean notFlagged;
     private double membershipPrice;
+    private int memberNumber;
     private Payment payment = new Payment();
 
     public Member(String name,
                   LocalDate dateOfBirth,
                   String email,
                   String phoneNumber,
-                  boolean active
-    ) {
+                  boolean active,
+                  int memberNumber) {
         setName(name);
         setDateOfBirth(dateOfBirth);
         setEmail(email);
@@ -26,8 +27,11 @@ public class Member {
         setActive(active);
         this.notFlagged = true;
         setMembershipPrice();
+        setMemberNumber(memberNumber);
+
     }
 
+    //SETTER
     public void setName(String name) {
         this.name = name;
     }
@@ -56,6 +60,9 @@ public class Member {
         this.membershipPrice = payment.getPrice(this.dateOfBirth, this.active);
     }
 
+    public void setMemberNumber(int memberNumber){ this.memberNumber = memberNumber; }
+
+    //GETTER
     public double getMembershipPrice() {
         return membershipPrice;
     }
@@ -79,4 +86,7 @@ public class Member {
     public boolean getActive() {
         return active;
     }
+
+    public int getMemberNumber(){ return memberNumber; }
+
 }
