@@ -3,6 +3,7 @@ package system.commands.menus;
 import system.Application;
 import system.commands.Command;
 
+//Rasmus
 public class MainMenu extends MenuCommand {
   private Application application;
 

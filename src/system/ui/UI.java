@@ -1,5 +1,6 @@
 package system.ui;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class UI {
@@ -46,5 +47,18 @@ public class UI {
       choice = getInt();
     }
     return choice;
+  }
+
+  public char getChar(){
+    char c = 'p';
+
+    return c;
+  }
+
+  public char validateChar(){
+
+  }
+
+  public LocalDate getDate() {
   }
 }

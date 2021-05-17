@@ -2,6 +2,7 @@ package system.member;
 
 import java.time.LocalDate;
 
+//Michala
 public class Member {
     private String name;
     private LocalDate dateOfBirth;
@@ -10,13 +11,13 @@ public class Member {
     private boolean active;
     private boolean notFlagged;
     private double membershipPrice;
+    private Payment payment = new Payment();
 
     public Member(String name,
                   LocalDate dateOfBirth,
                   String email,
                   String phoneNumber,
-                  boolean active,
-                  double membershipPrice
+                  boolean active
     ) {
         setName(name);
         setDateOfBirth(dateOfBirth);
@@ -24,7 +25,7 @@ public class Member {
         setPhoneNumber(phoneNumber);
         setActive(active);
         this.notFlagged = true;
-        setMembershipPrice(membershipPrice);
+        setMembershipPrice();
     }
 
     public void setName(String name) {
@@ -51,8 +52,8 @@ public class Member {
         this.notFlagged = notFlagged;
     }
 
-    public void setMembershipPrice(double membershipPrice) {
-        this.membershipPrice = membershipPrice;
+    public void setMembershipPrice() {
+        this.membershipPrice = payment.getPrice(this.dateOfBirth, this.active);
     }
 
     public double getMembershipPrice() {

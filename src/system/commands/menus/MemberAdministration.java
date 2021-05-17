@@ -5,6 +5,7 @@ import system.commands.Command;
 import system.commands.CreateMember;
 import system.commands.RemoveMember;
 
+//Rasmus
 public class MemberAdministration extends MenuCommand {
 
   private Application application;

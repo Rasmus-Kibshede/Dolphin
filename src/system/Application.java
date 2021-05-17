@@ -4,6 +4,7 @@ import system.commands.Command;
 import system.commands.menus.MainMenu;
 import system.ui.UI;
 
+//Kamille
 public class Application {
   private MemberManager memberManager;
   private UI ui;
