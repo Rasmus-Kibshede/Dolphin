@@ -33,8 +33,8 @@ public class FileHandler {
                                 + members.get(i).getMemberNumber()
                                 + "\n"
                 );
-                fileWriter.close();
             }
+            fileWriter.close();
 
         } catch (IOException e) {
             e.printStackTrace();

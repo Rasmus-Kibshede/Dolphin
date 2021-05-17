@@ -47,7 +47,7 @@ public class UI {
     public int validateRange(int maxRange) {
         int choice = getInt("Please enter a number: ");
 
-        while (choice <= 0 || choice > maxRange) {
+        while (choice < 0 || choice > maxRange) {
             displayLn("Out of range, try again");
             choice = getInt("Please enter a number: ");
         }

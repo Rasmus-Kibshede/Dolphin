@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class MemberManager {
     private FileHandler fileHandler = new FileHandler();
     private ArrayList<Member> members = fileHandler.loadFile();
-    private ShowMembers showMembers = new ShowMembers(getMembers());
+    private ShowMembers showMembers = new ShowMembers(this);
 
     public ArrayList<Member> getMembers(){
         return members;

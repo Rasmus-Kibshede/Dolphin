@@ -50,7 +50,7 @@ public class CreateMember implements Command {
         if (lastMember == 0) {
             return 1;
         }
-        int memberNumber = memberManager.getMembers().get(lastMember).getMemberNumber();
-        return memberNumber++;
+        int memberNumber = memberManager.getMembers().get(lastMember - 1).getMemberNumber();
+        return ++memberNumber;
     }
 }
