@@ -21,8 +21,8 @@ public class UI {
     System.out.print(message);
   }
 
-  public int getInt() {
-    int number = getInt();
+  public int getInt(String errorMessage) {
+    int number = getValidateInt(errorMessage);
     scanner.nextLine();
     return number;
   }
@@ -33,7 +33,7 @@ public class UI {
       display(errorMessage);
       scanner.next();
     }
-    return getInt();
+    return scanner.nextInt();
   }
 
   public String getString() {
@@ -42,11 +42,11 @@ public class UI {
 
   //Rasmus
   public int validateRange(int maxRange) {
-    int choice = getValidateInt("Please enter a number: ");
+    int choice = getInt("Please enter a number: ");
 
     while (choice <= 0 || choice > maxRange) {
       displayLn("Out of range, try again");
-      choice = getValidateInt("Please enter a number: ");
+      choice = getInt("Please enter a number: ");
     }
 
     return choice;
@@ -67,9 +67,8 @@ public class UI {
  */
 
   //Rasmus
-  public char validateChar(char char1, char char2, String errorMessage) {
-    char charChoice = getChar();
-
+  /*
+  public char validateChar(char char1, char char2, char charChoice, String errorMessage) {
     while (!(charChoice == char1 || charChoice == char2)) {
       display(errorMessage);
       charChoice = getChar();
@@ -77,6 +76,7 @@ public class UI {
 
     return charChoice;
   }
+   */
 
   /*
   public LocalDate getDate() {
