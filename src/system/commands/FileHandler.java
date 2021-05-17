@@ -1,8 +1,6 @@
 package system.commands;
 
 import system.member.Member;
-import system.ui.UI;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -11,7 +9,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class FileHandler implements Command {
+public class FileHandler {
     private final File MEMBER_FILE = new File("Members.txt");
 
     public void saveFile(ArrayList<Member> members) {
@@ -19,46 +17,45 @@ public class FileHandler implements Command {
             FileWriter fileWriter = new FileWriter(MEMBER_FILE);
             for (int i = 0; i < members.size(); i++) {
                 fileWriter.write(
-                        members.get(i).getName() +
+                        members.get(i).getName()
+                                + " "
+                                + members.get(i).getDateOfBirth()
+                                + " "
+                                + members.get(i).getEmail()
+                                + " "
+                                + members.get(i).getPhoneNumber()
+                                + " "
+                                + members.get(i).getActive()
+                                + " "
+                                + members.get(i).getMembershipPrice()
+                                + "\n"
                 );
+                fileWriter.close();
             }
 
         } catch (IOException e) {
+            e.printStackTrace();
         }
-        try {
-
-        }
-
-    } catch(
-    FileNotFoundException e)
-
-    {
-        e.printStackTrace();
     }
 
-    public void loadFile() {
+    public ArrayList<Member> loadFile() {
+        ArrayList<Member> members = new ArrayList<>();
+
         try {
             Scanner fileReader = new Scanner(MEMBER_FILE);
-            while (fileReader.hasNextLine()) {
+            while (fileReader.hasNext()) {
                 String memberName = fileReader.next();
                 LocalDate dateOfBirth = LocalDate.parse(fileReader.next()); //Husk at sikre formattering.
                 String email = fileReader.next();
                 String phoneNumber = fileReader.next();
                 Boolean active = Boolean.parseBoolean(fileReader.next());
+                String payment = fileReader.next();
+
+                members.add(new Member(memberName, dateOfBirth, email, phoneNumber, active));
             }
-            Member member = new Member();
-        } catch (IOException e) {
-
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
-    }
-
-    @Override
-    public void execute(UI ui) {
-
-    }
-
-    @Override
-    public String getName() {
-        return "File Handling";
+        return members;
     }
 }
