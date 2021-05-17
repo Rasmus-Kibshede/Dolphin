@@ -1,7 +1,7 @@
 package system.commands.menus;
 
 import system.MemberManager;
-import system.commands.Command;
+import system.commands.*;
 
 public class EditMemberMenu extends MenuCommand {
   private MemberManager memberManager;
@@ -12,11 +12,16 @@ public class EditMemberMenu extends MenuCommand {
 
   @Override
   public String getName() {
-    return null;
+    return "Edit Member Menu";
   }
 
   @Override
   protected Command[] getCommands() {
-    return new Command[0];
+    return new Command[] {
+            new EditMemberName(memberManager),
+            new EditMemberEmail(memberManager),
+            new EditMemberPhoneNumber(memberManager),
+            new EditMemberActive(memberManager)
+    };
   }
 }

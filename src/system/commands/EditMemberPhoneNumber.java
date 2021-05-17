@@ -16,6 +16,7 @@ public class EditMemberPhoneNumber implements Command{
 
     @Override
     public void execute(UI ui) {
+        memberManager.getShowMembers().execute(ui);
         ArrayList<Member> members = memberManager.getMembers();
         ui.displayLn("Enter the Member Number of the member you want to edit: ");
         int memberNumber = ui.getInt("Not a valid number");
