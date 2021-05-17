@@ -111,6 +111,7 @@ public class Member {
                 + notFlagged
                 + "Memberprice: "
                 + membershipPrice
+                + "\n"
         ;
     }
 }

@@ -13,19 +13,20 @@ public class RemoveMember implements Command {
 
     @Override
     public void execute(UI ui) {
-        // Display members before
+        memberManager.getShowMembers().execute(ui);
         ui.displayLn("Removing Member");
         ui.display("Which member is to be removed? Please enter Membernumber.");
-        int memberNumber = ui.getInt();
+        int memberNumber = ui.getInt("Please enter an existing member number");
         for (int i = 0; i < memberManager.getMembers().size(); i++) {
             if (memberNumber == memberManager.getMembers().get(i).getMemberNumber()) {
                 memberManager.getMembers().remove(memberManager.getMembers().get(i));
+                
             }
         }
     }
 
     @Override
     public String getName() {
-        return null;
+        return "Remove Member";
     }
 }

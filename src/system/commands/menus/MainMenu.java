@@ -13,7 +13,6 @@ public class MainMenu extends MenuCommand {
 
   @Override
   public String getName() {
-    //Todo Find a better name?
     return "Administration";
   }
 

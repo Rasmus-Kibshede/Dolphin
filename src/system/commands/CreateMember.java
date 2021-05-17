@@ -3,6 +3,7 @@ package system.commands;
 import system.MemberManager;
 import system.member.Member;
 import system.ui.UI;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -18,7 +19,7 @@ public class CreateMember implements Command {
     public void execute(UI ui) {
         ui.displayLn("Enter member name: ");
         String memberName = ui.getString();
-        ui.displayLn("Enter members date of birth: ");
+        ui.displayLn("Enter members date of birth: day-month-year");
         LocalDate dateOfBirth = ui.getDate();
         ui.displayLn("Enter members email: ");
         String email = ui.getString();
@@ -29,8 +30,7 @@ public class CreateMember implements Command {
         int memberNumber = setMemberNumber();
 
         memberManager.getMembers().add(new Member(memberName, dateOfBirth, email, phoneNumber, active, memberNumber));
-
-        //Update file
+        memberManager.getFileHandler().saveFile(memberManager.getMembers());
     }
 
     @Override
@@ -38,15 +38,18 @@ public class CreateMember implements Command {
         return "Create Member";
     }
 
-    public Boolean setActive(Character c){
+    public Boolean setActive(Character c) {
         if (c == 'p') {
             return false;
         }
         return true;
     }
 
-    public int setMemberNumber(){
+    public int setMemberNumber() {
         int lastMember = memberManager.getMembers().size();
+        if (lastMember == 0) {
+            return 1;
+        }
         int memberNumber = memberManager.getMembers().get(lastMember).getMemberNumber();
         return memberNumber++;
     }
