@@ -18,7 +18,7 @@ public class EditMemberEmail implements Command{
     public void execute(UI ui) {
         ArrayList<Member> members = memberManager.getMembers();
         ui.displayLn("Enter the Member Number of the member you want to edit: ");
-        int memberNumber = ui.getInt();
+        int memberNumber = ui.getInt("Not a valid number");
         for(Member m : members){
             if(m.getMemberNumber() == memberNumber){
                 ui.displayLn("Enter the new email:");
@@ -26,9 +26,6 @@ public class EditMemberEmail implements Command{
                 m.setEmail(newEmail);
             }
         }
-
-
-
     }
 
     @Override
