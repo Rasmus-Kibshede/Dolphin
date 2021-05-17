@@ -6,6 +6,7 @@ import system.ui.UI;
 
 import java.util.ArrayList;
 
+//Kamille
 public class EditMemberEmail implements Command{
     private MemberManager memberManager;
 
@@ -16,10 +17,10 @@ public class EditMemberEmail implements Command{
     @Override
     public void execute(UI ui) {
         ArrayList<Member> members = memberManager.getMembers();
-        ui.displayLn("Enter the name of the member you want to edit: ");
-        String name = ui.getString();
+        ui.displayLn("Enter the Member Number of the member you want to edit: ");
+        int memberNumber = ui.getInt();
         for(Member m : members){
-            if(m.getName() == name){
+            if(m.getMemberNumber() == memberNumber){
                 ui.displayLn("Enter the new email:");
                 String newEmail = ui.getString();
                 m.setEmail(newEmail);
@@ -32,6 +33,6 @@ public class EditMemberEmail implements Command{
 
     @Override
     public String getName() {
-        return null;
+        return "Edit Member Email";
     }
 }
