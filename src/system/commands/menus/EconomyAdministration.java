@@ -25,11 +25,5 @@ public class EconomyAdministration extends MenuCommand {
         new MoveMemberToRKI(this.application.getMemberManager()),
         new RemoveFromRKI(this.application.getMemberManager())
     };
-
-<<<<<<< HEAD
-        };
-    }
-=======
   }
->>>>>>> 818dae52eddff256e48ebf8d7f169bb9b4a13656
 }
