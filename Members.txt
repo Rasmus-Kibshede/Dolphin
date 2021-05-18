@@ -1,1 +1,6 @@
-Joachim 2000-01-30 jokke@gmail.com 66578493 true 1600.0 1
+Poul 2000-01-30 jokke@gmail.com 66578493 true 1600.0 1
+Birgit 1945-07-22 birgit@hotmail.dk 75647474 false 500.0 3
+Olga 1943-02-02 ollemor@hotmail.dk 75647838 true 1200.0 4
+Lily 2020-05-27 lilysmor@gmial.com 756352525 true 1000.0 5
+Rasmus 1993-04-07 ralle2gmail.com 85734920 true 1600.0 6
+Torben 1946-12-15 torbenhenriksen@gmail.com 647282828 false 500.0 7
