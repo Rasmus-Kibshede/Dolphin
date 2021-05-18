@@ -5,26 +5,26 @@ import system.commands.*;
 
 //Kamille
 public class EconomyAdministration extends MenuCommand {
-  private Application application;
+    private Application application;
 
-  public EconomyAdministration(Application application) {
-    this.application = application;
-  }
+    public EconomyAdministration(Application application) {
+        this.application = application;
+    }
 
-  @Override
-  public String getName() {
-    return "Economy Administration";
-  }
+    @Override
+    public String getName() {
+        return "Economy Administration";
+    }
 
-  @Override
-  protected Command[] getCommands() {
-    return new Command[]{
-        //Find new names!!!! TODO edit the names!!!!
-        new ExpectedIncome(this.application.getMemberManager()), //Shows expected income for the club
-        new EditMemberInDebt(this.application.getMemberManager()), // shows and adds members in debt
-        new MoveMemberToRKI(this.application.getMemberManager()),
-        new BlacklistMember(this.application.getMemberManager()) // remove members from list and add as blacklisted
-    };
+    @Override
+    protected Command[] getCommands() {
+        return new Command[]{
+                new ExpectedIncome(this.application.getMemberManager()),
+                new ShowMembersInRKI(this.application.getMemberManager()),
+                new EditMemberInDebt(this.application.getMemberManager()),
+                new MoveMemberToRKI(this.application.getMemberManager())
 
-  }
+        };
+
+    }
 }
