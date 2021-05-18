@@ -97,9 +97,9 @@ public class Member {
     public String toString() {
         return "Member number: "
                 + memberNumber
-                + " " // Er der en tanke bag at den er blank?
+                + ". Name: "
                 + name
-                + " " // Er der en tanke bag at den er blank?
+                + ". Date of Birth: "
                 + dateOfBirth
                 + ". Email: "
                 + email
