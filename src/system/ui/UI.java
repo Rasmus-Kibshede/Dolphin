@@ -58,7 +58,7 @@ public class UI {
     public char getChar(char a, char b) {
         boolean keepRunning = true;
         while (keepRunning) {
-            if (scanner.nextLine().charAt(0) == a) {
+            if (scanner.hasNextLine().charAt(0) == a) {
                 return a;
             } else if (scanner.nextLine().charAt(0) == b) {
                 return b;
