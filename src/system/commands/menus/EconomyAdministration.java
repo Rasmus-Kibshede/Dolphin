@@ -2,6 +2,7 @@ package system.commands.menus;
 
 import system.Application;
 import system.commands.Command;
+import system.commands.EditMemberInDebt;
 
 //Kamille
 public class EconomyAdministration extends MenuCommand {
@@ -21,7 +22,7 @@ public class EconomyAdministration extends MenuCommand {
     return new Command[]{
         //Find new names!!!!
         new ExpectedIncome(this.application.getMemberManager()), //Shows expected income for the club
-        new FlagMember(this.application.getMemberManager()), // shows and adds members in debt
+        new EditMemberInDebt(this.application.getMemberManager()), // shows and adds members in debt
         new BlacklistMember(this.application.getMemberManager()) // remove members from list and add as blacklisted
     };
 

@@ -55,8 +55,16 @@ public class UI {
         return choice;
     }
 
-    public char getChar() {
-        return scanner.nextLine().charAt(0);
+    public char getChar(char a, char b) {
+        boolean keepRunning = true;
+        while (keepRunning) {
+            if (scanner.nextLine().charAt(0) == a) {
+                return a;
+            } else if (scanner.nextLine().charAt(0) == b) {
+                return b;
+            }
+            keepRunning = true;
+        }
     }
 
 /*

@@ -9,7 +9,7 @@ public class Member {
     private String email;
     private String phoneNumber;
     private boolean active;
-    private boolean notFlagged;
+    private boolean inDebt;
     private double membershipPrice;
     private int memberNumber;
     private Payment payment = new Payment();
@@ -26,7 +26,7 @@ public class Member {
         setEmail(email);
         setPhoneNumber(phoneNumber);
         setActive(active);
-        this.notFlagged = true;
+        this.inDebt = false;
         setMembershipPrice();
         setMemberNumber(memberNumber);
     }
@@ -52,8 +52,8 @@ public class Member {
         this.active = active;
     }
 
-    public void setNotFlagged(boolean notFlagged) {
-        this.notFlagged = notFlagged;
+    public void setInDebt(boolean inDebt) {
+        this.inDebt = inDebt;
     }
 
     public void setMembershipPrice() {
@@ -108,7 +108,7 @@ public class Member {
                 + ". Membership "
                 + active
                 + ". Not in debt: "
-                + notFlagged
+                + inDebt
                 + ". Memberprice: "
                 + membershipPrice
                 + "\n"
