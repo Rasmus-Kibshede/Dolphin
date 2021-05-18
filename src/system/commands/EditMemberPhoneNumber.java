@@ -27,6 +27,7 @@ public class EditMemberPhoneNumber implements Command{
                 m.setPhoneNumber(phoneNumber);
             }
         }
+        memberManager.getFileHandler().saveFile(members, memberManager.getMEMBER_FILE());
     }
 
     @Override

@@ -27,6 +27,7 @@ public class EditMemberEmail implements Command{
                 m.setEmail(newEmail);
             }
         }
+        memberManager.getFileHandler().saveFile(members, memberManager.getMEMBER_FILE());
     }
 
     @Override

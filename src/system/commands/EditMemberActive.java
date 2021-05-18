@@ -30,6 +30,7 @@ public class EditMemberActive implements Command{
                     m.setActive(false);
             }
         }
+        memberManager.getFileHandler().saveFile(members, memberManager.getMEMBER_FILE());
     }
 
     @Override

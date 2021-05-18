@@ -27,6 +27,7 @@ public class EditMemberName implements Command{
                 m.setName(newName);
             }
         }
+        memberManager.getFileHandler().saveFile(members, memberManager.getMEMBER_FILE());
     }
 
     @Override

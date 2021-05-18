@@ -17,8 +17,10 @@ public abstract class MenuCommand implements Command {
         int menuOptionIndex;
         do {
             //Displays the current menu
+            ui.displayLn("");
             ui.displayLn(this.getName());
             printMenu(commands);
+            ui.displayLn("");
             ui.display("Choose your option: ");
 
             //Displays the current command options

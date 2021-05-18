@@ -15,6 +15,7 @@ public class ShowMembers implements Command{
 
     @Override
     public void execute(UI ui) {
+        ui.displayLn("");
         for (int i = 0; i < memberManager.getMembers().size(); i++) {
             ui.displayLn(memberManager.getMembers().get(i).toString());
         }

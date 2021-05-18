@@ -26,7 +26,7 @@ public class MoveMemberToRKI implements Command{
         memberManager.getMembers().remove(memberManager.getMembers().get(i));
       }
     }
-    memberManager.getFileHandler().saveFile(memberManager.getMembersInRKI(), memberManager.getMEMBERS_IN_RKI());
+    memberManager.getFileHandler().saveFile(memberManager.getMembersInRKI(), memberManager.getMEMBERS_IN_RKI_FILE());
 
   }
 

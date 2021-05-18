@@ -25,6 +25,5 @@ public class EconomyAdministration extends MenuCommand {
                 new MoveMemberToRKI(this.application.getMemberManager())
 
         };
-
     }
 }
