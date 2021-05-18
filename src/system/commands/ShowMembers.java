@@ -22,6 +22,6 @@ public class ShowMembers implements Command{
 
     @Override
     public String getName() {
-        return "showMembers";
+        return "Show Members";
     }
 }
