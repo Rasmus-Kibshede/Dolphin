@@ -23,7 +23,7 @@ public class EditMemberActive implements Command{
         for(Member m : members){
             if(m.getMemberNumber() == memberNumber){
                 ui.displayLn("Enter A for Active or P for Passive: ");
-                char active = ui.getChar();
+                char active = ui.getChar('a','p');
                 if(active == 'a'){
                     m.setActive(true);
                 } else

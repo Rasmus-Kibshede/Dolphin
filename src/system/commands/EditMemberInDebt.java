@@ -25,7 +25,7 @@ public class EditMemberInDebt implements Command {
         for (int i = 0; i < members.size(); i++) {
             if (memberNumber == members.get(i).getMemberNumber()) {
                 ui.display("Shall member be marked as in debt(y) or not(n)");
-                char choice = ui.getChar();
+                char choice = ui.getChar('y','n');
                 if (choice == 'y') {
                     members.get(i).setInDebt(true);
                 } else if (choice == 'n') {

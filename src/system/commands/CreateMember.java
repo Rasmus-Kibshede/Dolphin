@@ -26,7 +26,7 @@ public class CreateMember implements Command {
         ui.displayLn("Enter members phone number: ");
         String phoneNumber = ui.getString();
         ui.displayLn("Enter A for active and P for passive");
-        boolean active = setActive(Character.toLowerCase(ui.getChar()));
+        boolean active = setActive(Character.toLowerCase(ui.getChar('a','p')));
         int memberNumber = setMemberNumber();
 
         memberManager.getMembers().add(new Member(memberName, dateOfBirth, email, phoneNumber, active, memberNumber));
