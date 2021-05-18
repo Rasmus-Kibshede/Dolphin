@@ -2,7 +2,6 @@ package system.ui;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.Scanner;
 
 public class UI {
@@ -55,6 +54,7 @@ public class UI {
     return choice;
   }
 
+  // Michala og Rasmus
   public char getChar(char a, char b) {
     char first = 0;
     char input;
@@ -65,6 +65,7 @@ public class UI {
     return first;
   }
 
+  // Michala og Rasmus
   private char validateChar(char input, char a, char b) {
     if (input == a || input == b) {
       return input;
@@ -72,30 +73,6 @@ public class UI {
     displayLn("This is not what we are looking for. You have no powers here!");
     return 0;
   }
-
-
-/*
-  public char validateChar(String errorMessage){
-    while (!scanner.hasNext()) {
-      display(errorMessage);
-      scanner.next();
-    }
-    return getChar();
-  }
- */
-
-  //Rasmus
-  /*
-  public char validateChar(char char1, char char2, char charChoice, String errorMessage) {
-    while (!(charChoice == char1 || charChoice == char2)) {
-      display(errorMessage);
-      charChoice = getChar();
-    }
-
-    return charChoice;
-  }
-   */
-
 
   public LocalDate getDate() {
     String birthDate = getString();
