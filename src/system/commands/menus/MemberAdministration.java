@@ -23,9 +23,10 @@ public class MemberAdministration extends MenuCommand {
   @Override
   protected Command[] getCommands() {
     return new Command[]{
-        new RemoveMember(this.application.getMemberManager()),
+        new ShowMembers(this.application.getMemberManager()),
         new CreateMember(this.application.getMemberManager()),
         new EditMemberMenu(this.application.getMemberManager()),
+        new RemoveMember(this.application.getMemberManager()),
     };
   }
 }
