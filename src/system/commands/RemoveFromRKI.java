@@ -34,7 +34,7 @@ public class RemoveFromRKI implements Command{
       }
     }
 
-    memberManager.getFileHandler().saveFile(members, memberManager.getMEMBERS_IN_RKI());
+    memberManager.getFileHandler().saveFile(members, memberManager.getMEMBERS_IN_RKI_FILE());
   }
 
   @Override
