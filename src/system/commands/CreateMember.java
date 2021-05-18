@@ -30,7 +30,7 @@ public class CreateMember implements Command {
         int memberNumber = setMemberNumber();
 
         memberManager.getMembers().add(new Member(memberName, dateOfBirth, email, phoneNumber, active, memberNumber));
-        memberManager.getFileHandler().saveFile(memberManager.getMembers());
+        memberManager.getFileHandler().saveFile(memberManager.getMembers(), memberManager.getMEMBER_FILE());
     }
 
     @Override

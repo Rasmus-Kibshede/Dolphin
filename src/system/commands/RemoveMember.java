@@ -25,7 +25,7 @@ public class RemoveMember implements Command {
                 memberManager.getMembers().remove(memberManager.getMembers().get(i));
             }
         }
-        memberManager.getFileHandler().saveFile(memberManager.getMembers());
+        memberManager.getFileHandler().saveFile(memberManager.getMembers(), memberManager.getMEMBER_FILE());
     }
 
     @Override

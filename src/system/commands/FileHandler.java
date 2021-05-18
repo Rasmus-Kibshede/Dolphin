@@ -1,21 +1,20 @@
 package system.commands;
 
 import system.member.Member;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
+
+import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 // Michala
 public class FileHandler {
-    private final File MEMBER_FILE = new File("Members.txt");
+    //private final File MEMBER_FILE = new File("Members.txt");
+    //private final File MEMBERS_IN_RKI = new File("MembersInPKI.txt");
 
-    public void saveFile(ArrayList<Member> members) {
+    public void saveFile(ArrayList<Member> members, File fileName) {
         try {
-            FileWriter fileWriter = new FileWriter(MEMBER_FILE);
+            FileWriter fileWriter = new FileWriter(fileName);
             for (int i = 0; i < members.size(); i++) {
                 fileWriter.write(
                         members.get(i).getName()
@@ -41,11 +40,11 @@ public class FileHandler {
         }
     }
 
-    public ArrayList<Member> loadFile() {
+    public ArrayList<Member> loadFile(File filename) {
         ArrayList<Member> members = new ArrayList<>();
 
         try {
-            Scanner fileReader = new Scanner(MEMBER_FILE);
+            Scanner fileReader = new Scanner(filename);
             while (fileReader.hasNext()) {
                 String memberName = fileReader.next();
                 LocalDate dateOfBirth = LocalDate.parse(fileReader.next()); //Husk at sikre formattering.
@@ -62,4 +61,5 @@ public class FileHandler {
         }
         return members;
     }
+
 }
