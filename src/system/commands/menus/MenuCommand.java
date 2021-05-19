@@ -32,7 +32,6 @@ public abstract class MenuCommand implements Command {
                 commandOption.execute(ui);
             }
         } while (menuOptionIndex != -1);
-
     }
 
     private void printMenu(Command[] commands) {
