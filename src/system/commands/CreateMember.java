@@ -20,7 +20,7 @@ public class CreateMember implements Command {
     public void execute(UI ui) {
         ui.displayLn("Enter member name: ");
         String memberName = ui.getString();
-        ui.displayLn("Enter members date of birth: day-month-year");
+        ui.displayLn("Enter members date of birth: dd-mm-yyyy");
         LocalDate dateOfBirth = ui.getDate();
         ui.displayLn("Enter members email: ");
         String email = ui.getString();
@@ -28,6 +28,14 @@ public class CreateMember implements Command {
         String phoneNumber = ui.getString();
         ui.displayLn("Enter A for active and P for passive");
         boolean active = setActive(Character.toLowerCase(ui.getChar('a','p')));
+        if (active) {
+            ui.displayLn("Enter E for exerciser and C for competitor");
+            char choice = ui.getChar('e','c');
+            boolean competitor = setType(choice);
+            if (competitor) {
+                createCompetitor();
+            }
+        }
         int memberNumber = setMemberNumber();
 
         memberManager.getMembers().add(new Member(memberName, dateOfBirth, email, phoneNumber, active, memberNumber));
@@ -47,19 +55,21 @@ public class CreateMember implements Command {
     }
 
     public int setMemberNumber() {
-        /*
-        int lastMember = memberManager.getMembers().size();
-        if (lastMember == 0) {
-            return 1;
-        }
-        int memberNumber = memberManager.getMembers().get(lastMember - 1).getMemberNumber();
-
-         */
-
         File file = new File("MemberNumber");
 
         int memberNumber = memberManager.getFileHandler().loadMemberNumber(file);
         memberManager.getFileHandler().saveMemberNumber(file, memberNumber);
         return memberNumber;
+    }
+
+    public Boolean setType(Character c) {
+        if (c == 'e') {
+            return false;
+        }
+        return true;
+    }
+
+    public void createCompetitor() {
+
     }
 }
