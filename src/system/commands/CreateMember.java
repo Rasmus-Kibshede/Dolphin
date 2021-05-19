@@ -4,6 +4,7 @@ import system.MemberManager;
 import system.member.Member;
 import system.ui.UI;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -46,11 +47,19 @@ public class CreateMember implements Command {
     }
 
     public int setMemberNumber() {
+        /*
         int lastMember = memberManager.getMembers().size();
         if (lastMember == 0) {
             return 1;
         }
         int memberNumber = memberManager.getMembers().get(lastMember - 1).getMemberNumber();
-        return ++memberNumber;
+
+         */
+
+        File file = new File("MemberNumber");
+
+        int memberNumber = memberManager.getFileHandler().loadMemberNumber(file);
+        memberManager.getFileHandler().saveMemberNumber(file, memberNumber);
+        return memberNumber;
     }
 }
