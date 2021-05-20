@@ -154,11 +154,14 @@ public class FileHandler {
             Boolean active = Boolean.parseBoolean(fileReader.next());
             String payment = fileReader.next();
             int memberNumber = fileReader.nextInt();
+
+            /*
             LocalDate date = LocalDate.parse(fileReader.next());
             LocalTime time = LocalTime.parse(fileReader.next());
             TrainingScore trainingScore = new TrainingScore(date, time);
+             */
 
-            members.add(new Competitor(memberName, dateOfBirth, email, phoneNumber, active, memberNumber, trainingScore));
+            members.add(new Competitor(memberName, dateOfBirth, email, phoneNumber, active, memberNumber));
         }
         return members;
     }

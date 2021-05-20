@@ -14,6 +14,10 @@ public class Competitor extends Member {
         setTrainingScore(null);
     }
 
+    public Competitor(String name, LocalDate dateOfBirth, String email, String phoneNumber, boolean active, int memberNumber) {
+        super(name, dateOfBirth, email, phoneNumber, active, memberNumber);
+    }
+
     public void setTrainingScore(TrainingScore trainingScore) {
         this.trainingScore = trainingScore;
     }
