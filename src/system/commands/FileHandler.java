@@ -9,114 +9,155 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FileHandler {
+    private FileWriter fileWriter;
 
-  public void saveFile(ArrayList<Member> members, File fileName) {
-    try {
-      FileWriter fileWriter = new FileWriter(fileName);
-      for (int i = 0; i < members.size(); i++) {
+    public void saveFile(ArrayList<Member> members, File memberFile, File competitorFile) {
+        try {
+            boolean competitor;
+            for (int i = 0; i < members.size(); i++) {
+                competitor = checkMemberType(members.get(i));
+                if (competitor) {
+                    fileWriter = new FileWriter(competitorFile);
+                    saveCompetitor(members.get(i));
+                }
+                fileWriter = new FileWriter(memberFile);
+                saveMember(members.get(i));
+            }
+            fileWriter.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public ArrayList<Member> loadFile(File memberFile, File competitorFile) {
+        ArrayList<Member> members = new ArrayList<>();
+        try {
+            ArrayList<Member> firstMemberList = loadMember(memberFile);
+            ArrayList<Member> secondMemberList = loadCompetitor(competitorFile);
+
+            firstMemberList.addAll(secondMemberList);
+            members = firstMemberList;
+        } catch (
+                FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return members;
+    }
+
+    public void saveMember(Member member) throws IOException {
         fileWriter.write(
-            members.get(i).getName()
-                + " "
-                + members.get(i).getDateOfBirth()
-                + " "
-                + members.get(i).getEmail()
-                + " "
-                + members.get(i).getPhoneNumber()
-                + " "
-                + members.get(i).getActive()
-                + " "
-                + members.get(i).getMembershipPrice()
-                + " "
-                + members.get(i).getMemberNumber()
-                + "\n"
+                member.getName()
+                        + " "
+                        + member.getDateOfBirth()
+                        + " "
+                        + member.getEmail()
+                        + " "
+                        + member.getPhoneNumber()
+                        + " "
+                        + member.getActive()
+                        + " "
+                        + member.getMembershipPrice()
+                        + " "
+                        + member.getMemberNumber()
+                        + "\n"
         );
-      }
-      fileWriter.close();
-
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-  }
-
-  public ArrayList<Member> loadFile(File filename) {
-    ArrayList<Member> members = new ArrayList<>();
-
-    try {
-      Scanner fileReader = new Scanner(filename);
-      while (fileReader.hasNext()) {
-        String memberName = fileReader.next();
-        LocalDate dateOfBirth = LocalDate.parse(fileReader.next()); //Husk at sikre formattering.
-        String email = fileReader.next();
-        String phoneNumber = fileReader.next();
-        Boolean active = Boolean.parseBoolean(fileReader.next());
-        String payment = fileReader.next();
-        int memberNumber = fileReader.nextInt();
-
-        members.add(new Member(memberName, dateOfBirth, email, phoneNumber, active, memberNumber));
-      }
-    } catch (FileNotFoundException e) {
-      e.printStackTrace();
-    }
-    return members;
-  }
-
-  public void saveMember() {
-
-  }
-
-  public void saveCompetitor() {
-
-  }
-
-  public void loadMember() {
-
-  }
-
-  public void loadCompetitor() {
-
-  }
-
-  public boolean checkMemberType(ArrayList<Member> members) {
-    for (int i = 0; i < members.size(); i++) {
-      if (members.get(i) instanceof Competitor) {
-
-      }
-    
-    }
-  }
-
-  public int loadMemberNumber(File filename) {
-
-    int memberNumber = 0;
-    try {
-      Scanner fileReader = new Scanner(filename);
-
-      memberNumber = Integer.parseInt(fileReader.next());
-
-    } catch (FileNotFoundException e) {
-      System.out.println(e.getMessage());
-
-      //TODO throw here
     }
 
-    //TODO Not correct!!! Throw exception if there is no file, instead sending a number back
-    return memberNumber;
-
-  }
-
-  public void saveMemberNumber(File filename, int memberNumber) {
-    try {
-      FileWriter fileWriter = new FileWriter(filename);
-
-      memberNumber++;
-
-      fileWriter.append(String.valueOf(memberNumber));
-      fileWriter.close();
-
-    } catch (IOException e) {
-      System.out.println(e.getMessage());
+    public void saveCompetitor(Member member) throws IOException {
+        fileWriter.write(
+                member.getName()
+                        + " "
+                        + member.getDateOfBirth()
+                        + " "
+                        + member.getEmail()
+                        + " "
+                        + member.getPhoneNumber()
+                        + " "
+                        + member.getActive()
+                        + " "
+                        + member.getMembershipPrice()
+                        + " "
+                        + member.getMemberNumber()
+                        + "\n"
+        );
     }
-  }
+
+    public ArrayList<Member> loadMember(File memberFile) throws FileNotFoundException {
+        ArrayList<Member> members = new ArrayList<Member>();
+        Scanner fileReader = new Scanner(memberFile);
+
+        while (fileReader.hasNext()) {
+            String memberName = fileReader.next();
+            LocalDate dateOfBirth = LocalDate.parse(fileReader.next()); //Husk at sikre formattering.
+            String email = fileReader.next();
+            String phoneNumber = fileReader.next();
+            Boolean active = Boolean.parseBoolean(fileReader.next());
+            String payment = fileReader.next();
+            int memberNumber = fileReader.nextInt();
+
+            members.add(new Member(memberName, dateOfBirth, email, phoneNumber, active, memberNumber));
+        }
+        return members;
+    }
+
+    public ArrayList<Member> loadCompetitor(File competitorFile) throws FileNotFoundException {
+        ArrayList<Member> members = new ArrayList<Member>();
+        Scanner fileReader = new Scanner(competitorFile);
+
+        while (fileReader.hasNext()) {
+            String memberName = fileReader.next();
+            LocalDate dateOfBirth = LocalDate.parse(fileReader.next()); //Husk at sikre formattering.
+            String email = fileReader.next();
+            String phoneNumber = fileReader.next();
+            Boolean active = Boolean.parseBoolean(fileReader.next());
+            String payment = fileReader.next();
+            int memberNumber = fileReader.nextInt();
+
+            members.add(new Member(memberName, dateOfBirth, email, phoneNumber, active, memberNumber));
+        }
+        return members;
+    }
+
+    public boolean checkMemberType(Member member) {
+        if (member instanceof Competitor) {
+            return true;
+        }
+        return false;
+    }
+
+    public int loadMemberNumber(File filename) {
+
+        int memberNumber = 0;
+        try {
+            Scanner fileReader = new Scanner(filename);
+
+            memberNumber = Integer.parseInt(fileReader.next());
+
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+
+            //TODO throw here
+        }
+
+        //TODO Not correct!!! Throw exception if there is no file, instead sending a number back
+        return memberNumber;
+
+    }
+
+    public void saveMemberNumber(File filename, int memberNumber) {
+        try {
+            FileWriter fileWriter = new FileWriter(filename);
+
+            memberNumber++;
+
+            fileWriter.append(String.valueOf(memberNumber));
+            fileWriter.close();
+
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
 
 }
