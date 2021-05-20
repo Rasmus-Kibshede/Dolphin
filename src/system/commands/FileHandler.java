@@ -23,6 +23,9 @@ public class FileHandler {
                 competitor = checkMemberType(members.get(i));
                 if (competitor) {
                     saveCompetitor((Competitor) members.get(i));
+                }else {
+                    fileWriter = new FileWriter(MEMBER_FILE);
+                    saveMember(members.get(i));
                 }
                 saveMember(members.get(i));
             }
