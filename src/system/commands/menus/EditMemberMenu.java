@@ -1,13 +1,16 @@
 package system.commands.menus;
 
+import system.CompetitorManager;
 import system.MemberManager;
 import system.commands.*;
 
 public class EditMemberMenu extends MenuCommand {
   private MemberManager memberManager;
+  private CompetitorManager competitorManager;
 
-  public EditMemberMenu(MemberManager memberManager) {
+  public EditMemberMenu(MemberManager memberManager, CompetitorManager competitorManager) {
     this.memberManager = memberManager;
+    this.competitorManager = competitorManager;
   }
 
   @Override
@@ -18,10 +21,10 @@ public class EditMemberMenu extends MenuCommand {
   @Override
   protected Command[] getCommands() {
     return new Command[] {
-            new EditMemberName(memberManager),
-            new EditMemberEmail(memberManager),
-            new EditMemberPhoneNumber(memberManager),
-            new EditMemberActive(memberManager)
+            new EditMemberName(memberManager, competitorManager),
+            new EditMemberEmail(memberManager, competitorManager),
+            new EditMemberPhoneNumber(memberManager, competitorManager),
+            new EditMemberActive(memberManager, competitorManager)
     };
   }
 }

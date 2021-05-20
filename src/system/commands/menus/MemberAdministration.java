@@ -25,7 +25,7 @@ public class MemberAdministration extends MenuCommand {
     return new Command[]{
         new ShowMembers(this.application.getMemberManager()),
         new CreateMember(this.application.getMemberManager(), this.application.getCompetitorManager()),
-        new EditMemberMenu(this.application.getMemberManager()),
+        new EditMemberMenu(this.application.getMemberManager(), this.application.getCompetitorManager()),
         new RemoveMember(this.application.getMemberManager(), this.application.getCompetitorManager()),
     };
   }

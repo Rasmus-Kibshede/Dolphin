@@ -1,5 +1,6 @@
 package system.commands;
 
+import system.CompetitorManager;
 import system.MemberManager;
 import system.member.Member;
 import system.ui.UI;
@@ -9,9 +10,11 @@ import java.util.ArrayList;
 //Kamille
 public class EditMemberName implements Command{
     private MemberManager memberManager;
+    private CompetitorManager competitorManager;
 
-    public EditMemberName(MemberManager memberManager) {
+    public EditMemberName(MemberManager memberManager, CompetitorManager competitorManager) {
         this.memberManager = memberManager;
+        this.competitorManager = competitorManager;
     }
 
     @Override
@@ -27,7 +30,7 @@ public class EditMemberName implements Command{
                 m.setName(newName);
             }
         }
-        memberManager.getFileHandler().saveFile(members, memberManager.getMEMBER_FILE());
+        memberManager.getFileHandler().saveFile(members, memberManager.getMEMBER_FILE(), competitorManager.getCOMPETITORS_FILE());
     }
 
     @Override
