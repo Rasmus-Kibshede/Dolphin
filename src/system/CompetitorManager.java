@@ -24,4 +24,8 @@ public class CompetitorManager {
   public Team[] getTeams() {
     return teams;
   }
+
+  public ArrayList<Competition> getCompetitions(){
+    return competitions;
+  }
 }
