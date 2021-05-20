@@ -18,13 +18,13 @@ public class CompetitiveAdministration extends MenuCommand{
   @Override
   protected Command[] getCommands() {
     return new Command[]{
-        new ShowTopFive(this.application.getMemberManager()),
-        new ShowCompetitors(this.application.getMemberManager()),
-        new ShowTeams(this.application.getMemberManager(), this.application.getCompetitorManager()),
-        new RegisterTrainingScore(this.application.getMemberManager()),
-        new RegisterCompetition(this.application.getMemberManager(), this.application.getCompetitorManager()),
-        new EditTeam(this.application.getMemberManager(), this.application.getCompetitorManager()),
-        new EditMemberType()// Eller havde vi droppet den?
+        //new ShowTopFive(this.application.getMemberManager()),
+        //new ShowCompetitors(this.application.getMemberManager()),
+        //new ShowTeams(this.application.getMemberManager(), this.application.getCompetitorManager()),
+        //new RegisterTrainingScore(this.application.getMemberManager()),
+        //new RegisterCompetition(this.application.getMemberManager(), this.application.getCompetitorManager()),
+        //new EditTeam(this.application.getMemberManager(), this.application.getCompetitorManager()),
+        //new EditMemberType()// Eller havde vi droppet den?
     };
   }
 }
