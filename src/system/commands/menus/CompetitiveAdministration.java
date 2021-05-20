@@ -12,11 +12,19 @@ public class CompetitiveAdministration extends MenuCommand{
 
   @Override
   public String getName() {
-    return null;
+    return "Competitive Administration";
   }
 
   @Override
   protected Command[] getCommands() {
-    return new Command[0];
+    return new Command[]{
+        new ShowToFive(this.application.getMemberManager()),
+        new ShowCompetitors(this.application.getMemberManager()),
+        new ShowTeams(this.application.getMemberManager(), this.application.getCompetitorManager()),
+        new RegisterTraningScore(this.application.getMemberManager()),
+        new RegisterCompetition(this.application.getMemberManager(), this.application.getCompetitorManager()),
+        new EditTeam(this.application.getMemberManager(), this.application.getCompetitorManager()),
+        new EditMemberType()// Eller havde vi droppet den?
+    };
   }
 }
