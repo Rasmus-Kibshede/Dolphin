@@ -2,6 +2,7 @@ package system.commands;
 
 import system.member.Member;
 import system.member.competition.Competitor;
+import system.member.competition.Discipline;
 import system.member.competition.TrainingScore;
 
 import java.io.*;
@@ -154,6 +155,9 @@ public class FileHandler {
             Boolean active = Boolean.parseBoolean(fileReader.next());
             String payment = fileReader.next();
             int memberNumber = fileReader.nextInt();
+            while (fileReader.hasNext()) {
+                Discipline discipline = fileReader.next();
+            }
 
             /*
             LocalDate date = LocalDate.parse(fileReader.next());
@@ -161,7 +165,7 @@ public class FileHandler {
             TrainingScore trainingScore = new TrainingScore(date, time);
              */
 
-            members.add(new Competitor(memberName, dateOfBirth, email, phoneNumber, active, memberNumber));
+            members.add(new Competitor(memberName, dateOfBirth, email, phoneNumber, active, memberNumber, ));
         }
         return members;
     }
