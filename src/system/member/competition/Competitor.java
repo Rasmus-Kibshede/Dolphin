@@ -3,6 +3,7 @@ package system.member.competition;
 import system.member.Member;
 
 import java.time.LocalDate;
+import java.util.Collections;
 
 public class Competitor extends Member {
 
