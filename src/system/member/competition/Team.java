@@ -15,6 +15,12 @@ public class Team {
     setDiscipline(discipline);
   }
 
+  public Team(String coachName, String teamName, Discipline discipline) {
+    setCoachName(coachName);
+    setTeamName(teamName);
+    setDiscipline(discipline);
+  }
+
   public String getCoachName() {
     return coachName;
   }
