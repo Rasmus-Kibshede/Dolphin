@@ -10,11 +10,9 @@ import java.util.ArrayList;
 
 public class ShowCompetitors implements Command {
 
-  private CompetitorManager competitorManager;
   private MemberManager memberManager;
 
-  public ShowCompetitors(CompetitorManager competitorManager, MemberManager memberManager) {
-    this.competitorManager = competitorManager;
+  public ShowCompetitors(MemberManager memberManager) {
     this.memberManager = memberManager;
   }
 

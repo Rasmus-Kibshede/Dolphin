@@ -28,8 +28,8 @@ public class CompetitiveAdministration extends MenuCommand{
         //new EditTeam(this.application.getMemberManager(), this.application.getCompetitorManager()),
         //new EditMemberType()// Eller havde vi droppet den?
 
-        new ShowTopFive(),/*
-        new ShowCompetitors(this.application.getMemberManager()),
+        new ShowTopFive(),
+        new ShowCompetitors(this.application.getMemberManager()),/*
         new ShowTeams(this.application.getMemberManager(), this.application.getCompetitorManager()),
         new RegisterTrainingScore(this.application.getMemberManager()),
         new RegisterCompetition(this.application.getMemberManager(), this.application.getCompetitorManager()),
