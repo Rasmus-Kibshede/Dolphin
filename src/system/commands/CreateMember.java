@@ -4,6 +4,7 @@ import system.CompetitorManager;
 import system.MemberManager;
 import system.member.Member;
 import system.member.competition.Competitor;
+import system.member.competition.Discipline;
 import system.ui.UI;
 
 import java.io.File;
@@ -38,7 +39,19 @@ public class CreateMember implements Command {
             char choice = ui.getChar('e','c');
             boolean competitor = setType(choice);
             if (competitor) {
-                memberManager.getMembers().add(new Competitor(memberName, dateOfBirth, email, phoneNumber, active, memberNumber, null));
+                ArrayList<Discipline> disciplines;
+                boolean moreDiscipline;
+                do{
+                    //Show a list of disciplines
+                    ui.displayLn("Enter the number of the discipline you want to add: ");
+                    int disciplineChoice = ui.getInt("Not a valid number");
+                    disciplines = setDisciplines(disciplineChoice);
+
+                    ui.displayLn("Do you want to add another discipline? Y for Yes, N fro No: ");
+                    moreDiscipline = setMoreDiscipline(Character.toLowerCase(ui.getChar('y','n')));
+                } while (moreDiscipline);
+
+                memberManager.getMembers().add(new Competitor(memberName, dateOfBirth, email, phoneNumber, active, memberNumber, null, disciplines));
             } else {
                 memberManager.getMembers().add(new Member(memberName, dateOfBirth, email, phoneNumber, active, memberNumber));
             }
@@ -71,5 +84,26 @@ public class CreateMember implements Command {
             return false;
         }
         return true;
+    }
+
+    public ArrayList<Discipline> setDisciplines(int disciplineChoice){
+        ArrayList<Discipline> disciplines = new ArrayList<>();
+            if (disciplineChoice == 1) {
+                disciplines.add(Discipline.Crawl);
+            } else if (disciplineChoice == 2) {
+                disciplines.add(Discipline.Backcrawl);
+            } else if (disciplineChoice == 3) {
+                disciplines.add(Discipline.Butterfly);
+            } else if (disciplineChoice == 4) {
+                disciplines.add(Discipline.Breaststroke);
+            }
+        return disciplines;
+    }
+
+    private boolean setMoreDiscipline(Character c) {
+        if(c == 'y'){
+            return true;
+        }
+        return false;
     }
 }
