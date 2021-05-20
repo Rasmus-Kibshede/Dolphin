@@ -4,10 +4,9 @@ import system.member.Member;
 import system.member.competition.Competitor;
 import system.member.competition.Discipline;
 import system.member.competition.TrainingScore;
-
 import java.io.*;
+import java.time.Duration;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -25,7 +24,7 @@ public class FileHandler {
                 if (competitor) {
                     fileWriter = new FileWriter(COMPETITORS_FILE);
                     saveCompetitor((Competitor) members.get(i));
-                }else {
+                } else {
                     fileWriter = new FileWriter(MEMBER_FILE);
                     saveMember(members.get(i));
                 }
@@ -79,13 +78,14 @@ public class FileHandler {
 
                 membersInRKI.add(new Member(memberName, dateOfBirth, email, phoneNumber, active, memberNumber));
             }
+            fileReader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
         return membersInRKI;
     }
 
-    public void saveMember(Member member) throws IOException {
+    private void saveMember(Member member) throws IOException {
         fileWriter.write(
                 member.getName()
                         + " "
@@ -104,7 +104,12 @@ public class FileHandler {
         );
     }
 
-    public void saveCompetitor(Competitor member) throws IOException {
+    private void saveCompetitor(Competitor member) throws IOException {
+        StringBuilder disciplines = new StringBuilder();
+        for (int i = 0; i < member.getDisciplines().size(); i++) {
+            disciplines.append(member.getDisciplines().get(i)).append(" ");
+        }
+
         fileWriter.write(
                 member.getName()
                         + " "
@@ -120,12 +125,16 @@ public class FileHandler {
                         + " "
                         + member.getMemberNumber()
                         + " "
-                        + member.getTrainingScore()
+                        + member.getTrainingScore().getDate()
+                        + " "
+                        + member.getTrainingScore().getTime().toMillis()
+                        + " "
+                        + disciplines
                         + "\n"
         );
     }
 
-    public ArrayList<Member> loadMember() throws FileNotFoundException {
+    private ArrayList<Member> loadMember() throws FileNotFoundException {
         ArrayList<Member> members = new ArrayList<Member>();
         Scanner fileReader = new Scanner(MEMBER_FILE);
 
@@ -140,37 +149,42 @@ public class FileHandler {
 
             members.add(new Member(memberName, dateOfBirth, email, phoneNumber, active, memberNumber));
         }
+        fileReader.close();
         return members;
     }
 
-    public ArrayList<Member> loadCompetitor() throws FileNotFoundException {
+    private ArrayList<Member> loadCompetitor() throws FileNotFoundException {
         ArrayList<Member> members = new ArrayList<>();
         Scanner fileReader = new Scanner(COMPETITORS_FILE);
 
-        while (fileReader.hasNext()) {
-            String memberName = fileReader.next();
-            LocalDate dateOfBirth = LocalDate.parse(fileReader.next()); //Husk at sikre formattering.
-            String email = fileReader.next();
-            String phoneNumber = fileReader.next();
-            Boolean active = Boolean.parseBoolean(fileReader.next());
-            String payment = fileReader.next();
-            int memberNumber = fileReader.nextInt();
-            while (fileReader.hasNext()) {
-                Discipline discipline = fileReader.next();
-            }
+        while (fileReader.hasNextLine()) {
+            String line = fileReader.nextLine();
 
-            /*
-            LocalDate date = LocalDate.parse(fileReader.next());
-            LocalTime time = LocalTime.parse(fileReader.next());
+            Scanner lineScanner = new Scanner(line);
+            String memberName = lineScanner.next();
+            LocalDate dateOfBirth = LocalDate.parse(lineScanner.next()); //Husk at sikre formattering.
+            String email = lineScanner.next();
+            String phoneNumber = lineScanner.next();
+            Boolean active = Boolean.parseBoolean(lineScanner.next());
+            String payment = lineScanner.next();
+            int memberNumber = lineScanner.nextInt();
+            LocalDate date = LocalDate.parse(lineScanner.next());
+            Duration time = Duration.ofMillis(lineScanner.nextInt());
             TrainingScore trainingScore = new TrainingScore(date, time);
-             */
 
-            members.add(new Competitor(memberName, dateOfBirth, email, phoneNumber, active, memberNumber, ));
+            ArrayList<Discipline> disciplines = new ArrayList<>();
+            while (lineScanner.hasNext()) {
+                String discipline = lineScanner.next();
+                disciplines.add(Discipline.valueOf(discipline));
+            }
+            lineScanner.close();
+            members.add(new Competitor(memberName, dateOfBirth, email, phoneNumber, active, memberNumber, trainingScore, disciplines));
         }
+        fileReader.close();
         return members;
     }
 
-    public boolean checkMemberType(Member member) {
+    private boolean checkMemberType(Member member) {
         if (member instanceof Competitor) {
             return true;
         }
@@ -193,7 +207,6 @@ public class FileHandler {
 
         //TODO Not correct!!! Throw exception if there is no file, instead sending a number back
         return memberNumber;
-
     }
 
     public void saveMemberNumber(File filename, int memberNumber) {
@@ -209,6 +222,4 @@ public class FileHandler {
             System.out.println(e.getMessage());
         }
     }
-
-
 }
