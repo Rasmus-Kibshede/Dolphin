@@ -3,6 +3,7 @@ package system.commands;
 import system.member.Member;
 import system.member.competition.Competitor;
 import system.member.competition.TrainingScore;
+
 import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -15,16 +16,16 @@ public class FileHandler {
     private final File MEMBERS_IN_RKI_FILE = new File("MembersInRKI.txt");
     private final File COMPETITORS_FILE = new File("Competitors.txt");
 
-    public void saveFile(ArrayList<Member> members, File memberFile, File competitorFile) {
+    public void saveFile(ArrayList<Member> members) {
         try {
             boolean competitor;
             for (int i = 0; i < members.size(); i++) {
                 competitor = checkMemberType(members.get(i));
                 if (competitor) {
-                    fileWriter = new FileWriter(competitorFile);
+                    fileWriter = new FileWriter(COMPETITORS_FILE);
                     saveCompetitor((Competitor) members.get(i));
                 }
-                fileWriter = new FileWriter(memberFile);
+                fileWriter = new FileWriter(MEMBER_FILE);
                 saveMember(members.get(i));
             }
             fileWriter.close();
@@ -34,11 +35,22 @@ public class FileHandler {
         }
     }
 
-    public ArrayList<Member> loadFile(File memberFile, File competitorFile) {
+    public void saveToRKI(ArrayList<Member> members) {
+        try {
+            fileWriter = new FileWriter(MEMBERS_IN_RKI_FILE);
+            for (int i = 0; i < members.size(); i++) {
+                saveMember(members.get(i));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public ArrayList<Member> loadFile() {
         ArrayList<Member> members = new ArrayList<>();
         try {
-            ArrayList<Member> firstMemberList = loadMember(memberFile);
-            ArrayList<Member> secondMemberList = loadCompetitor(competitorFile);
+            ArrayList<Member> firstMemberList = loadMember();
+            ArrayList<Member> secondMemberList = loadCompetitor();
 
             firstMemberList.addAll(secondMemberList);
             members = firstMemberList;
@@ -47,6 +59,28 @@ public class FileHandler {
             e.printStackTrace();
         }
         return members;
+    }
+
+    public ArrayList<Member> loadToRKI() {
+        ArrayList<Member> membersInRKI = new ArrayList<>();
+        try {
+            Scanner fileReader = new Scanner(MEMBERS_IN_RKI_FILE);
+
+            while (fileReader.hasNext()) {
+                String memberName = fileReader.next();
+                LocalDate dateOfBirth = LocalDate.parse(fileReader.next()); //Husk at sikre formattering.
+                String email = fileReader.next();
+                String phoneNumber = fileReader.next();
+                Boolean active = Boolean.parseBoolean(fileReader.next());
+                String payment = fileReader.next();
+                int memberNumber = fileReader.nextInt();
+
+                membersInRKI.add(new Member(memberName, dateOfBirth, email, phoneNumber, active, memberNumber));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return membersInRKI;
     }
 
     public void saveMember(Member member) throws IOException {
@@ -89,9 +123,9 @@ public class FileHandler {
         );
     }
 
-    public ArrayList<Member> loadMember(File memberFile) throws FileNotFoundException {
+    public ArrayList<Member> loadMember() throws FileNotFoundException {
         ArrayList<Member> members = new ArrayList<Member>();
-        Scanner fileReader = new Scanner(memberFile);
+        Scanner fileReader = new Scanner(MEMBER_FILE);
 
         while (fileReader.hasNext()) {
             String memberName = fileReader.next();
@@ -107,9 +141,9 @@ public class FileHandler {
         return members;
     }
 
-    public ArrayList<Member> loadCompetitor(File competitorFile) throws FileNotFoundException {
+    public ArrayList<Member> loadCompetitor() throws FileNotFoundException {
         ArrayList<Member> members = new ArrayList<>();
-        Scanner fileReader = new Scanner(competitorFile);
+        Scanner fileReader = new Scanner(COMPETITORS_FILE);
 
         while (fileReader.hasNext()) {
             String memberName = fileReader.next();

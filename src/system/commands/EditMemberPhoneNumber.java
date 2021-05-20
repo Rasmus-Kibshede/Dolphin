@@ -30,7 +30,7 @@ public class EditMemberPhoneNumber implements Command{
                 m.setPhoneNumber(phoneNumber);
             }
         }
-        memberManager.getFileHandler().saveFile(members, memberManager.getMEMBER_FILE(), competitorManager.getCOMPETITORS_FILE());
+        memberManager.getFileHandler().saveFile(members);
     }
 
     @Override

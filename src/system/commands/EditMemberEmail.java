@@ -30,7 +30,7 @@ public class EditMemberEmail implements Command{
                 m.setEmail(newEmail);
             }
         }
-        memberManager.getFileHandler().saveFile(members, memberManager.getMEMBER_FILE(), competitorManager.getCOMPETITORS_FILE());
+        memberManager.getFileHandler().saveFile(members);
     }
 
     @Override

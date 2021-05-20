@@ -30,7 +30,7 @@ public class EditMemberName implements Command{
                 m.setName(newName);
             }
         }
-        memberManager.getFileHandler().saveFile(members, memberManager.getMEMBER_FILE(), competitorManager.getCOMPETITORS_FILE());
+        memberManager.getFileHandler().saveFile(members);
     }
 
     @Override

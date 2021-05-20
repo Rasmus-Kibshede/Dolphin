@@ -3,6 +3,7 @@ package system.commands;
 import system.CompetitorManager;
 import system.MemberManager;
 import system.member.Member;
+import system.member.competition.Competitor;
 import system.ui.UI;
 
 import java.io.File;
@@ -30,19 +31,19 @@ public class CreateMember implements Command {
         ui.displayLn("Enter members phone number: ");
         String phoneNumber = ui.getString();
         ui.displayLn("Enter A for active and P for passive");
+        int memberNumber = setMemberNumber();
         boolean active = setActive(Character.toLowerCase(ui.getChar('a','p')));
         if (active) {
             ui.displayLn("Enter E for exerciser and C for competitor");
             char choice = ui.getChar('e','c');
             boolean competitor = setType(choice);
             if (competitor) {
-                createCompetitor();
+                memberManager.getMembers().add(new Competitor(memberName, dateOfBirth, email, phoneNumber, active, memberNumber, null));
+            } else {
+                memberManager.getMembers().add(new Member(memberName, dateOfBirth, email, phoneNumber, active, memberNumber));
             }
         }
-        int memberNumber = setMemberNumber();
-
-        memberManager.getMembers().add(new Member(memberName, dateOfBirth, email, phoneNumber, active, memberNumber));
-        memberManager.getFileHandler().saveFile(memberManager.getMembers(), memberManager.getMEMBER_FILE(), competitorManager.getCOMPETITORS_FILE());
+        memberManager.getFileHandler().saveFile(memberManager.getMembers());
     }
 
     @Override
@@ -70,10 +71,5 @@ public class CreateMember implements Command {
             return false;
         }
         return true;
-    }
-
-    public void createCompetitor() {
-
-
     }
 }

@@ -33,7 +33,7 @@ public class EditMemberInDebt implements Command {
                 }
             }
         }
-        memberManager.getFileHandler().saveFile(members, memberManager.getMEMBER_FILE());
+        memberManager.getFileHandler().saveFile(members);
     }
 
     @Override
