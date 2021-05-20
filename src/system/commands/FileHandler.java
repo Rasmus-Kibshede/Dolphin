@@ -11,6 +11,9 @@ import java.util.Scanner;
 
 public class FileHandler {
     private FileWriter fileWriter;
+    private final File MEMBER_FILE = new File("Members.txt");
+    private final File MEMBERS_IN_RKI_FILE = new File("MembersInRKI.txt");
+    private final File COMPETITORS_FILE = new File("Competitors.txt");
 
     public void saveFile(ArrayList<Member> members, File memberFile, File competitorFile) {
         try {

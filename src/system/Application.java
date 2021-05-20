@@ -2,7 +2,10 @@ package system;
 
 import system.commands.Command;
 import system.commands.menus.MainMenu;
+import system.member.Member;
 import system.ui.UI;
+
+import java.util.ArrayList;
 
 //Kamille
 public class Application {
