@@ -1,14 +1,17 @@
 package system.commands;
 
+import system.CompetitorManager;
 import system.MemberManager;
 import system.ui.UI;
 
 //Michala
 public class RemoveMember implements Command {
     private MemberManager memberManager;
+    private CompetitorManager competitorManager;
 
-    public RemoveMember(MemberManager memberManager) {
+    public RemoveMember(MemberManager memberManager, CompetitorManager competitorManager) {
         this.memberManager = memberManager;
+        this.competitorManager = competitorManager;
     }
 
     @Override
@@ -25,7 +28,7 @@ public class RemoveMember implements Command {
                 memberManager.getMembers().remove(memberManager.getMembers().get(i));
             }
         }
-        memberManager.getFileHandler().saveFile(memberManager.getMembers(), memberManager.getMEMBER_FILE());
+        memberManager.getFileHandler().saveFile(memberManager.getMembers(), memberManager.getMEMBER_FILE(), competitorManager.getCOMPETITORS_FILE());
     }
 
     @Override
