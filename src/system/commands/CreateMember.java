@@ -1,5 +1,6 @@
 package system.commands;
 
+import system.CompetitorManager;
 import system.MemberManager;
 import system.member.Member;
 import system.ui.UI;
@@ -11,9 +12,11 @@ import java.util.ArrayList;
 //Kamille
 public class CreateMember implements Command {
     private MemberManager memberManager;
+    private CompetitorManager competitorManager;
 
-    public CreateMember(MemberManager memberManager) {
+    public CreateMember(MemberManager memberManager, CompetitorManager competitorManager) {
         this.memberManager = memberManager;
+        this.competitorManager = competitorManager;
     }
 
     @Override
@@ -39,7 +42,7 @@ public class CreateMember implements Command {
         int memberNumber = setMemberNumber();
 
         memberManager.getMembers().add(new Member(memberName, dateOfBirth, email, phoneNumber, active, memberNumber));
-        memberManager.getFileHandler().saveFile(memberManager.getMembers(), memberManager.getMEMBER_FILE());
+        memberManager.getFileHandler().saveFile(memberManager.getMembers(), memberManager.getMEMBER_FILE(), competitorManager.getCOMPETITORS_FILE());
     }
 
     @Override
@@ -70,6 +73,7 @@ public class CreateMember implements Command {
     }
 
     public void createCompetitor() {
+
 
     }
 }

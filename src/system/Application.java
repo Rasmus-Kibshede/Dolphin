@@ -7,11 +7,13 @@ import system.ui.UI;
 //Kamille
 public class Application {
   private MemberManager memberManager;
+  private CompetitorManager competitorManager;
   private UI ui;
   private Command command;
 
   public Application() {
     memberManager = new MemberManager();
+    competitorManager = new CompetitorManager();
     ui = new UI();
     command = new MainMenu(this);
   }
@@ -22,5 +24,9 @@ public class Application {
 
   public MemberManager getMemberManager() {
     return memberManager;
+  }
+
+  public CompetitorManager getCompetitorManager(){
+    return competitorManager;
   }
 }
