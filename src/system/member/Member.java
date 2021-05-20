@@ -3,7 +3,7 @@ package system.member;
 import java.time.LocalDate;
 
 //Michala
-public class Member {
+public class Member implements Comparable<Member>{
     private String name;
     private LocalDate dateOfBirth;
     private String email;
@@ -91,6 +91,10 @@ public class Member {
 
     public int getMemberNumber() {
         return memberNumber;
+    }
+
+    public int compareTo(Member member){
+        return this.memberNumber - member.getMemberNumber();
     }
 
     @Override
