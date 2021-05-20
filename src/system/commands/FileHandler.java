@@ -24,9 +24,10 @@ public class FileHandler {
                 if (competitor) {
                     fileWriter = new FileWriter(COMPETITORS_FILE);
                     saveCompetitor((Competitor) members.get(i));
+                }else {
+                    fileWriter = new FileWriter(MEMBER_FILE);
+                    saveMember(members.get(i));
                 }
-                fileWriter = new FileWriter(MEMBER_FILE);
-                saveMember(members.get(i));
             }
             fileWriter.close();
 
