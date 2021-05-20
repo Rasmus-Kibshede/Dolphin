@@ -1,16 +1,14 @@
 package system.commands;
 
 import system.member.Member;
+import system.member.competition.Competitor;
 
 import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-// Michala
 public class FileHandler {
-  //private final File MEMBER_FILE = new File("Members.txt");
-  //private final File MEMBERS_IN_RKI = new File("MembersInPKI.txt");
 
   public void saveFile(ArrayList<Member> members, File fileName) {
     try {
@@ -62,6 +60,31 @@ public class FileHandler {
     return members;
   }
 
+  public void saveMember() {
+
+  }
+
+  public void saveCompetitor() {
+
+  }
+
+  public void loadMember() {
+
+  }
+
+  public void loadCompetitor() {
+
+  }
+
+  public boolean checkMemberType(ArrayList<Member> members) {
+    for (int i = 0; i < members.size(); i++) {
+      if (members.get(i) instanceof Competitor) {
+
+      }
+    
+    }
+  }
+
   public int loadMemberNumber(File filename) {
 
     int memberNumber = 0;
@@ -82,7 +105,6 @@ public class FileHandler {
   }
 
   public void saveMemberNumber(File filename, int memberNumber) {
-
     try {
       FileWriter fileWriter = new FileWriter(filename);
 
@@ -95,5 +117,6 @@ public class FileHandler {
       System.out.println(e.getMessage());
     }
   }
+
 
 }
