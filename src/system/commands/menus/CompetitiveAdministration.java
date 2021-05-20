@@ -1,7 +1,7 @@
 package system.commands.menus;
 
 import system.Application;
-import system.commands.Command;
+import system.commands.*;
 
 public class CompetitiveAdministration extends MenuCommand{
   private Application application;
@@ -18,10 +18,10 @@ public class CompetitiveAdministration extends MenuCommand{
   @Override
   protected Command[] getCommands() {
     return new Command[]{
-        new ShowToFive(this.application.getMemberManager()),
+        new ShowTopFive(this.application.getMemberManager()),
         new ShowCompetitors(this.application.getMemberManager()),
         new ShowTeams(this.application.getMemberManager(), this.application.getCompetitorManager()),
-        new RegisterTraningScore(this.application.getMemberManager()),
+        new RegisterTrainingScore(this.application.getMemberManager()),
         new RegisterCompetition(this.application.getMemberManager(), this.application.getCompetitorManager()),
         new EditTeam(this.application.getMemberManager(), this.application.getCompetitorManager()),
         new EditMemberType()// Eller havde vi droppet den?
