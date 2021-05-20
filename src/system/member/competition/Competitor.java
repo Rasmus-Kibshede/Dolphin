@@ -1,4 +1,9 @@
 package system.member.competition;
 
-public class Competitor {
+import system.member.Member;
+
+public class Competitor extends Member {
+    public Member() {
+
+    }
 }
