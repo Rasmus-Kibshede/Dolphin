@@ -2,9 +2,10 @@ package system.commands;
 
 import system.member.Member;
 import system.member.competition.Competitor;
-
+import system.member.competition.TrainingScore;
 import java.io.*;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -18,7 +19,7 @@ public class FileHandler {
                 competitor = checkMemberType(members.get(i));
                 if (competitor) {
                     fileWriter = new FileWriter(competitorFile);
-                    saveCompetitor(members.get(i));
+                    saveCompetitor((Competitor) members.get(i));
                 }
                 fileWriter = new FileWriter(memberFile);
                 saveMember(members.get(i));
@@ -64,7 +65,7 @@ public class FileHandler {
         );
     }
 
-    public void saveCompetitor(Member member) throws IOException {
+    public void saveCompetitor(Competitor member) throws IOException {
         fileWriter.write(
                 member.getName()
                         + " "
@@ -79,6 +80,8 @@ public class FileHandler {
                         + member.getMembershipPrice()
                         + " "
                         + member.getMemberNumber()
+                        + " "
+                        + member.getTrainingScore()
                         + "\n"
         );
     }
@@ -102,7 +105,7 @@ public class FileHandler {
     }
 
     public ArrayList<Member> loadCompetitor(File competitorFile) throws FileNotFoundException {
-        ArrayList<Member> members = new ArrayList<Member>();
+        ArrayList<Member> members = new ArrayList<>();
         Scanner fileReader = new Scanner(competitorFile);
 
         while (fileReader.hasNext()) {
@@ -113,8 +116,11 @@ public class FileHandler {
             Boolean active = Boolean.parseBoolean(fileReader.next());
             String payment = fileReader.next();
             int memberNumber = fileReader.nextInt();
+            LocalDate date = LocalDate.parse(fileReader.next());
+            LocalTime time = LocalTime.parse(fileReader.next());
+            TrainingScore trainingScore = new TrainingScore(date, time);
 
-            members.add(new Member(memberName, dateOfBirth, email, phoneNumber, active, memberNumber));
+            members.add(new Competitor(memberName, dateOfBirth, email, phoneNumber, active, memberNumber, trainingScore));
         }
         return members;
     }
