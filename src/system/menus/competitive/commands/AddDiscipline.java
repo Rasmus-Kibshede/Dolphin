@@ -29,18 +29,30 @@ public class AddDiscipline implements Command {
       for(Member m : members){
           if (m instanceof Competitor && m.getMemberNumber() == choice) {
             do {
-              ArrayList<Discipline> disciplines = ((Competitor) m).getDisciplines();
               ui.displayLn(manager.getDisciplines());
-              ui.displayLn("Enter the number of the discipline you want to add: ");
-              choice = ui.getInt("Not a valid number");
-              disciplines.add(disciplines(choice));
+              ui.displayLn("Enter the number of the discipline you want to add: Write 0 when done");
+              int choice2;
+              do {
+                choice2 = ui.getInt("Not a valid number");
+                if (choice2 > 0 && choice2 <5) {
+                  if (choice2 == 1) {
+                    ((Competitor) m).getDisciplines().add(Discipline.BUTTERFLY);
+                  } else if (choice2 == 2) {
+                    ((Competitor) m).getDisciplines().add(Discipline.CRAWL);
+                  } else if (choice2 == 3) {
+                    ((Competitor) m).getDisciplines().add(Discipline.BACKCRAWL);
+                  } else {
+                    ((Competitor) m).getDisciplines().add(Discipline.BREASTSTROKE);
+                  }
+                }
+              } while (!(choice2 == 0));
 
               ui.displayLn("Enter the number of the discipline you want to add: ");
               addMore = setMoreDiscipline(Character.toLowerCase(ui.getChar('y', 'n')));
             } while (addMore);
+            manager.addToTeam((Competitor) m);
           }
       }
-
   }
 
   public Discipline disciplines(int disciplineChoice){

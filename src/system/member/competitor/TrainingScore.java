@@ -19,4 +19,9 @@ public class TrainingScore {
   public Duration getTime() {
     return time;
   }
+
+  @Override
+  public String toString() {
+    return "Date: " + date + ". Time: " + time;
+  }
 }
