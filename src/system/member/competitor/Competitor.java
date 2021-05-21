@@ -50,9 +50,10 @@ public class Competitor extends Member {
 
     @Override
     public String toString() {
-        return "TrainingScore "
+        return super.toString() +
+                "TrainingScore: "
                 + trainingScore
-                + ". Disciplines "
+                + ". Disciplines: "
                 + disciplines
                 ;
     }

@@ -51,11 +51,10 @@ public class Manager {
 
     public String getDisciplines() {
         StringBuilder stringBuilder = new StringBuilder();
+            for (int i = 0; i < disciplines.length; i++) {
+                stringBuilder.append(((i) + 1)).append(". ").append(disciplines[i]).append("\n");
 
-        for (int i = 0; i < disciplines.length; i++) {
-            stringBuilder.append(((i) + 1)).append(disciplines[i]);
-        }
-
+            }
         return stringBuilder.toString();
     }
 
