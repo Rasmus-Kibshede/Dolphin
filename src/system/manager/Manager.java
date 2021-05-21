@@ -117,6 +117,5 @@ public class Manager {
                 teams[3].getCompetitors().remove(competitor);
             }
         }
-
     }
 }
