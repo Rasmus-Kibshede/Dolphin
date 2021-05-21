@@ -12,6 +12,7 @@ public class Manager {
     private ArrayList<Member> membersInRKI = fileHandler.loadToRKI();
     private ShowMembers showMembers = new ShowMembers(this);
     private Team[] teams;
+    private Discipline[] disciplines = Discipline.values();
 
     public Manager() {
         teams = new Team[8];
@@ -44,5 +45,9 @@ public class Manager {
 
     public Team[] getTeams() {
         return teams;
+    }
+
+    public Discipline[] getDisciplines(){
+        return disciplines;
     }
 }
