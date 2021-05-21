@@ -18,7 +18,7 @@ public class CompetitiveAdministration extends MenuCommand {
     return new Command[]{
         new ShowTeams(this.application.getManager()),
         new ShowCompetitors(this.application.getManager()),
-        new ShowTopFive(),
+        new ShowTopFive(this.application.getManager()),
         new RegisterTrainingScore(this.application.getManager()),
         new RegisterCompetition(this.application.getManager()),
         new EditTeam(this.application.getManager()),
