@@ -37,15 +37,15 @@ public class CreateMember implements Command {
             char choice = ui.getChar('e','c');
             boolean competitor = setType(choice);
             if (competitor) {
-                ArrayList<Discipline> disciplines;
+                ArrayList<Discipline> disciplines = new ArrayList<>();
                 boolean moreDiscipline;
                 do{
                     //Show a list of disciplines
                     ui.displayLn("Enter the number of the discipline you want to add: ");
                     int disciplineChoice = ui.getInt("Not a valid number");
-                    disciplines = setDisciplines(disciplineChoice);
+                    disciplines = setDisciplines(disciplineChoice, disciplines);
 
-                    ui.displayLn("Do you want to add another discipline? Y for Yes, N fro No: ");
+                    ui.displayLn("Do you want to add another discipline? Y for Yes, N for No: ");
                     moreDiscipline = setMoreDiscipline(Character.toLowerCase(ui.getChar('y','n')));
                 } while (moreDiscipline);
 
@@ -84,8 +84,8 @@ public class CreateMember implements Command {
         return true;
     }
 
-    public ArrayList<Discipline> setDisciplines(int disciplineChoice){
-        ArrayList<Discipline> disciplines = new ArrayList<>();
+    public ArrayList<Discipline> setDisciplines(int disciplineChoice, ArrayList<Discipline> disciplines){
+        //ArrayList<Discipline> disciplines = new ArrayList<>();
             if (disciplineChoice == 1) {
                 disciplines.add(Discipline.Crawl);
             } else if (disciplineChoice == 2) {
