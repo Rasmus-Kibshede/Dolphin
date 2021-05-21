@@ -2,7 +2,6 @@ package system.member;
 
 import java.time.LocalDate;
 
-//Michala
 public class Member implements Comparable<Member>{
     private String name;
     private LocalDate dateOfBirth;
