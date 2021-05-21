@@ -52,4 +52,15 @@ public class Team {
   public void setDiscipline(Discipline discipline) {
     this.discipline = discipline;
   }
+
+  @Override
+  public String toString() {
+    return "Team: "
+            + teamName
+            + ", coach: "
+            + coachName
+            + "\nCompetitors: "
+            + competitors
+            ;
+  }
 }
