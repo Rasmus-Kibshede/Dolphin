@@ -74,7 +74,7 @@ public class Manager {
 
             if (discipline == Discipline.CRAWL) {
                 if (age >= 18) {
-                    teams[4].getCompetitors().add(competitor);
+                        teams[4].getCompetitors().add(competitor);
                 }
                 teams[0].getCompetitors().add(competitor);
             } else if (discipline == Discipline.BACKCRAWL) {

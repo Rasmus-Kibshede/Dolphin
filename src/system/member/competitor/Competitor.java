@@ -1,14 +1,15 @@
 package system.member.competitor;
 
 import system.member.Member;
-
 import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Competitor extends Member {
     private ArrayList<Discipline> disciplines = new ArrayList<>();
-    private TrainingScore trainingScore;
+    private TrainingScore trainingScore = setTrainingToDefault();
 
     public Competitor(String name, LocalDate dateOfBirth, String email, String phoneNumber, boolean active, int memberNumber, TrainingScore trainingScore, ArrayList<Discipline> disciplines) {
         super(name, dateOfBirth, email, phoneNumber, active, memberNumber);
@@ -17,9 +18,12 @@ public class Competitor extends Member {
     }
 
     public TrainingScore setTrainingToDefault(){
-        LocalDate date = LocalDate.parse("1200-12-12");
+        String date = "12-12-1200";
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate d = LocalDate.parse(date, dateTimeFormatter);
+
         Duration time = Duration.ofMillis(0);
-        return trainingScore = new TrainingScore(date, time);
+        return new TrainingScore(d, time);
     }
 
     public Competitor(String name, LocalDate dateOfBirth, String email, String phoneNumber, boolean active, int memberNumber, ArrayList<Discipline> disciplines) {
