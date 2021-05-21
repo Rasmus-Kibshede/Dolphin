@@ -18,8 +18,8 @@ public class EditMemberInDebt implements Command {
         manager.getShowMembers().execute(ui);
 
         ArrayList<Member> members = manager.getMembers(); // Den kender ikke member nu, vel?
-        ui.display("Please enter member number of member to be editted.");
-        int memberNumber = ui.getInt("Please enter a valid membernumber");
+        ui.display("\nPlease enter member number of member to be edited: ");
+        int memberNumber = ui.getInt("Please enter a valid member number");
 
         for (int i = 0; i < members.size(); i++) {
             if (memberNumber == members.get(i).getMemberNumber()) {

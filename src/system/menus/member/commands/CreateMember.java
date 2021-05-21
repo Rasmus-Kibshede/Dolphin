@@ -53,6 +53,8 @@ public class CreateMember implements Command {
             } else {
                 manager.getMembers().add(new Member(memberName, dateOfBirth, email, phoneNumber, active, memberNumber));
             }
+        } else {
+            manager.getMembers().add(new Member(memberName, dateOfBirth, email, phoneNumber, active, memberNumber));
         }
         manager.getFileHandler().saveFile(manager.getMembers());
     }
