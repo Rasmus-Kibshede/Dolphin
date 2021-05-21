@@ -18,8 +18,7 @@ public class RemoveDiscipline implements Command {
 
     @Override
     public void execute(UI ui) {
-        //Maybe use ShowCompetitors??
-        manager.getShowMembers().execute(ui);
+        manager.getShowCompetitors().execute(ui);
 
         ArrayList<Member> members = manager.getMembers();
         boolean removeMore;
