@@ -34,9 +34,9 @@ public class RemoveDiscipline implements Command {
             ui.displayLn(((i)+1) + ". " + disciplines.get(i).toString());
           }
           ui.displayLn("Enter the number of the discipline you want to remove: ");
-          choice = ui.getInt("Not a valid number");
+          int choice1 = ui.getInt("Not a valid number");
             //manager.removeFromTeam((Competitor) m, disciplines.get(choice - 1));
-            disciplines.remove(choice - 1);
+          disciplines.remove(choice1 - 1);
         }
       }
       removeMore = setRemoveDiscipline(Character.toLowerCase(ui.getChar('y','n')));
