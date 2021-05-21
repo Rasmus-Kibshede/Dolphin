@@ -31,7 +31,7 @@ public class AddDiscipline implements Command {
               ui.displayLn(manager.getDisciplines());
               ui.displayLn("Enter the number of the discipline you want to add: Write 0 when done");
               int choice2;
-              do {
+              //do {
                 choice2 = ui.getInt("Not a valid number");
                 if (choice2 > 0 && choice2 <5) {
                   if (choice2 == 1) {
@@ -44,9 +44,9 @@ public class AddDiscipline implements Command {
                     ((Competitor) m).getDisciplines().add(Discipline.BREASTSTROKE);
                   }
                 }
-              } while (!(choice2 == 0));
+              //} while (!(choice2 == 0));
 
-              ui.displayLn("Enter the number of the discipline you want to add: ");
+              ui.displayLn("Do you want to add more? Enter Y for Yes and N for No: ");
               addMore = setMoreDiscipline(Character.toLowerCase(ui.getChar('y', 'n')));
             } while (addMore);
             manager.addToTeam((Competitor) m);
