@@ -47,7 +47,14 @@ public class Manager {
         return teams;
     }
 
-    public Discipline[] getDisciplines(){
-        return disciplines;
+    public String getDisciplines(){
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for(int i = 0; i < disciplines.length; i++){
+            stringBuilder.append(((i) + 1)).append(disciplines[i]);
+        }
+
+        return stringBuilder.toString();
     }
+
 }

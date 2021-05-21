@@ -40,7 +40,7 @@ public class CreateMember implements Command {
                 ArrayList<Discipline> disciplines = new ArrayList<>();
                 boolean moreDiscipline;
                 do{
-                    //Show a list of disciplines
+                    ui.displayLn(manager.getDisciplines());
                     ui.displayLn("Enter the number of the discipline you want to add: ");
                     int disciplineChoice = ui.getInt("Not a valid number");
                     disciplines = setDisciplines(disciplineChoice, disciplines);

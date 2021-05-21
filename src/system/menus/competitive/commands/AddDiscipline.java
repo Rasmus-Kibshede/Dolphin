@@ -30,7 +30,7 @@ public class AddDiscipline implements Command {
           if (m instanceof Competitor && m.getMemberNumber() == choice) {
             do {
               ArrayList<Discipline> disciplines = ((Competitor) m).getDisciplines();
-              //Show disciplines
+              ui.displayLn(manager.getDisciplines());
               ui.displayLn("Enter the number of the discipline you want to add: ");
               choice = ui.getInt("Not a valid number");
               disciplines.add(disciplines(choice));

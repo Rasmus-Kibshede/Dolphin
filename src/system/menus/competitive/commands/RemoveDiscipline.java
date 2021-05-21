@@ -28,7 +28,7 @@ public class RemoveDiscipline implements Command {
       for (Member m : members) {
         if (m instanceof Competitor && choice == m.getMemberNumber()) {
           ArrayList<Discipline> disciplines = ((Competitor) m).getDisciplines();
-          //Show disciplines
+          ui.displayLn(manager.getDisciplines());
           ui.displayLn("Enter the number of the discipline you want to remove");
           choice = ui.getInt("Not a valid number");
           for (int i = 0; i < disciplines.size(); i++) {
