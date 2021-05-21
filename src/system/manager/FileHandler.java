@@ -38,7 +38,7 @@ public class FileHandler {
 
     public void saveToRKI(ArrayList<Member> members) {
         try {
-            fileWriter = new FileWriter(MEMBERS_IN_RKI_FILE);
+            fileWriter = new FileWriter(MEMBERS_IN_RKI_FILE, true);
             for (int i = 0; i < members.size(); i++) {
                 saveMember(members.get(i));
             }
