@@ -20,22 +20,22 @@ public class RemoveDiscipline implements Command {
   public void execute(UI ui) {
     //Maybe use ShowCompetitors??
     manager.getShowMembers().execute(ui);
+
     ArrayList<Member> members = manager.getMembers();
     boolean removeMore;
+
     do {
       ui.displayLn("Enter the Member Number of the Competitor who you want to remove disciplines from: ");
       int choice = ui.getInt("Not a valid number");
       for (Member m : members) {
         if (m instanceof Competitor && choice == m.getMemberNumber()) {
           ArrayList<Discipline> disciplines = ((Competitor) m).getDisciplines();
-          ui.displayLn(manager.getDisciplines());
-          ui.displayLn("Enter the number of the discipline you want to remove");
-          choice = ui.getInt("Not a valid number");
-          for (int i = 0; i < disciplines.size(); i++) {
-            if (disciplines.indexOf(disciplines.get(i)) == choice) {
-              disciplines.remove(disciplines.get(i));
-            }
+          for(int i = 0; i < disciplines.size(); i++) {
+            ui.displayLn(((i)+1) + ". " + disciplines.get(i).toString());
           }
+          ui.displayLn("Enter the number of the discipline you want to remove: ");
+          choice = ui.getInt("Not a valid number");
+          disciplines.remove(choice - 1);
         }
       }
       removeMore = setRemoveDiscipline(Character.toLowerCase(ui.getChar('y','n')));
