@@ -19,7 +19,7 @@ public class Application {
     this.command.execute(this.ui);
   }
 
-  public Manager getMemberManager() {
+  public Manager getManager() {
     return manager;
   }
 }

@@ -3,6 +3,9 @@ package system.menus.competitive;
 import system.Command;
 import system.manager.Application;
 import system.menus.MenuCommand;
+import system.menus.competitive.commands.RegisterCompetition;
+import system.menus.competitive.commands.RegisterTrainingScore;
+import system.menus.competitive.commands.ShowCompetitors;
 import system.menus.competitive.commands.ShowTopFive;
 
 public class CompetitiveAdministration extends MenuCommand {
@@ -21,14 +24,20 @@ public class CompetitiveAdministration extends MenuCommand {
   protected Command[] getCommands() {
 
     return new Command[]{
-        new ShowTopFive(),/*
-        new ShowCompetitors(this.application.getMemberManager()),
-        new ShowTeams(this.application.getMemberManager(), this.application.getCompetitorManager()),
-        new RegisterTrainingScore(this.application.getMemberManager()),
-        new RegisterCompetition(this.application.getMemberManager(), this.application.getCompetitorManager()),
-        new EditTeam(this.application.getMemberManager(), this.application.getCompetitorManager()),
+        new ShowTopFive(),
+        new ShowTeams(this.application.getManager()),
+
+        new ShowCompetitors(this.application.getManager()),
+
+        new RegisterTrainingScore(this.application.getManager()),
+
+        new RegisterCompetition(this.application.getManager()),
+
+        /*
+        new EditTeam(this.application.getMemberManager()),
         new EditMemberType()// Eller havde vi droppet den?
-        */
+         */
+
     };
   }
 }
