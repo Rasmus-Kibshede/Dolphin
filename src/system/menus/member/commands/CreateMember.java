@@ -84,6 +84,10 @@ public class CreateMember implements Command {
         return true;
     }
 
+    public void showDisciplines(UI ui){
+
+    }
+
     public ArrayList<Discipline> setDisciplines(int disciplineChoice, ArrayList<Discipline> disciplines){
         //ArrayList<Discipline> disciplines = new ArrayList<>();
             if (disciplineChoice == 1) {
