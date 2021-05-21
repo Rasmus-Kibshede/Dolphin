@@ -13,7 +13,7 @@ public class ShowTeam implements Command {
 
     @Override
     public void execute(UI ui) {
-        team.toString();
+        ui.displayLn(team.toString());
     }
 
     @Override

@@ -53,17 +53,25 @@ public class Team {
     this.discipline = discipline;
   }
 
-  @Override
-  public String toString() {
+  public String getStringOfCompetitors(){
     StringBuilder stringBuilder = new StringBuilder();
-    for (Competitor competitor : competitors) {
-      stringBuilder.append(competitor.getName());
+    if (competitors != null){
+      for (Competitor competitor : competitors) {
+        stringBuilder.append(competitor.getName());
+      }
+    }else {
+      stringBuilder.append("There are no competitors");
     }
 
+    return stringBuilder.toString();
+  }
+
+  @Override
+  public String toString() {
     return "Coach: "
             + coachName
             + "\nCompetitors: "
-            + stringBuilder
+            + getStringOfCompetitors()
             ;
   }
 }
