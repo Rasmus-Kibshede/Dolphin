@@ -41,6 +41,7 @@ public class RemoveDiscipline implements Command {
             }
             removeMore = setRemoveDiscipline(Character.toLowerCase(ui.getChar('y', 'n')));
         } while (removeMore);
+      manager.getFileHandler().saveFile(members);
     }
 
     private boolean setRemoveDiscipline(Character c) {
