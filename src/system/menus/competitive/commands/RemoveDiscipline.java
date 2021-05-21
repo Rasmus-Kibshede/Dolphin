@@ -47,20 +47,7 @@ public class RemoveDiscipline implements Command {
         if (c == 'y') {
             return true;
         }
-<<<<<<< HEAD
-      }
-      ui.displayLn("Do you want to remove more? Y for Yes, N for No:");
-      removeMore = setRemoveDiscipline(Character.toLowerCase(ui.getChar('y','n')));
-    }while (removeMore);
-    manager.getFileHandler().saveFile(members);
-  }
-
-  private boolean setRemoveDiscipline(Character c) {
-    if(c == 'y'){
-      return true;
-=======
         return false;
->>>>>>> 2cf4acd3170718576f03d8f87d6e5c704008cd7f
     }
 
     @Override
