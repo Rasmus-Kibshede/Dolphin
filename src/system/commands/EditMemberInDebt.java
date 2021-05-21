@@ -3,10 +3,8 @@ package system.commands;
 import system.MemberManager;
 import system.member.Member;
 import system.ui.UI;
-
 import java.util.ArrayList;
 
-// Michala
 public class EditMemberInDebt implements Command {
     private MemberManager memberManager;
 
