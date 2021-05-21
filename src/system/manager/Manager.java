@@ -1,6 +1,7 @@
 package system.manager;
 
 import system.member.competitor.Competitor;
+import system.menus.competitive.commands.ShowCompetitors;
 import system.menus.member.commands.ShowMembers;
 import system.member.Member;
 import system.member.competitor.Discipline;
@@ -17,6 +18,7 @@ public class Manager {
     private ShowMembers showMembers = new ShowMembers(this);
     private Team[] teams;
     private Discipline[] disciplines = Discipline.values();
+    private ShowCompetitors showCompetitors = new ShowCompetitors(this);
 
     public Manager() {
         teams = new Team[8];
@@ -58,6 +60,10 @@ public class Manager {
 
         }
         return stringBuilder.toString();
+    }
+
+    public ShowCompetitors getShowCompetitors() {
+        return showCompetitors;
     }
 
     public void addToTeam(Competitor competitor) {
