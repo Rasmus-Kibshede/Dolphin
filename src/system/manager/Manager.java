@@ -51,7 +51,7 @@ public class Manager {
         StringBuilder stringBuilder = new StringBuilder();
 
         for(int i = 0; i < disciplines.length; i++){
-            stringBuilder.append(((i) + 1)).append(disciplines[i]);
+            stringBuilder.append(((i) + 1)).append(". ").append(disciplines[i]).append("\n");
         }
 
         return stringBuilder.toString();
