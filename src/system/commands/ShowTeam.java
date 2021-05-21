@@ -5,21 +5,20 @@ import system.member.competition.Team;
 import system.ui.UI;
 
 public class ShowTeam implements Command {
-    private CompetitorManager competitorManager;
+    private Team team;
 
-    public ShowTeam(CompetitorManager competitorManager){
-        this.competitorManager = competitorManager;
+    public ShowTeam(Team team) {
+        this.team = team;
     }
 
     @Override
     public void execute(UI ui) {
-        for (Team team: competitorManager.getTeams()) {
-            ui.displayLn(team.toString());
-        }
+        team.toString();
     }
 
     @Override
     public String getName() {
-        return "Show Team";
+        return "Show Team: "
+                +team.getTeamName();
     }
 }

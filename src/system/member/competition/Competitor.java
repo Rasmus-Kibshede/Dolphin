@@ -1,6 +1,7 @@
 package system.member.competition;
 
 import system.member.Member;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -35,4 +36,17 @@ public class Competitor extends Member {
         return disciplines;
     }
 
+    @Override
+    public String getName() {
+        return super.getName();
+    }
+
+    @Override
+    public String toString() {
+        return "TrainingScore "
+                + trainingScore
+                + ". Disciplines "
+                + disciplines
+                ;
+    }
 }

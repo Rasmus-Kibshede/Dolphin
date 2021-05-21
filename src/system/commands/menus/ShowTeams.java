@@ -3,8 +3,6 @@ package system.commands.menus;
 import system.CompetitorManager;
 import system.commands.Command;
 import system.commands.ShowTeam;
-import system.member.competition.Team;
-import system.ui.UI;
 
 public class ShowTeams extends MenuCommand implements Command {
 
@@ -15,11 +13,6 @@ public class ShowTeams extends MenuCommand implements Command {
   }
 
   @Override
-  public void execute(UI ui) {
-
-  }
-
-  @Override
   public String getName() {
     return "Show Teams";
   }
@@ -27,14 +20,14 @@ public class ShowTeams extends MenuCommand implements Command {
   @Override
   protected Command[] getCommands() {
     return new Command[] {
-            new ShowTeam(this.competitorManager),
-            new ShowTeam(this.competitorManager),
-            new ShowTeam(this.competitorManager),
-            new ShowTeam(this.competitorManager),
-            new ShowTeam(this.competitorManager),
-            new ShowTeam(this.competitorManager),
-            new ShowTeam(this.competitorManager),
-            new ShowTeam(this.competitorManager)
+            new ShowTeam(this.competitorManager.getTeams()[0]),
+            new ShowTeam(this.competitorManager.getTeams()[1]),
+            new ShowTeam(this.competitorManager.getTeams()[2]),
+            new ShowTeam(this.competitorManager.getTeams()[3]),
+            new ShowTeam(this.competitorManager.getTeams()[4]),
+            new ShowTeam(this.competitorManager.getTeams()[5]),
+            new ShowTeam(this.competitorManager.getTeams()[6]),
+            new ShowTeam(this.competitorManager.getTeams()[7])
     };
   }
 }

@@ -55,12 +55,15 @@ public class Team {
 
   @Override
   public String toString() {
-    return "Team: "
-            + teamName
-            + ", coach: "
+    StringBuilder stringBuilder = new StringBuilder();
+    for (Competitor competitor : competitors) {
+      stringBuilder.append(competitor.getName());
+    }
+
+    return "Coach: "
             + coachName
             + "\nCompetitors: "
-            + competitors
+            + stringBuilder
             ;
   }
 }
