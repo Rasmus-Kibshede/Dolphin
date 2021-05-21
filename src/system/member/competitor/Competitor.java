@@ -49,6 +49,11 @@ public class Competitor extends Member {
     }
 
     @Override
+    public LocalDate getDateOfBirth() {
+        return super.getDateOfBirth();
+    }
+
+    @Override
     public String toString() {
         return super.toString() +
                 "TrainingScore: "
