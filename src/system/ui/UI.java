@@ -1,5 +1,6 @@
 package system.ui;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
@@ -29,7 +30,6 @@ public class UI {
     return number;
   }
 
-  //Rasmus
   public int getValidateInt(String errorMessage) {
     while (!scanner.hasNextInt()) {
       display(errorMessage);
@@ -42,7 +42,6 @@ public class UI {
     return scanner.nextLine();
   }
 
-  //Rasmus
   public int validateRange(int maxRange) {
     int choice = getInt("Please enter a number: ");
 
@@ -54,7 +53,6 @@ public class UI {
     return choice;
   }
 
-  // Michala og Rasmus
   public char getChar(char a, char b) {
     char first = 0;
     char input;
@@ -65,7 +63,6 @@ public class UI {
     return first;
   }
 
-  // Michala og Rasmus
   private char validateChar(char input, char a, char b) {
     if (input == a || input == b) {
       return input;
@@ -79,5 +76,11 @@ public class UI {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
     LocalDate dateOfBirth = LocalDate.parse(birthDate, formatter);
     return dateOfBirth;
+  }
+
+  public Duration getTime() {
+    display("Please enter time in miliseconds: ");
+    int time = getInt("Please enter time in miliseconds");
+    return Duration.ofMillis(time);
   }
 }
