@@ -47,13 +47,13 @@ public class AddDiscipline implements Command {
 
     switch (disciplineChoice){
       case 1:
-        return Discipline.Crawl;
+        return Discipline.CRAWL;
       case 2:
-        return Discipline.Backcrawl;
+        return Discipline.BACKCRAWL;
       case 3:
-        return Discipline.Butterfly;
+        return Discipline.BUTTERFLY;
       case 4:
-        return Discipline.Breaststroke;
+        return Discipline.BREASTSTROKE;
     }
     return null;
   }
