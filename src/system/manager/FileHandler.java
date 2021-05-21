@@ -22,10 +22,10 @@ public class FileHandler {
             for (int i = 0; i < members.size(); i++) {
                 competitor = checkMemberType(members.get(i));
                 if (competitor) {
-                    fileWriter = new FileWriter(COMPETITORS_FILE);
+                    fileWriter = new FileWriter(COMPETITORS_FILE, true);
                     saveCompetitor((Competitor) members.get(i));
                 } else {
-                    fileWriter = new FileWriter(MEMBER_FILE);
+                    fileWriter = new FileWriter(MEMBER_FILE, true);
                     saveMember(members.get(i));
                 }
             }

@@ -17,7 +17,7 @@ public class Competitor extends Member {
     }
 
     public TrainingScore setTrainingToDefault(){
-        LocalDate date = LocalDate.parse("01-01-1300");
+        LocalDate date = LocalDate.parse("1200-12-12");
         Duration time = Duration.ofMillis(0);
         return trainingScore = new TrainingScore(date, time);
     }
