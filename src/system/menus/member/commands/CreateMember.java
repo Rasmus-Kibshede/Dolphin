@@ -6,12 +6,10 @@ import system.member.Member;
 import system.member.competitor.Competitor;
 import system.member.competitor.Discipline;
 import system.manager.ui.UI;
-
 import java.io.File;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-//Kamille
 public class CreateMember implements Command {
     private Manager manager;
 
@@ -93,13 +91,13 @@ public class CreateMember implements Command {
     public ArrayList<Discipline> setDisciplines(int disciplineChoice, ArrayList<Discipline> disciplines){
         //ArrayList<Discipline> disciplines = new ArrayList<>();
             if (disciplineChoice == 1) {
-                disciplines.add(Discipline.Crawl);
+                disciplines.add(Discipline.CRAWL);
             } else if (disciplineChoice == 2) {
-                disciplines.add(Discipline.Backcrawl);
+                disciplines.add(Discipline.BACKCRAWL);
             } else if (disciplineChoice == 3) {
-                disciplines.add(Discipline.Butterfly);
+                disciplines.add(Discipline.BUTTERFLY);
             } else if (disciplineChoice == 4) {
-                disciplines.add(Discipline.Breaststroke);
+                disciplines.add(Discipline.BREASTSTROKE);
             }
         return disciplines;
     }
