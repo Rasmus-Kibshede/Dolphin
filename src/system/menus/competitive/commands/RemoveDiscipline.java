@@ -38,6 +38,7 @@ public class RemoveDiscipline implements Command {
                     disciplines.remove(choice1 - 1);
                 }
             }
+            ui.displayLn("Do you want to remove more? Enter Y for Yes and N for No: ");
             removeMore = setRemoveDiscipline(Character.toLowerCase(ui.getChar('y', 'n')));
         } while (removeMore);
       manager.getFileHandler().saveFile(members);
