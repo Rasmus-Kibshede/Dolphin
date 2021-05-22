@@ -5,10 +5,7 @@ import system.manager.Manager;
 import system.manager.ui.UI;
 import system.member.competitor.Competitor;
 import system.member.competitor.Team;
-
 import java.util.ArrayList;
-import java.util.Arrays;
-
 
 public class ShowTopFive implements Command {
 
@@ -18,38 +15,36 @@ public class ShowTopFive implements Command {
     this.manager = manager;
   }
 
-
   @Override
   public void execute(UI ui) {
-
-    /*
-
     ArrayList<Long> longs = new ArrayList<>();
 
     for (Team team : manager.getTeams()) {
-      for (Competitor competitor : team.getCompetitors()) {
-        longs.add(competitor.getTrainingScore().getTime().getSeconds());
-      }
+      ui.displayLn("");
+      ui.displayLn(team.getTeamName());
 
-      ArrayList<Long> top5 = new ArrayList<>(longs.subList(longs.size()-5, longs.size()));
+      if (!team.getCompetitors().isEmpty()){
+        for (Competitor competitor : team.getCompetitors()) {
+          longs.add(competitor.getTrainingScore().getTime().getSeconds());
+        }
 
-      for (Competitor competitor : team.getCompetitors()) {
-        for (Long aLong : top5) {
-          if (aLong == competitor.getTrainingScore().getTime().getSeconds()){
-            ui.displayLn(competitor.getName());
+        ArrayList<Long> top5 = new ArrayList<>(longs.subList(longs.size()-5, longs.size()));
+
+        for (int i = 0; i < top5.size(); i++) {
+          int RankIndex = ((i)+1);
+          if (top5.get(i) == team.getCompetitors().get(i).getTrainingScore().getTime().toMillis()) {
+            ui.display(RankIndex + ". ");
+            ui.displayLn(team.getCompetitors().get(i).getName());
           }
         }
+      }else {
+        ui.displayLn("The team is empty");
       }
 
+
     }
-
-    //se hvem af comp der har de bedste tider
-
-
-
-     */
-
   }
+
 
   @Override
   public String getName() {
