@@ -8,6 +8,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Competitor extends Member {
+    // Maybe this should be a normal Array, since they can only participate in four disciplines?
     private ArrayList<Discipline> disciplines = new ArrayList<>();
     private TrainingScore trainingScore = setTrainingToDefault();
 
