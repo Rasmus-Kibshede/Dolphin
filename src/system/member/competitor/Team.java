@@ -68,7 +68,9 @@ public class Team {
 
   @Override
   public String toString() {
-    return "Coach: "
+    return "Team: "
+            + teamName
+            + "\nCoach: "
             + coachName
             + "\nCompetitors: "
             + getStringOfCompetitors()
