@@ -4,7 +4,6 @@ import system.member.Member;
 import system.member.competitor.Competitor;
 import system.member.competitor.Discipline;
 import system.member.competitor.TrainingScore;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -155,6 +154,17 @@ public class FileHandler {
                 disciplines.append(competitor.getDisciplines().get(i)).append(" ");
             }
 
+            StringBuilder trainingScores = new StringBuilder();
+            for (TrainingScore trainingScore : competitor.getTrainingScores()) {
+                trainingScores
+                        .append(trainingScore.getDate())
+                        .append(" ")
+                        .append(trainingScore.getTime().toMillis())
+                        .append(" ")
+                        .append(trainingScore.getDiscipline())
+                        .append(" ");
+            }
+
             fileWriter.write(
                 competitor.getName()
                     + " "
@@ -170,10 +180,8 @@ public class FileHandler {
                     + " "
                     + competitor.getMemberNumber()
                     + " "
-                    + competitor.getTrainingScore().getDate()
-                    + " "
-                    + competitor.getTrainingScore().getTime().toMillis()
-                    + " "
+                    + trainingScores
+                    + ". "
                     + disciplines
                     + "."
                     + "\n"
@@ -195,9 +203,19 @@ public class FileHandler {
             int memberNumber = fileReader.nextInt();
 
 
-            LocalDate date = LocalDate.parse(fileReader.next());
-            Duration time = Duration.ofMillis(fileReader.nextInt());
-            TrainingScore trainingScore = new TrainingScore(date, time);
+            ArrayList<TrainingScore> trainingScores = new ArrayList<>();
+            while (fileReader.hasNext()) {
+                String check = fileReader.next();
+                if (check.equals(".")) {
+                    break;
+                }
+                LocalDate date = LocalDate.parse(check);
+                Duration time = Duration.ofMillis(fileReader.nextInt());
+                Discipline discipline = Discipline.valueOf(fileReader.next());
+
+                TrainingScore trainingScore = new TrainingScore(date, time, discipline);
+                trainingScores.add(trainingScore);
+            }
 
             disciplines.clear();
             while (fileReader.hasNext()) {
@@ -209,7 +227,16 @@ public class FileHandler {
                     disciplines.add(Discipline.valueOf(discipline));
                 }
             }
-            members.add(new Competitor(memberName, dateOfBirth, email, phoneNumber, active, memberNumber, trainingScore, disciplines));
+            members.add(new Competitor(
+                    memberName,
+                    dateOfBirth,
+                    email,
+                    phoneNumber,
+                    active,
+                    memberNumber,
+                    trainingScores,
+                    disciplines
+                    ));
         }
         fileReader.close();
     }

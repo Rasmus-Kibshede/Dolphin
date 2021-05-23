@@ -5,6 +5,7 @@ import system.manager.Manager;
 import system.manager.ui.UI;
 import system.member.competitor.Competitor;
 import system.member.competitor.Team;
+import system.member.competitor.TrainingScore;
 import java.util.ArrayList;
 
 public class ShowTopFive implements Command {
@@ -25,23 +26,29 @@ public class ShowTopFive implements Command {
 
       if (!team.getCompetitors().isEmpty()){
         for (Competitor competitor : team.getCompetitors()) {
-          longs.add(competitor.getTrainingScore().getTime().getSeconds());
+          for (TrainingScore trainingScore: competitor.getTrainingScores()) {
+            if (trainingScore.getDiscipline() == team.getDiscipline()) {
+              longs.add(trainingScore.getTime().toMillis());
+            }
+          }
         }
 
         ArrayList<Long> top5 = new ArrayList<>(longs.subList(longs.size()-5, longs.size()));
 
         for (int i = 0; i < top5.size(); i++) {
           int RankIndex = ((i)+1);
-          if (top5.get(i) == team.getCompetitors().get(i).getTrainingScore().getTime().toMillis()) {
-            ui.display(RankIndex + ". ");
-            ui.displayLn(team.getCompetitors().get(i).getName());
+          for (TrainingScore trainingScore : team.getCompetitors().get(i).getTrainingScores()) {
+            if (trainingScore.getDiscipline() == team.getDiscipline()) {
+              if (top5.get(i) == trainingScore.getTime().toMillis()) {
+                ui.display(RankIndex + ". ");
+                ui.displayLn(team.getCompetitors().get(i).getName());
+              }
+            }
           }
         }
-      }else {
+      } else {
         ui.displayLn("The team is empty");
       }
-
-
     }
   }
 
