@@ -49,7 +49,7 @@ public class AddDiscipline implements Command {
               ui.displayLn("Do you want to add more? Enter Y for Yes and N for No: ");
               addMore = setMoreDiscipline(Character.toLowerCase(ui.getChar('y', 'n')));
             } while (addMore);
-            manager.addToTeam((Competitor) m);
+            manager.addToTeam();
           }
       }
   }
