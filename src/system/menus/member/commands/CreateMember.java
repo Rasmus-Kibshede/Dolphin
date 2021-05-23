@@ -1,11 +1,12 @@
 package system.menus.member.commands;
 
-import system.manager.Manager;
 import system.Command;
+import system.manager.Manager;
+import system.manager.ui.UI;
 import system.member.Member;
 import system.member.competitor.Competitor;
 import system.member.competitor.Discipline;
-import system.manager.ui.UI;
+
 import java.io.File;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -50,7 +51,7 @@ public class CreateMember implements Command {
                 manager.getMembers().add(new Competitor(memberName, dateOfBirth, email, phoneNumber, active, memberNumber, disciplines));
                 for (int i = 0; i < manager.getMembers().size(); i++) {
                     if (manager.getMembers().get(i).getMemberNumber() == memberNumber) {
-                        manager.addToTeam((Competitor) manager.getMembers().get(i));
+                        manager.addToTeam();
                     }
                 }
             } else {
@@ -75,10 +76,8 @@ public class CreateMember implements Command {
     }
 
     public int setMemberNumber() {
-        File file = new File("MemberNumber");
-
-        int memberNumber = manager.getFileHandler().loadMemberNumber(file);
-        manager.getFileHandler().saveMemberNumber(file, memberNumber);
+        int memberNumber = manager.getFileHandler().loadMemberNumber();
+        manager.getFileHandler().saveMemberNumber();
         return memberNumber;
     }
 
@@ -95,15 +94,15 @@ public class CreateMember implements Command {
 
     public ArrayList<Discipline> setDisciplines(int disciplineChoice, ArrayList<Discipline> disciplines){
         //ArrayList<Discipline> disciplines = new ArrayList<>();
-            if (disciplineChoice == 1) {
-                disciplines.add(Discipline.CRAWL);
-            } else if (disciplineChoice == 2) {
-                disciplines.add(Discipline.BACKCRAWL);
-            } else if (disciplineChoice == 3) {
-                disciplines.add(Discipline.BUTTERFLY);
-            } else if (disciplineChoice == 4) {
-                disciplines.add(Discipline.BREASTSTROKE);
-            }
+        if (disciplineChoice == 1) {
+            disciplines.add(Discipline.BUTTERFLY);
+        } else if (disciplineChoice == 2) {
+            disciplines.add(Discipline.CRAWL);
+        } else if (disciplineChoice == 3) {
+            disciplines.add(Discipline.BACKCRAWL);
+        } else if (disciplineChoice == 4) {
+            disciplines.add(Discipline.BREASTSTROKE);
+        }
         return disciplines;
     }
 

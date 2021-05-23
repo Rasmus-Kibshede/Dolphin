@@ -1,11 +1,11 @@
 package system.manager;
 
-import system.member.competitor.Competitor;
-import system.menus.competitive.commands.ShowCompetitors;
-import system.menus.member.commands.ShowMembers;
 import system.member.Member;
+import system.member.competitor.Competitor;
 import system.member.competitor.Discipline;
 import system.member.competitor.Team;
+import system.menus.competitive.commands.ShowCompetitors;
+import system.menus.member.commands.ShowMembers;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -30,6 +30,8 @@ public class Manager {
         teams[5] = new Team("Tim", "Senior Back Crawl", Discipline.BACKCRAWL);
         teams[6] = new Team("Babette", "Senior Butterfly", Discipline.BUTTERFLY);
         teams[7] = new Team("Jim", "Senior Breaststroke", Discipline.BREASTSTROKE);
+
+        addToTeam();
     }
 
     public ArrayList<Member> getMembers() {
@@ -57,7 +59,6 @@ public class Manager {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < disciplines.length; i++) {
             stringBuilder.append(((i) + 1)).append(". ").append(disciplines[i]).append("\n");
-
         }
         return stringBuilder.toString();
     }
@@ -66,37 +67,63 @@ public class Manager {
         return showCompetitors;
     }
 
-    public void addToTeam(Competitor competitor) {
-        for (int i = 0; i < competitor.getDisciplines().size(); i++) {
-            Discipline discipline = competitor.getDisciplines().get(i);
-            LocalDate dateOfBirth = competitor.getDateOfBirth();
-            int age = Period.between(dateOfBirth, LocalDate.now()).getYears();
+    public void addToTeam() {
 
-            if (discipline == Discipline.CRAWL) {
-                if (age >= 18) {
+        ArrayList<Competitor> competitors = new ArrayList<>();
+
+        for (Member member : members) {
+            if (member instanceof Competitor){
+                competitors.add((Competitor) member);
+            }
+        }
+
+
+        for (Competitor competitor : competitors) {
+
+            for (int i = 0; i < competitor.getDisciplines().size(); i++) {
+                Discipline discipline = competitor.getDisciplines().get(i);
+                LocalDate dateOfBirth = competitor.getDateOfBirth();
+                int age = Period.between(dateOfBirth, LocalDate.now()).getYears();
+
+                if (discipline == Discipline.CRAWL) {
+
+                    if (age >= 18) {
                         teams[4].getCompetitors().add(competitor);
+                    }else {
+                        teams[0].getCompetitors().add(competitor);
+                    }
+
+                } else if (discipline == Discipline.BACKCRAWL) {
+
+                    if (age >= 18) {
+                        teams[5].getCompetitors().add(competitor);
+                    }else {
+                        teams[1].getCompetitors().add(competitor);
+                    }
+
+                } else if (discipline == Discipline.BUTTERFLY) {
+
+                    if (age >= 18) {
+                        teams[6].getCompetitors().add(competitor);
+                    }else {
+                        teams[2].getCompetitors().add(competitor);
+                    }
+
+                } else if (discipline == Discipline.BREASTSTROKE) {
+
+                    if (age >= 18) {
+                        teams[7].getCompetitors().add(competitor);
+                    }else {
+                        teams[3].getCompetitors().add(competitor);
+                    }
+
                 }
-                teams[0].getCompetitors().add(competitor);
-            } else if (discipline == Discipline.BACKCRAWL) {
-                if (age >= 18) {
-                    teams[5].getCompetitors().add(competitor);
-                }
-                teams[1].getCompetitors().add(competitor);
-            } else if (discipline == Discipline.BUTTERFLY) {
-                if (age >= 18) {
-                    teams[6].getCompetitors().add(competitor);
-                }
-                teams[2].getCompetitors().add(competitor);
-            } else if (discipline == Discipline.BREASTSTROKE) {
-                if (age >= 18) {
-                    teams[7].getCompetitors().add(competitor);
-                }
-                teams[3].getCompetitors().add(competitor);
             }
         }
     }
 
     public void removeFromTeam(Competitor competitor, Discipline discipline) {
+
         for (int i = 0; i < competitor.getDisciplines().size(); i++) {
             LocalDate dateOfBirth = competitor.getDateOfBirth();
             int age = Period.between(dateOfBirth, LocalDate.now()).getYears();
