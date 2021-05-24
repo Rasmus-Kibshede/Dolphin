@@ -19,7 +19,13 @@ public class RegisterTrainingScore implements Command {
 
     @Override
     public void execute(UI ui) {
-        ui.display("Please enter date: ");
+        //Why is it ignored???
+        manager.getShowCompetitors();
+
+        ui.display("Please enter member number for competitor: ");
+        int memberNumber = ui.getInt("This is not a number.");
+
+        ui.display("Please enter date dd-mm-yyyy: ");
         LocalDate date = ui.getDate();
         Duration time = ui.getTime();
 
@@ -29,8 +35,14 @@ public class RegisterTrainingScore implements Command {
 
         TrainingScore trainingScore = new TrainingScore(date, time, discipline);
 
+        /*
+        Jeg har flyttet det, fordi det måske er smart at vælge svømmeren først?
+
+        manager.getShowCompetitors();
+
         ui.display("Please enter member number for competitor: ");
         int memberNumber = ui.getInt("This is not a number.");
+         */
 
         for (Member member : manager.getMembers()) {
             if (memberNumber == member.getMemberNumber()) {

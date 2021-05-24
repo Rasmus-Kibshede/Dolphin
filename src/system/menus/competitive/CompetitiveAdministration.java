@@ -21,7 +21,6 @@ public class CompetitiveAdministration extends MenuCommand {
         new ShowTopFive(this.application.getManager()),
         new RegisterTrainingScore(this.application.getManager()),
         new RegisterCompetition(this.application.getManager()),
-        new EditTeam(this.application.getManager()),
         new RemoveDiscipline(this.application.getManager()),
         new AddDiscipline(this.application.getManager())
     };

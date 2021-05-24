@@ -83,8 +83,8 @@ public class UI {
     }
 
     public Duration getTime() {
-        display("Please enter time in miliseconds: ");
-        int time = getInt("Please enter time in miliseconds");
+        display("Please enter time in milliseconds (1 second = 1000 milliseconds): ");
+        int time = getInt("Please enter time in milliseconds (1 second = 1000 milliseconds): ");
         return Duration.ofMillis(time);
     }
 
