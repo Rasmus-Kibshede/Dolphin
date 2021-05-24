@@ -264,7 +264,8 @@ public class FileHandler {
                     active,
                     memberNumber,
                     trainingScores,
-                    disciplines
+                    disciplines,
+                    competitions
             ));
         }
         fileReader.close();
