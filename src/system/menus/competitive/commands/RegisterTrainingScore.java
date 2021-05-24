@@ -42,6 +42,8 @@ public class RegisterTrainingScore implements Command {
 
         ui.display("Please enter member number for competitor: ");
         int memberNumber = ui.getInt("This is not a number.");
+
+        Jeg er enig - Micha
          */
 
         for (Member member : manager.getMembers()) {
