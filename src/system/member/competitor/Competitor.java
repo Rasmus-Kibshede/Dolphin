@@ -1,9 +1,7 @@
 package system.member.competitor;
 
 import system.member.Member;
-import java.time.Duration;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Competitor extends Member {

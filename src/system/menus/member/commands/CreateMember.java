@@ -6,8 +6,6 @@ import system.manager.ui.UI;
 import system.member.Member;
 import system.member.competitor.Competitor;
 import system.member.competitor.Discipline;
-
-import java.io.File;
 import java.time.LocalDate;
 import java.util.ArrayList;
 

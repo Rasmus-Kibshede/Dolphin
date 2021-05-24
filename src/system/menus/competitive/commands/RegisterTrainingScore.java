@@ -7,7 +7,6 @@ import system.member.competitor.Competitor;
 import system.member.competitor.Discipline;
 import system.member.competitor.TrainingScore;
 import system.manager.ui.UI;
-
 import java.time.Duration;
 import java.time.LocalDate;
 
