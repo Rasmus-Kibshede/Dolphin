@@ -15,6 +15,18 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ The FileHandler class is in charge of the different txt files which are used throughout the program to secure
+ data is saved and that the earlier saved data is used the next time the program is started.
+
+ The FileHandler has several sections of methods. Firstly it can load and save information about the club
+ "Delfinen".
+ Secondly it can do the same for members and Members subclass Competitor. This secures no loss in data even though
+ different types of members exist.
+ Thirdly it handles a file which stores information about earlier members whose membership have been shut own
+ because they repeatedly did not pay their bills to the club.
+ Besides all this it also supplies the program with membernumbers, so that every member gets a unique ID.
+ */
 public class FileHandler {
     private FileWriter fileWriter;
 

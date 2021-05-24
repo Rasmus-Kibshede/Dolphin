@@ -4,6 +4,10 @@ import system.member.Member;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+/**
+ This class (subclass to Member) is a type of member in "Delfinen" club. A Comeptitor can have different
+ disciplines, trainingscores pr. discipline and competitions connected to them.
+ */
 public class Competitor extends Member {
     // Maybe this should be a normal Array, since they can only participate in four disciplines?
     private ArrayList<Discipline> disciplines = new ArrayList<>();

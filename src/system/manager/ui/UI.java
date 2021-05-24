@@ -1,13 +1,14 @@
 package system.manager.ui;
 
-import system.member.competitor.Competitor;
 import system.member.competitor.Discipline;
-
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
+/**
+ This is the programs UI class. It is used as the link between user and program.
+ */
 public class UI {
     private Scanner scanner = new Scanner(System.in);
 
