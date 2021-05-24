@@ -11,6 +11,10 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
 
+/**
+ This class is the Manager. It job is to know other classes and through the instances of them let other classes
+ access information about them.
+ */
 public class Manager {
     private FileHandler fileHandler = new FileHandler();
     private ArrayList<Member> members = fileHandler.loadFile();

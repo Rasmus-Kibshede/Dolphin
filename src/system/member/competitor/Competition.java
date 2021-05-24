@@ -4,6 +4,10 @@ import java.time.Duration;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
+/**
+ This class is a Competition consiting of a name for the competition and respectively a competitor placement and
+ competitor time
+ */
 public class Competition {
   private String competitionName;
   private int competitionPlacement;

@@ -6,6 +6,9 @@ import system.member.Member;
 import system.member.competitor.Competitor;
 import system.manager.ui.UI;
 
+/**
+ This class (implements command) is to show the members which are competitors.
+ */
 public class ShowCompetitors implements Command {
 
   private Manager manager;

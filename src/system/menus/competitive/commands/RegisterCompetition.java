@@ -9,6 +9,10 @@ import system.member.competitor.Competitor;
 
 import java.time.Duration;
 
+/**
+ This class (implements command) lets the user give information about a competition and then creates this
+ competition so the user can add this competition to a competitors arrayList of competitions.
+ */
 public class RegisterCompetition implements Command {
     private Manager manager;
 
