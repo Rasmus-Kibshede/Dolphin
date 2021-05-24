@@ -1,9 +1,11 @@
 package system.manager;
 
 import system.member.Member;
+import system.member.competitor.Competition;
 import system.member.competitor.Competitor;
 import system.member.competitor.Discipline;
 import system.member.competitor.TrainingScore;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -62,7 +64,7 @@ public class FileHandler {
 
             loadCompetitor();
         } catch (
-            FileNotFoundException e) {
+                FileNotFoundException e) {
             e.printStackTrace();
         }
         return members;
@@ -109,20 +111,20 @@ public class FileHandler {
     private void saveMember(ArrayList<Member> members) throws IOException {
         for (Member member : members) {
             fileWriter.write(
-                member.getName()
-                    + " "
-                    + member.getDateOfBirth()
-                    + " "
-                    + member.getEmail()
-                    + " "
-                    + member.getPhoneNumber()
-                    + " "
-                    + member.getActive()
-                    + " "
-                    + member.getMembershipPrice()
-                    + " "
-                    + member.getMemberNumber()
-                    + "\n"
+                    member.getName()
+                            + " "
+                            + member.getDateOfBirth()
+                            + " "
+                            + member.getEmail()
+                            + " "
+                            + member.getPhoneNumber()
+                            + " "
+                            + member.getActive()
+                            + " "
+                            + member.getMembershipPrice()
+                            + " "
+                            + member.getMemberNumber()
+                            + "\n"
             );
         }
     }
@@ -165,26 +167,39 @@ public class FileHandler {
                         .append(" ");
             }
 
+            StringBuilder competitions = new StringBuilder();
+            for (Competition competition : competitor.getCompetitions()) {
+                competitions
+                        .append(competition.getCompetitionName())
+                        .append(" ")
+                        .append(competition.getCompetitionPlacement())
+                        .append(" ")
+                        .append(competition.getTime().toMillis())
+                        .append(" ");
+            }
+
             fileWriter.write(
-                competitor.getName()
-                    + " "
-                    + competitor.getDateOfBirth()
-                    + " "
-                    + competitor.getEmail()
-                    + " "
-                    + competitor.getPhoneNumber()
-                    + " "
-                    + competitor.getActive()
-                    + " "
-                    + competitor.getMembershipPrice()
-                    + " "
-                    + competitor.getMemberNumber()
-                    + " "
-                    + trainingScores
-                    + ". "
-                    + disciplines
-                    + "."
-                    + "\n"
+                    competitor.getName()
+                            + " "
+                            + competitor.getDateOfBirth()
+                            + " "
+                            + competitor.getEmail()
+                            + " "
+                            + competitor.getPhoneNumber()
+                            + " "
+                            + competitor.getActive()
+                            + " "
+                            + competitor.getMembershipPrice()
+                            + " "
+                            + competitor.getMemberNumber()
+                            + " "
+                            + trainingScores
+                            + ". "
+                            + disciplines
+                            + ". "
+                            + competitions
+                            + ".\n"
+
             );
         }
     }
@@ -221,11 +236,25 @@ public class FileHandler {
             while (fileReader.hasNext()) {
                 String discipline = fileReader.next();
                 //Quick fix - without "if" it will read everything in the file.
-                if (discipline.equals(".")){
+                if (discipline.equals(".")) {
                     break;
-                }else {
+                } else {
                     disciplines.add(Discipline.valueOf(discipline));
                 }
+            }
+
+            ArrayList<Competition> competitions = new ArrayList<>();
+            while (fileReader.hasNext()) {
+                String check = fileReader.next();
+                if (check.equals(".")) {
+                    break;
+                }
+                String competitionName = check;
+                int placement = fileReader.nextInt();
+                Duration time = Duration.ofMillis(fileReader.nextInt());
+
+                Competition competition = new Competition(competitionName, placement, time);
+                competitions.add(competition);
             }
             members.add(new Competitor(
                     memberName,
@@ -236,7 +265,7 @@ public class FileHandler {
                     memberNumber,
                     trainingScores,
                     disciplines
-                    ));
+            ));
         }
         fileReader.close();
     }

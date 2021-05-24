@@ -8,6 +8,7 @@ public class Competitor extends Member {
     // Maybe this should be a normal Array, since they can only participate in four disciplines?
     private ArrayList<Discipline> disciplines = new ArrayList<>();
     private ArrayList<TrainingScore> trainingScores = new ArrayList<>();
+    private ArrayList<Competition> competitions = new ArrayList<>();
 
     public Competitor(String name, LocalDate dateOfBirth, String email, String phoneNumber, boolean active, int memberNumber, ArrayList<TrainingScore> trainingScores, ArrayList<Discipline> disciplines) {
         super(name, dateOfBirth, email, phoneNumber, active, memberNumber);
@@ -36,6 +37,10 @@ public class Competitor extends Member {
         return disciplines;
     }
 
+    public ArrayList<Competition> getCompetitions() {
+        return competitions;
+    }
+
     @Override
     public String getName() {
         return super.getName();
@@ -53,6 +58,8 @@ public class Competitor extends Member {
                 + trainingScores
                 + ". Disciplines: "
                 + disciplines
+                + ". Competitions: "
+                + competitions
                 ;
     }
 }
