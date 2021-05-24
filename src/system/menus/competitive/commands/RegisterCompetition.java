@@ -28,7 +28,7 @@ public class RegisterCompetition implements Command {
         String competitionName = ui.getString();
         ui.display("Enter placement: ");
         int placement = ui.getInt("This is not a number");
-        ui.display("Enter time: ");
+        ui.display("Enter time - ");
         Duration time = ui.getTime();
 
         // Denne del (check membernumber) bruges ofte gennem programmet skal vi evt lave det til en metode i manager??

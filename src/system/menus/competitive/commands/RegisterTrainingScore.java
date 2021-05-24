@@ -19,13 +19,13 @@ public class RegisterTrainingScore implements Command {
 
     @Override
     public void execute(UI ui) {
-        //Why is it ignored???
-        manager.getShowCompetitors();
 
-        ui.display("Please enter member number for competitor: ");
+        manager.getShowCompetitors().execute(ui);
+
+        ui.display("\nPlease enter member number for competitor: ");
         int memberNumber = ui.getInt("This is not a number.");
 
-        ui.display("Please enter date dd-mm-yyyy: ");
+        ui.display("\nPlease enter date dd-mm-yyyy: ");
         LocalDate date = ui.getDate();
         Duration time = ui.getTime();
 
