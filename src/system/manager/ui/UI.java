@@ -34,7 +34,7 @@ public class UI {
         return number;
     }
 
-    public int getValidateInt(String errorMessage) {
+    private int getValidateInt(String errorMessage) {
         while (!scanner.hasNextInt()) {
             display(errorMessage);
             scanner.next();
