@@ -29,6 +29,9 @@ public class EditMemberEmail implements Command {
         manager.getFileHandler().saveFile(members);
     }
 
+
+
+
     @Override
     public String getName() {
         return "Edit Member Email";

@@ -35,32 +35,32 @@ public class FileHandler {
     private final File COMPETITORS_FILE = new File("Competitors.txt");
     private final File MEMBER_NUMBER_FILE = new File("MemberNumber");
 
-    private ArrayList<Member> members = new ArrayList<>();
-    private ArrayList<Discipline> disciplines = new ArrayList<>();
+    private ArrayList<Member> allMembers = new ArrayList<>();
+    //private ArrayList<Discipline> disciplines = new ArrayList<>();
     private int memberNumber;
 
     public void saveFile(ArrayList<Member> members) {
         try {
-            ArrayList<Member> members1 = new ArrayList<>();
-            ArrayList<Competitor> competitors = new ArrayList<>();
+            ArrayList<Member> onlyMembers = new ArrayList<>();
+            ArrayList<Competitor> onlyCompetitors = new ArrayList<>();
 
             boolean competitor;
 
             for (Member member : members) {
                 competitor = checkMemberType(member);
                 if (competitor) {
-                    competitors.add((Competitor) member);
+                    onlyCompetitors.add((Competitor) member);
                 } else {
-                    members1.add(member);
+                    onlyMembers.add(member);
                 }
             }
 
             fileWriter = new FileWriter(COMPETITORS_FILE);
-            saveCompetitor(competitors);
+            saveCompetitor(onlyCompetitors);
             fileWriter.close();
 
             fileWriter = new FileWriter(MEMBER_FILE);
-            saveMember(members1);
+            saveMember(onlyMembers);
             fileWriter.close();
 
         } catch (IOException e) {
@@ -70,7 +70,7 @@ public class FileHandler {
 
     public ArrayList<Member> loadFile() {
         try {
-            members.clear();
+            allMembers.clear();
 
             loadMember();
 
@@ -79,7 +79,7 @@ public class FileHandler {
                 FileNotFoundException e) {
             e.printStackTrace();
         }
-        return members;
+        return allMembers;
     }
 
     //----------------------------------------- RKI -------------------------------------
@@ -153,7 +153,7 @@ public class FileHandler {
             String payment = fileReaderMember.next();
             int memberNumber = fileReaderMember.nextInt();
 
-            members.add(new Member(memberName, dateOfBirth, email, phoneNumber, active, memberNumber));
+            allMembers.add(new Member(memberName, dateOfBirth, email, phoneNumber, active, memberNumber));
         }
         fileReaderMember.close();
     }
@@ -244,7 +244,9 @@ public class FileHandler {
                 trainingScores.add(trainingScore);
             }
 
-            disciplines.clear();
+            //disciplines.clear();
+            ArrayList<Discipline> disciplines = new ArrayList<>();
+
             while (fileReader.hasNext()) {
                 String discipline = fileReader.next();
                 //Quick fix - without "if" it will read everything in the file.
@@ -268,7 +270,7 @@ public class FileHandler {
                 Competition competition = new Competition(competitionName, placement, time);
                 competitions.add(competition);
             }
-            members.add(new Competitor(
+            allMembers.add(new Competitor(
                     memberName,
                     dateOfBirth,
                     email,
