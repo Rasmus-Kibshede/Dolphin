@@ -316,7 +316,7 @@ public class FileHandler {
         //TODO Not correct!!! Throw exception if there is no file, instead sending a number back
         return memberNumber;
     }
-    
+
     //----------------------------------------- Member type check -------------------------------------
 
     private boolean checkMemberType(Member member) {
