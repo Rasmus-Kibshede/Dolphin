@@ -5,22 +5,22 @@ import system.Command;
 import system.member.Member;
 import system.manager.ui.UI;
 
-public class ExpectedIncome implements Command {
+public class ShowExpectedIncome implements Command {
 
-  private Manager manager;
+  private final Manager MANAGER;
 
-  public ExpectedIncome(Manager manager) {
-    this.manager = manager;
+  public ShowExpectedIncome(Manager MANAGER) {
+    this.MANAGER = MANAGER;
   }
 
   @Override
   public void execute(UI ui) {
     double totalIncome = 0.0;
-    for (Member member: manager.getMembers()) {
+    for (Member member: MANAGER.getMembers()) {
       totalIncome += member.getMembershipPrice();
     }
-    //Readable?
-    ui.displayLn("Expected Income: " + String.valueOf(totalIncome) + " kr");
+
+    ui.displayLn("Expected Income: " + totalIncome + " kr");
   }
 
   @Override

@@ -6,10 +6,10 @@ import system.member.Member;
 import system.manager.ui.UI;
 import java.util.ArrayList;
 
-public class EditMemberInDebt implements Command {
+public class EditMemberDebt implements Command {
     private Manager manager;
 
-    public EditMemberInDebt(Manager manager) {
+    public EditMemberDebt(Manager manager) {
         this.manager = manager;
     }
 
@@ -17,7 +17,7 @@ public class EditMemberInDebt implements Command {
     public void execute(UI ui) {
         manager.getShowMembers().execute(ui);
 
-        ArrayList<Member> members = manager.getMembers(); // Den kender ikke member nu, vel?
+        ArrayList<Member> members = manager.getMembers(); // Den kender ikke member nu, vel? What do u mean?
         ui.display("\nPlease enter member number of member to be edited: ");
         int memberNumber = ui.getInt("Please enter a valid member number");
 
@@ -37,6 +37,6 @@ public class EditMemberInDebt implements Command {
 
     @Override
     public String getName() {
-        return "Edit Member In Debt";
+        return "Edit Member Debt";
     }
 }

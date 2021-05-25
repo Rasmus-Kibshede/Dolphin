@@ -7,15 +7,15 @@ import system.manager.ui.UI;
 
 public class ShowMembersInRKI implements Command {
 
-  private Manager manager;
+  private final Manager MANAGER;
 
-  public ShowMembersInRKI(Manager manager) {
-    this.manager = manager;
+  public ShowMembersInRKI(Manager MANAGER) {
+    this.MANAGER = MANAGER;
   }
 
   @Override
   public void execute(UI ui) {
-    for (Member member : manager.getMembersInRKI()) {
+    for (Member member : MANAGER.getMembersInRKI()) {
       ui.displayLn(member.toString());
     }
   }

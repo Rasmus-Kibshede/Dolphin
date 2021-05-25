@@ -5,29 +5,26 @@ import system.Command;
 import system.manager.ui.UI;
 
 public class MoveMemberToRKI implements Command {
+  private final Manager MANAGER;
 
-  private Manager manager;
-
-  public MoveMemberToRKI(Manager manager){
-    this.manager = manager;
+  public MoveMemberToRKI(Manager MANAGER){
+    this.MANAGER = MANAGER;
   }
-
 
   @Override
   public void execute(UI ui) {
-    manager.getShowMembers().execute(ui);
+    MANAGER.getShowMembers().execute(ui);
 
     ui.displayLn("Which member is to be moved to RKI? Please enter Member number:");
     int memberNumber = ui.getInt("Please enter an existing member number");
 
-    for(int i = 0; i < manager.getMembers().size(); i++){
-      if(memberNumber == manager.getMembers().get(i).getMemberNumber()){
-        manager.getMembersInRKI().add(manager.getMembers().get(i));
-        manager.getMembers().remove(manager.getMembers().get(i));
+    for(int i = 0; i < MANAGER.getMembers().size(); i++){
+      if(memberNumber == MANAGER.getMembers().get(i).getMemberNumber()){
+        MANAGER.getMembersInRKI().add(MANAGER.getMembers().get(i));
+        MANAGER.getMembers().remove(MANAGER.getMembers().get(i));
       }
     }
-    manager.getFileHandler().saveToRKI(manager.getMembersInRKI());
-
+    MANAGER.getFileHandler().saveToRKI(MANAGER.getMembersInRKI());
   }
 
   @Override

@@ -6,10 +6,10 @@ import system.menus.MenuCommand;
 import system.menus.economy.commands.*;
 
 public class EconomyAdministration extends MenuCommand {
-  private Application application;
+  private final Application APPLICATION;
 
-  public EconomyAdministration(Application application) {
-    this.application = application;
+  public EconomyAdministration(Application APPLICATION) {
+    this.APPLICATION = APPLICATION;
   }
 
   @Override
@@ -20,11 +20,11 @@ public class EconomyAdministration extends MenuCommand {
   @Override
   protected Command[] getCommands() {
     return new Command[]{
-        new ExpectedIncome(this.application.getManager()),
-        new ShowMembersInRKI(this.application.getManager()),
-        new EditMemberInDebt(this.application.getManager()),
-        new MoveMemberToRKI(this.application.getManager()),
-        new RemoveFromRKI(this.application.getManager())
+        new ShowExpectedIncome(this.APPLICATION.getManager()),
+        new ShowMembersInRKI(this.APPLICATION.getManager()),
+        new EditMemberDebt(this.APPLICATION.getManager()),
+        new MoveMemberToRKI(this.APPLICATION.getManager()),
+        new RemoveMemberFromRKI(this.APPLICATION.getManager())
     };
   }
 }

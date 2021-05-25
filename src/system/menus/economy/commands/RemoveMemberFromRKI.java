@@ -6,40 +6,39 @@ import system.member.Member;
 import system.manager.ui.UI;
 import java.util.ArrayList;
 
-public class RemoveFromRKI implements Command {
+public class RemoveMemberFromRKI implements Command {
+  private final Manager MANAGER;
 
-  private Manager manager;
-
-  public RemoveFromRKI(Manager manager) {
-    this.manager = manager;
+  public RemoveMemberFromRKI(Manager MANAGER) {
+    this.MANAGER = MANAGER;
   }
 
   @Override
   public void execute(UI ui) {
+    ArrayList<Member> members = MANAGER.getMembersInRKI();
 
-    ArrayList<Member> members = manager.getMembersInRKI();
-
+    // er det her ikke teknisk set showmember in rki? altså det i for each loop?
     for (Member member: members) {
       ui.displayLn(member.toString());
     }
 
-    ui.displayLn("Removing person from RKI");
+    ui.displayLn("Removal of person from RKI");
 
-    ui.display("Which person is to be removed? Please enter a number:");
+    ui.display("Which person is to be removed? Please enter their member number:");
     int number = ui.getInt("Please enter an existing number");
 
+    // for each??
     for (int i = 0; i < members.size(); i++) {
       Member member = members.get(i);
       if (number == member.getMemberNumber()) {
         members.remove(member);
       }
     }
-
-    manager.getFileHandler().saveToRKI(manager.getMembersInRKI());
+    MANAGER.getFileHandler().saveToRKI(MANAGER.getMembersInRKI());
   }
 
   @Override
   public String getName() {
-    return "Remove from RKI";
+    return "Removal from RKI";
   }
 }
