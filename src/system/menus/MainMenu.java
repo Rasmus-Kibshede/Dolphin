@@ -7,10 +7,10 @@ import system.menus.economy.EconomyAdministration;
 import system.menus.member.MemberAdministration;
 
 public class MainMenu extends MenuCommand {
-  private Application application;
+  private final Application APPLICATION;
 
-  public MainMenu(Application application) {
-    this.application = application;
+  public MainMenu(Application APPLICATION) {
+    this.APPLICATION = APPLICATION;
   }
 
   @Override
@@ -21,9 +21,9 @@ public class MainMenu extends MenuCommand {
   @Override
   protected Command[] getCommands() {
     return new Command[]{
-        new MemberAdministration(application),
-        new EconomyAdministration(application),
-        new CompetitiveAdministration(application)
+        new MemberAdministration(APPLICATION),
+        new EconomyAdministration(APPLICATION),
+        new CompetitiveAdministration(APPLICATION)
     };
   }
 }
