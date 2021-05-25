@@ -28,12 +28,12 @@ public class RegisterCompetition implements Command {
         //Brug en metode istedet for linje de næste 3 linjer??
         manager.getShowCompetitors().execute(ui);
         ui.display("Enter member number for member you want to get: ");
-        int memberNumber = ui.getInt("This is not what we are looking for.");
+        int memberNumber = ui.getInt();
 
         ui.display("Enter competition name: ");
         String competitionName = ui.getString();
         ui.display("Enter placement: ");
-        int placement = ui.getInt("This is not a number");
+        int placement = ui.getInt();
         ui.display("Enter time - ");
         Duration time = ui.getTime();
 

@@ -25,7 +25,7 @@ public class RegisterTrainingScore implements Command {
         //Brug metode istedet for de næste 3 linjer
         manager.getShowCompetitors().execute(ui);
         ui.display("\nEnter Member Number of the Competitor whose training score you want to register: ");
-        int memberNumber = ui.getInt("This is not a valid input.");
+        int memberNumber = ui.getInt();
 
         ui.display("\nPlease enter date dd-mm-yyyy: ");
         LocalDate date = ui.getDate();

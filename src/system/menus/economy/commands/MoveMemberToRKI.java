@@ -20,7 +20,7 @@ public class MoveMemberToRKI implements Command {
     MANAGER.getShowMembers().execute(ui);
 
     ui.displayLn("Which member is to be moved to RKI? Please enter Member number:");
-    int memberNumber = ui.getInt("Please enter an existing member number");
+    int memberNumber = ui.getInt();
 
     for(int i = 0; i < MANAGER.getMembers().size(); i++){
       if(memberNumber == MANAGER.getMembers().get(i).getMemberNumber()){

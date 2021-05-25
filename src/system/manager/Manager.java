@@ -159,6 +159,6 @@ public class Manager {
 
     public int getMenuNumber(String message, UI ui){
         ui.displayLn(message);
-        return ui.getInt("Not a valid number");
+        return ui.getInt();
     }
 }

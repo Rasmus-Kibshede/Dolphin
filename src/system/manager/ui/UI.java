@@ -28,15 +28,15 @@ public class UI {
         System.out.print(message);
     }
 
-    public int getInt(String errorMessage) {
-        int number = getValidateInt(errorMessage);
+    public int getInt() {
+        int number = getValidateInt();
         scanner.nextLine();
         return number;
     }
 
-    private int getValidateInt(String errorMessage) {
+    private int getValidateInt() {
         while (!scanner.hasNextInt()) {
-            display(errorMessage);
+            display("Whoopsie - I would like a number.");
             scanner.next();
         }
         return scanner.nextInt();
@@ -47,11 +47,11 @@ public class UI {
     }
 
     public int validateRange(int maxRange) {
-        int choice = getInt("Please enter a number: ");
+        int choice = getInt();
 
         while (choice < 0 || choice > maxRange) {
             displayLn("Out of range, try again");
-            choice = getInt("Please enter a number: ");
+            choice = getInt();
         }
 
         return choice;
@@ -84,7 +84,7 @@ public class UI {
 
     public Duration getTime() {
         display("Please enter time in milliseconds (1 second = 1000 milliseconds): ");
-        int time = getInt("Please enter time in milliseconds (1 second = 1000 milliseconds): ");
+        int time = getInt();
         return Duration.ofMillis(time);
     }
 
@@ -92,7 +92,7 @@ public class UI {
         int choice;
 
         do {
-            choice = getInt("Whoopsie - I would like a number.");
+            choice = getInt();
             if (choice == 1) {
                 return Discipline.BUTTERFLY;
             } else if (choice == 2) {

@@ -39,7 +39,7 @@ public class CreateMember implements Command {
                 do{
                     ui.displayLn(manager.getDisciplines());
                     ui.displayLn("Enter the number of the discipline you want to add: ");
-                    int disciplineChoice = ui.getInt("Not a valid number");
+                    int disciplineChoice = ui.getInt();
                     disciplines = setDisciplines(disciplineChoice, disciplines);
 
                     ui.displayLn("Do you want to add another discipline? Y for Yes, N for No: ");

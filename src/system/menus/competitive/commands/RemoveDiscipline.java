@@ -26,7 +26,7 @@ public class RemoveDiscipline implements Command {
 
         do {
             ui.displayLn("Enter the Member Number of the Competitor who you want to remove disciplines from: ");
-            int choice = ui.getInt("Whoops, you must have fucked up... We need a competitors member number");
+            int choice = ui.getInt();
 
             removeDiscipline(members, choice, ui);
             ui.displayLn("Do you want to remove more? Enter Y for Yes and N for No: ");
@@ -44,7 +44,7 @@ public class RemoveDiscipline implements Command {
                 }
                 ui.displayLn("Enter the number of the discipline you want to remove: ");
                 //Kan man ikke genbruge den første choice??
-                int choice1 = ui.getInt("Not a valid number");
+                int choice1 = ui.getInt();
                 manager.removeFromTeam((Competitor) member, disciplines.get(choice1 - 1));
                 disciplines.remove(choice1 - 1);
             }

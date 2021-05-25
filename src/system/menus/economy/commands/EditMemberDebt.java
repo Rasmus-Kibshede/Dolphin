@@ -22,7 +22,7 @@ public class EditMemberDebt implements Command {
 
         ArrayList<Member> members = manager.getMembers(); // Den kender ikke member nu, vel? What do u mean?
         ui.display("\nPlease enter member number of member to be edited: ");
-        int memberNumber = ui.getInt("Please enter a valid member number");
+        int memberNumber = ui.getInt();
 
         for (int i = 0; i < members.size(); i++) {
             if (memberNumber == members.get(i).getMemberNumber()) {

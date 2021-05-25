@@ -24,7 +24,7 @@ public class AddDiscipline implements Command {
         //Brug en metode istedet for de næste 3 linjer??
         manager.getShowCompetitors().execute(ui);
         ui.displayLn("Enter the Member Number of the Competitor who you want to add disciplines to: ");
-        int choice = ui.getInt("Not a valid number");
+        int choice = ui.getInt();
 
         addDiscipline(members, choice, ui);
 
