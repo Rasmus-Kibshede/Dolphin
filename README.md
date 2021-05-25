@@ -9,3 +9,4 @@ Dette administrative system består af en hovedmenu der fører brugere til hhv. 
 
 ## Opbygning af program
 Dette administrtive program er bygget på command pattern således de fleste funktioner i programmet implementerer interfacen Command. Ligeledes nedarver alle menuer fra MenuCommand klassen, der implementerer Command.
+Manager klassen har instanser af de forskellige andre klasser og er dermed den adgangsgivende force i programmet. Programmet benytter sig af filer til at gemme data. De forskellige filer er i FileHandler som oprettes i Manager, hvorfor det er her igennem de forskellige kalsser som implementere command får adgang til at gemme og loade informationer om medlemmere og folk i RKI.
