@@ -5,6 +5,7 @@ import system.member.competitor.Team;
 import system.manager.ui.UI;
 
 public class ShowTeam implements Command {
+    //Skal være final
     private Team team;
 
     public ShowTeam(Team team) {

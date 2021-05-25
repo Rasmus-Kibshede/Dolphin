@@ -6,6 +6,7 @@ import system.menus.MenuCommand;
 import system.menus.competitive.commands.*;
 
 public class CompetitiveAdministration extends MenuCommand {
+  //Skal vi ikke bare lave den final??
   private Application application;
 
   public CompetitiveAdministration(Application application) {

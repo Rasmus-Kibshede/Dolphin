@@ -12,6 +12,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class RegisterTrainingScore implements Command {
+    //SKal være final
     private Manager manager;
 
     public RegisterTrainingScore(Manager manager) {
@@ -23,8 +24,8 @@ public class RegisterTrainingScore implements Command {
 
         manager.getShowCompetitors().execute(ui);
 
-        ui.display("\nPlease enter member number for competitor: ");
-        int memberNumber = ui.getInt("This is not a number.");
+        ui.display("\nEnter Member Number of the Competitor whose training score you want to register: ");
+        int memberNumber = ui.getInt("This is not a valid input.");
 
         ui.display("\nPlease enter date dd-mm-yyyy: ");
         LocalDate date = ui.getDate();
@@ -39,9 +40,8 @@ public class RegisterTrainingScore implements Command {
                 }
             }
         }
-        //ui.displayLn(manager.getMembers().get());
-        //ui.displayLn(manager.getDisciplines());
-        ui.display("Please enter discipline: ");
+
+        ui.display("Please choose a discipline: ");
         Discipline discipline = ui.getDiscipline();
 
         TrainingScore trainingScore = new TrainingScore(date, time, discipline);

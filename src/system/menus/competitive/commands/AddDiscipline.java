@@ -10,6 +10,7 @@ import system.manager.ui.UI;
 import java.util.ArrayList;
 
 public class AddDiscipline implements Command {
+    //Skal være final
     private Manager manager;
 
     public AddDiscipline(Manager manager) {
@@ -18,19 +19,26 @@ public class AddDiscipline implements Command {
 
     @Override
     public void execute(UI ui) {
-        manager.getShowCompetitors().execute(ui);
         ArrayList<Member> members = manager.getMembers();
-        boolean addMore;
 
+        //Brug en metode istedet for de næste 3 linjer??
+        manager.getShowCompetitors().execute(ui);
         ui.displayLn("Enter the Member Number of the Competitor who you want to add disciplines to: ");
         int choice = ui.getInt("Not a valid number");
+
+        addDiscipline(members, choice, ui);
+
+        manager.getFileHandler().saveFile(members);
+    }
+
+    public void addDiscipline(ArrayList<Member> members, int choice, UI ui){
+        boolean addMore;
 
         for (Member m : members) {
             if (m instanceof Competitor && m.getMemberNumber() == choice) {
                 do {
                     ui.displayLn(manager.getDisciplines());
                     ui.displayLn("Enter the number of the discipline you want to add: Write 0 when done");
-                    int choice2;
 
                     Discipline discipline;
                     do {
