@@ -5,11 +5,14 @@ import system.Command;
 import system.member.Member;
 import system.manager.ui.UI;
 
-public class ShowMembersInRKI implements Command {
+/**
+ This class implements the Interface Command. This class displays the people in RKI to the user.
+ */
+public class ShowPeopleInRKI implements Command {
 
   private final Manager MANAGER;
 
-  public ShowMembersInRKI(Manager MANAGER) {
+  public ShowPeopleInRKI(Manager MANAGER) {
     this.MANAGER = MANAGER;
   }
 

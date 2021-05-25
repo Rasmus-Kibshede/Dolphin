@@ -6,10 +6,13 @@ import system.member.Member;
 import system.manager.ui.UI;
 import java.util.ArrayList;
 
-public class RemoveMemberFromRKI implements Command {
+/**
+ This class implements the interface Command. This class lets the user remove a member from the RKI file.
+ */
+public class RemovePersonFromRKI implements Command {
   private final Manager MANAGER;
 
-  public RemoveMemberFromRKI(Manager MANAGER) {
+  public RemovePersonFromRKI(Manager MANAGER) {
     this.MANAGER = MANAGER;
   }
 

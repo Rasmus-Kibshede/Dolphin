@@ -4,6 +4,10 @@ import system.manager.Manager;
 import system.Command;
 import system.manager.ui.UI;
 
+/**
+ This class implements the interface Command. This class lets the user shut down a members membership and
+ move them to a file with people in RKI. These people are earlier members who have not paid their bills.
+ */
 public class MoveMemberToRKI implements Command {
   private final Manager MANAGER;
 

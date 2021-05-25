@@ -5,6 +5,9 @@ import system.Command;
 import system.member.Member;
 import system.manager.ui.UI;
 
+/**
+ This class implements the Command Interface. This class displays the clubs expected income from all members.
+ */
 public class ShowExpectedIncome implements Command {
 
   private final Manager MANAGER;

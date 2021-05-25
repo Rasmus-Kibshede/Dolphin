@@ -6,6 +6,9 @@ import system.member.Member;
 import system.manager.ui.UI;
 import java.util.ArrayList;
 
+/**
+ This class implements Command interface. This class lets the user edit whether a member is in debt or not.
+ */
 public class EditMemberDebt implements Command {
     private Manager manager;
 
