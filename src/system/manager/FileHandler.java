@@ -317,7 +317,6 @@ public class FileHandler {
         return memberNumber;
     }
     
-
     //----------------------------------------- Member type check -------------------------------------
 
     private boolean checkMemberType(Member member) {
