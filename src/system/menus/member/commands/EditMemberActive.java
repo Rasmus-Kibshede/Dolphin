@@ -16,15 +16,30 @@ public class EditMemberActive implements Command {
 
   @Override
   public void execute(UI ui) {
-    manager.getShowMembers().execute(ui);
+    ArrayList<Member> members = manager.getMembers();
+    //manager.getShowMembers().execute(ui);
+
+    displayMembers(members, ui);
+
 
     int memberNumber = manager.getMenuNumber("Enter the Member Number of the member you want to edit: ", ui);
 
-    manager.getFileHandler().saveFile(editActivityOfMember(memberNumber, ui));
+    manager.getFileHandler().saveFile(editActivityOfMember(members, memberNumber, ui));
   }
 
-  public ArrayList<Member> editActivityOfMember(int memberNumber, UI ui) {
-    ArrayList<Member> members = manager.getMembers();
+  public void displayMembers(ArrayList<Member> members, UI ui){
+    for (Member member: members) {
+      ui.displayLn("");
+      ui.display(member.getMemberNumber());
+      ui.display(". ");
+      ui.display(member.getName());
+      ui.display(". ");
+      ui.display(String.valueOf(member.getActive()));
+      ui.displayLn("");
+    }
+  }
+
+  public ArrayList<Member> editActivityOfMember(ArrayList<Member> members, int memberNumber, UI ui) {
 
     for (Member m : members) {
       if (m.getMemberNumber() == memberNumber) {

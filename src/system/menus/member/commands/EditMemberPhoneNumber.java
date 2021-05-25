@@ -15,8 +15,10 @@ public class EditMemberPhoneNumber implements Command {
 
     @Override
     public void execute(UI ui) {
-        manager.getShowMembers().execute(ui);
         ArrayList<Member> members = manager.getMembers();
+
+        displayMembers(members, ui);
+        //manager.getShowMembers().execute(ui);
 
         int memberNumber = manager.getMenuNumber("Enter the Member Number of the member you want to edit: ", ui);
 
@@ -29,6 +31,19 @@ public class EditMemberPhoneNumber implements Command {
         }
         manager.getFileHandler().saveFile(members);
     }
+
+    public void displayMembers(ArrayList<Member> members, UI ui){
+        for (Member member: members) {
+            ui.display(member.getMemberNumber());
+            ui.display(". ");
+            ui.display(member.getName());
+            ui.display(". ");
+            ui.display(member.getPhoneNumber());
+            ui.displayLn("");
+        }
+    }
+
+
 
     @Override
     public String getName() {

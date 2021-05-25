@@ -108,7 +108,7 @@ public class Member implements Comparable<Member>{
                 + email
                 + "\nPhone Number: "
                 + phoneNumber
-                + "\nMembership "
+                + "\nMembership: "
                 + active
                 + "\nIn debt: "
                 + inDebt
