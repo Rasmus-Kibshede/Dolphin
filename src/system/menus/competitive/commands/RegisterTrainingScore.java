@@ -35,17 +35,6 @@ public class RegisterTrainingScore implements Command {
 
         TrainingScore trainingScore = new TrainingScore(date, time, discipline);
 
-        /*
-        Jeg har flyttet det, fordi det måske er smart at vælge svømmeren først?
-
-        manager.getShowCompetitors();
-
-        ui.display("Please enter member number for competitor: ");
-        int memberNumber = ui.getInt("This is not a number.");
-
-        Jeg er enig - Micha
-         */
-
         for (Member member : manager.getMembers()) {
             if (memberNumber == member.getMemberNumber()) {
                 if (member instanceof Competitor) {
