@@ -8,12 +8,13 @@ public class Team {
   private String teamName;
   private Discipline discipline;
 
-  public Team(String coachName, ArrayList<Competitor> competitors, String teamName, Discipline discipline) {
+  /*public Team(String coachName, ArrayList<Competitor> competitors, String teamName, Discipline discipline) {
     setCoachName(coachName);
     setCompetitors(competitors);
     setTeamName(teamName);
     setDiscipline(discipline);
   }
+   */
 
   public Team(String coachName, String teamName, Discipline discipline) {
     setCoachName(coachName);
@@ -21,9 +22,10 @@ public class Team {
     setDiscipline(discipline);
   }
 
-  public String getCoachName() {
+  /*public String getCoachName() {
     return coachName;
   }
+   */
 
   public void setCoachName(String coachName) {
     this.coachName = coachName;
@@ -33,9 +35,10 @@ public class Team {
     return competitors;
   }
 
-  public void setCompetitors(ArrayList<Competitor> competitors) {
+  /*public void setCompetitors(ArrayList<Competitor> competitors) {
     this.competitors = competitors;
   }
+   */
 
   public String getTeamName() {
     return teamName;

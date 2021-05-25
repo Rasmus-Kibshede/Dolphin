@@ -93,7 +93,7 @@ public class FileHandler {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    } //saveRKI???
 
     public ArrayList<Member> loadToRKI() {
         ArrayList<Member> membersInRKI = new ArrayList<>();
@@ -116,7 +116,7 @@ public class FileHandler {
             e.printStackTrace();
         }
         return membersInRKI;
-    }
+    } //loadRKI??
 
     //----------------------------------------- Member -------------------------------------
 
@@ -184,9 +184,9 @@ public class FileHandler {
                 competitions
                         .append(competition.getCompetitionName())
                         .append(" ")
-                        .append(competition.getCompetitionPlacement())
+                        .append(competition.getCompetitorPlacement())
                         .append(" ")
-                        .append(competition.getTime().toMillis())
+                        .append(competition.getCompetitorTime().toMillis())
                         .append(" ");
             }
 
@@ -285,6 +285,20 @@ public class FileHandler {
 
     //----------------------------------------- Member number -------------------------------------
 
+    public void saveMemberNumber() {
+        try {
+            memberNumber++;
+
+            FileWriter fileWriter = new FileWriter(MEMBER_NUMBER_FILE);
+
+            fileWriter.append(String.valueOf(memberNumber));
+            fileWriter.close();
+
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     public int loadMemberNumber() {
 
         memberNumber = 0;
@@ -301,20 +315,6 @@ public class FileHandler {
 
         //TODO Not correct!!! Throw exception if there is no file, instead sending a number back
         return memberNumber;
-    }
-
-    public void saveMemberNumber() {
-        try {
-            memberNumber++;
-
-            FileWriter fileWriter = new FileWriter(MEMBER_NUMBER_FILE);
-
-            fileWriter.append(String.valueOf(memberNumber));
-            fileWriter.close();
-
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
     }
 
     //----------------------------------------- Member type check -------------------------------------

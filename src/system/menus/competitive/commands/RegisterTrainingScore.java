@@ -9,6 +9,7 @@ import system.member.competitor.TrainingScore;
 import system.manager.ui.UI;
 import java.time.Duration;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class RegisterTrainingScore implements Command {
     private Manager manager;
@@ -29,22 +30,21 @@ public class RegisterTrainingScore implements Command {
         LocalDate date = ui.getDate();
         Duration time = ui.getTime();
 
-        ui.displayLn(manager.getDisciplines());
+        for(Member m : manager.getMembers()){
+            if(m instanceof Competitor && m.getMemberNumber() == memberNumber){
+                ArrayList<Discipline> disciplines = ((Competitor) m).getDisciplines();
+                for(int i = 0; i < disciplines.size(); i++){
+                    ui.displayLn(((i) + 1) + ". " + disciplines.toString().replaceAll("\\[","").
+                        replaceAll("]",""));
+                }
+            }
+        }
+        //ui.displayLn(manager.getMembers().get());
+        //ui.displayLn(manager.getDisciplines());
         ui.display("Please enter discipline: ");
         Discipline discipline = ui.getDiscipline();
 
         TrainingScore trainingScore = new TrainingScore(date, time, discipline);
-
-        /*
-        Jeg har flyttet det, fordi det måske er smart at vælge svømmeren først?
-
-        manager.getShowCompetitors();
-
-        ui.display("Please enter member number for competitor: ");
-        int memberNumber = ui.getInt("This is not a number.");
-
-        Jeg er enig - Micha
-         */
 
         for (Member member : manager.getMembers()) {
             if (memberNumber == member.getMemberNumber()) {

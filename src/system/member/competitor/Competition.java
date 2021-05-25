@@ -1,8 +1,6 @@
 package system.member.competitor;
 
 import java.time.Duration;
-import java.time.LocalTime;
-import java.util.ArrayList;
 
 /**
  This class is a Competition consiting of a name for the competition and respectively a competitor placement and
@@ -10,25 +8,25 @@ import java.util.ArrayList;
  */
 public class Competition {
   private String competitionName;
-  private int competitionPlacement;
-  private Duration time;
+  private int competitorPlacement;
+  private Duration competitorTime;
 
-  public Competition(String competitionName, int competitionPlacement, Duration time) {
+  public Competition(String competitionName, int competitiorPlacement, Duration time) {
     this.competitionName = competitionName;
-    this.competitionPlacement = competitionPlacement;
-    this.time = time;
+    this.competitorPlacement = competitiorPlacement;
+    this.competitorTime = time;
   }
 
   public String getCompetitionName() {
     return competitionName;
   }
 
-  public int getCompetitionPlacement() {
-    return competitionPlacement;
+  public int getCompetitorPlacement() {
+    return competitorPlacement;
   }
 
-  public Duration getTime() {
-    return time;
+  public Duration getCompetitorTime() {
+    return competitorTime;
   }
 
   @Override
@@ -36,8 +34,8 @@ public class Competition {
     return "Competition name: "
             + competitionName
             + "  Placement: "
-            + competitionPlacement
+            + competitorPlacement
             + " Time: "
-            + time.toMillis();
+            + competitorTime.toMillis();
   }
 }
