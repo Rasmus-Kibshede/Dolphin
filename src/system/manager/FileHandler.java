@@ -184,9 +184,9 @@ public class FileHandler {
                 competitions
                         .append(competition.getCompetitionName())
                         .append(" ")
-                        .append(competition.getCompetitionPlacement())
+                        .append(competition.getCompetitorPlacement())
                         .append(" ")
-                        .append(competition.getTime().toMillis())
+                        .append(competition.getCompetitorTime().toMillis())
                         .append(" ");
             }
 
