@@ -17,9 +17,8 @@ public class EditMemberActive implements Command {
   @Override
   public void execute(UI ui) {
     manager.getShowMembers().execute(ui);
-    ui.displayLn("Enter the Member Number of the member you want to edit: ");
-    int memberNumber = ui.getInt("Not a valid number");
 
+    int memberNumber = manager.getMenuNumber("Enter the Member Number of the member you want to edit: ", ui);
 
     manager.getFileHandler().saveFile(editActivityOfMember(memberNumber, ui));
   }

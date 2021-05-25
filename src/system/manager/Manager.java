@@ -1,5 +1,6 @@
 package system.manager;
 
+import system.manager.ui.UI;
 import system.member.Member;
 import system.member.competitor.Competitor;
 import system.member.competitor.Discipline;
@@ -154,5 +155,10 @@ public class Manager {
                 teams[3].getCompetitors().remove(competitor);
             }
         }
+    }
+
+    public int getMenuNumber(String message, UI ui){
+        ui.displayLn(message);
+        return ui.getInt("Not a valid number");
     }
 }

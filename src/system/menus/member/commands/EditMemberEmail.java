@@ -17,8 +17,9 @@ public class EditMemberEmail implements Command {
     public void execute(UI ui) {
         manager.getShowMembers().execute(ui);
         ArrayList<Member> members = manager.getMembers();
-        ui.displayLn("Enter the Member Number of the member you want to edit: ");
-        int memberNumber = ui.getInt("Not a valid number");
+
+        int memberNumber = manager.getMenuNumber("Enter the Member Number of the member you want to edit: ", ui);
+
         for(Member m : members){
             if(m.getMemberNumber() == memberNumber){
                 ui.displayLn("Enter the new email:");

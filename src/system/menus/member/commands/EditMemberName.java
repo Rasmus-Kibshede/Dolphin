@@ -15,10 +15,12 @@ public class EditMemberName implements Command {
 
     @Override
     public void execute(UI ui) {
-        manager.getShowMembers().execute(ui);
         ArrayList<Member> members = manager.getMembers();
-        ui.displayLn("Enter the Member Number of the member you want to edit: ");
-        int memberNumber = ui.getInt("Not a valid number");
+
+        manager.getShowMembers().execute(ui);
+
+        int memberNumber = manager.getMenuNumber("Enter the Member Number of the member you want to edit: ", ui);
+
         for(Member m : members){
             if (m.getMemberNumber() == memberNumber) {
                 ui.displayLn("Enter member name: ");

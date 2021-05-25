@@ -15,8 +15,8 @@ public class RemoveMember implements Command {
     public void execute(UI ui) {
         manager.getShowMembers().execute(ui); //Skal måske flyttes ned mellem removing member og which member?
         ui.displayLn("Removing Member");
-        ui.display("Which member is to be removed? Please enter Membernumber:");
-        int memberNumber = ui.getInt("Please enter an existing member number");
+
+        int memberNumber = manager.getMenuNumber("Which member is to be removed? Please enter Member number: ", ui);
 
         //Vi skal have smidt et loop ind
 
