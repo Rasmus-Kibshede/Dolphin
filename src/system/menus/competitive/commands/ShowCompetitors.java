@@ -7,10 +7,10 @@ import system.member.competitor.Competitor;
 import system.manager.ui.UI;
 
 /**
- This class (implements command) is to show the members which are competitors.
+ * This class (implements command) is to show the members which are competitors.
  */
 public class ShowCompetitors implements Command {
-//Skal være fianl
+  //Skal være fianl
   private Manager manager;
 
   public ShowCompetitors(Manager manager) {
@@ -19,10 +19,10 @@ public class ShowCompetitors implements Command {
 
   @Override
   public void execute(UI ui) {
-
+    ui.displayParameters();
     for (Member member : manager.getMembers()) {
       if (member instanceof Competitor) {
-        ui.displayLn(member.toString());
+        ui.displayMember(member);
       }
     }
   }

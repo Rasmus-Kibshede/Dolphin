@@ -65,9 +65,9 @@ public class Competitor extends Member {
         return super.toString() +
                 "TrainingScores: "
                 + trainingScores
-                + ". Disciplines: "
+                + "\nDisciplines: "
                 + disciplines
-                + ". Competitions: "
+                + "\nCompetitions: "
                 + competitions
                 ;
     }

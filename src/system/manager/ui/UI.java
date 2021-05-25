@@ -1,5 +1,6 @@
 package system.manager.ui;
 
+import system.member.Member;
 import system.member.competitor.Discipline;
 import java.time.Duration;
 import java.time.LocalDate;
@@ -104,5 +105,18 @@ public class UI {
             }
         } while (choice < 0 || choice > 5);
         return null;
+    }
+
+
+
+    public void displayMember(Member member){
+        displayLn(member.toString());
+        displayParameters();
+    }
+
+    public void displayParameters(){
+        displayLn("");
+        displayLn("----------------------------------------------");
+        displayLn("");
     }
 }

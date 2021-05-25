@@ -14,10 +14,10 @@ public class ShowMembers implements Command {
 
     @Override
     public void execute(UI ui) {
-        ui.displayLn("");
+        ui.displayParameters();
         for (int i = 0; i < manager.getMembers().size(); i++) {
             Collections.sort(manager.getMembers());
-            ui.displayLn(manager.getMembers().get(i).toString());
+            ui.displayMember(manager.getMembers().get(i));
         }
     }
 

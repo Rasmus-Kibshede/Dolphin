@@ -100,19 +100,19 @@ public class Member implements Comparable<Member>{
     public String toString() {
         return "Member number: "
                 + memberNumber
-                + ". Name: "
+                + "\nName: "
                 + name
-                + ". Date of Birth: "
+                + "\nDate of Birth: "
                 + dateOfBirth
-                + ". Email: "
+                + "\nEmail: "
                 + email
-                + " Phone Number: "
+                + "\nPhone Number: "
                 + phoneNumber
-                + ". Membership "
+                + "\nMembership "
                 + active
-                + ". In debt: "
+                + "\nIn debt: "
                 + inDebt
-                + ". Memberprice: "
+                + "\nMemberprice: "
                 + membershipPrice
                 + "\n"
         ;
