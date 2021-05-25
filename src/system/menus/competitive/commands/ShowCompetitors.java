@@ -10,7 +10,7 @@ import system.manager.ui.UI;
  This class (implements command) is to show the members which are competitors.
  */
 public class ShowCompetitors implements Command {
-
+//Skal være fianl
   private Manager manager;
 
   public ShowCompetitors(Manager manager) {

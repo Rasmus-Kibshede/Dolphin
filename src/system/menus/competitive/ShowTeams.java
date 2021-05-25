@@ -6,10 +6,10 @@ import system.menus.competitive.commands.ShowTeam;
 import system.menus.MenuCommand;
 
 public class ShowTeams extends MenuCommand implements Command {
-    private Manager manager;
+    private final Manager MANAGER;
 
-    public ShowTeams(Manager manager) {
-        this.manager = manager;
+    public ShowTeams(Manager MANAGER) {
+        this.MANAGER = MANAGER;
     }
 
     @Override
@@ -20,14 +20,14 @@ public class ShowTeams extends MenuCommand implements Command {
     @Override
     protected Command[] getCommands() {
         return new Command[]{
-                new ShowTeam(this.manager.getTeams()[0]),
-                new ShowTeam(this.manager.getTeams()[1]),
-                new ShowTeam(this.manager.getTeams()[2]),
-                new ShowTeam(this.manager.getTeams()[3]),
-                new ShowTeam(this.manager.getTeams()[4]),
-                new ShowTeam(this.manager.getTeams()[5]),
-                new ShowTeam(this.manager.getTeams()[6]),
-                new ShowTeam(this.manager.getTeams()[7])
+                new ShowTeam(this.MANAGER.getTeams()[0]),
+                new ShowTeam(this.MANAGER.getTeams()[1]),
+                new ShowTeam(this.MANAGER.getTeams()[2]),
+                new ShowTeam(this.MANAGER.getTeams()[3]),
+                new ShowTeam(this.MANAGER.getTeams()[4]),
+                new ShowTeam(this.MANAGER.getTeams()[5]),
+                new ShowTeam(this.MANAGER.getTeams()[6]),
+                new ShowTeam(this.MANAGER.getTeams()[7])
         };
     }
 }

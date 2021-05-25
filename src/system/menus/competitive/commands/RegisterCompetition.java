@@ -14,6 +14,7 @@ import java.time.Duration;
  competition so the user can add this competition to a competitors arrayList of competitions.
  */
 public class RegisterCompetition implements Command {
+    //Skal være final
     private Manager manager;
 
     public RegisterCompetition(Manager manager) {
@@ -24,6 +25,7 @@ public class RegisterCompetition implements Command {
     @Override
     public void execute(UI ui) {
 
+        //Brug en metode istedet for linje de næste 3 linjer??
         manager.getShowCompetitors().execute(ui);
         ui.display("Enter member number for member you want to get: ");
         int memberNumber = ui.getInt("This is not what we are looking for.");
@@ -35,8 +37,10 @@ public class RegisterCompetition implements Command {
         ui.display("Enter time - ");
         Duration time = ui.getTime();
 
-        // Denne del (check membernumber) bruges ofte gennem programmet skal vi evt lave det til en metode i manager??
+        addCompetition(memberNumber, competitionName, placement, time);
+    }
 
+    public void addCompetition(int memberNumber, String competitionName, int placement, Duration time){
         for (Member member : manager.getMembers()) {
             if (member.getMemberNumber() == memberNumber) {
                 if (member instanceof Competitor) {

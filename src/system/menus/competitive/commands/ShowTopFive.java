@@ -12,6 +12,7 @@ import java.util.Collections;
 
 public class ShowTopFive implements Command {
 
+  //Skal vi ikke bare lave den final??
   private Manager manager;
 
   public ShowTopFive(Manager manager) {
