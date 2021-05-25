@@ -27,6 +27,7 @@ import java.util.Scanner;
  because they repeatedly did not pay their bills to the club.
  Besides all this it also supplies the program with membernumbers, so that every member gets a unique ID.
  */
+
 public class FileHandler {
     private FileWriter fileWriter;
 
