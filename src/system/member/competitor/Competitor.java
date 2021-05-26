@@ -9,7 +9,6 @@ import java.util.ArrayList;
  disciplines, trainingscores pr. discipline and competitions connected to them.
  */
 public class Competitor extends Member implements Comparable<Competitor>{
-
     private ArrayList<Discipline> disciplines = new ArrayList<>();
     private ArrayList<TrainingScore> trainingScores = new ArrayList<>();
     private ArrayList<Competition> competitions = new ArrayList<>();
@@ -70,6 +69,10 @@ public class Competitor extends Member implements Comparable<Competitor>{
 
     @Override
     public int compareTo(Member o) {
+        for (int i = 0; i < getTrainingScores().size(); i++) {
+            if (this.getTrainingScores().get(i).getTIME().toMillis() == o.)
+        }
+        if (this.)
         return 0;
     }
     /*
