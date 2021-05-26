@@ -8,7 +8,7 @@ import java.util.ArrayList;
  This class (subclass to Member) is a type of member in "Delfinen" club. A Comeptitor can have different
  disciplines, trainingscores pr. discipline and competitions connected to them.
  */
-public class Competitor extends Member {
+public class Competitor extends Member implements Comparable<Competitor>{
 
     private ArrayList<Discipline> disciplines = new ArrayList<>();
     private ArrayList<TrainingScore> trainingScores = new ArrayList<>();
@@ -67,6 +67,21 @@ public class Competitor extends Member {
     public ArrayList<Competition> getCompetitions() {
         return competitions;
     }
+
+    @Override
+    public int compareTo(Member o) {
+        return 0;
+    }
+    /*
+    @Override
+    public int compareTo(GuineaPig guineaPig) {
+        if (this.name.equals(guineaPig.getName())) {
+            return this.foodInGrams - guineaPig.getFoodInGrams();
+        } else {
+            return this.name.compareTo(guineaPig.getName());
+        }
+    }
+     */
 
     @Override
     public String getName() {
