@@ -72,6 +72,11 @@ public class Manager {
         return showCompetitors;
     }
 
+    public int getMenuNumber(String message, UI ui){
+        ui.displayLn(message);
+        return ui.getInt();
+    }
+
     public void addToTeam() {
         ArrayList<Competitor> competitors = new ArrayList<>();
 
@@ -154,8 +159,4 @@ public class Manager {
         }
     }
 
-    public int getMenuNumber(String message, UI ui){
-        ui.displayLn(message);
-        return ui.getInt();
-    }
 }
