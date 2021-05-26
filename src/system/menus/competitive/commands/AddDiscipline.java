@@ -20,10 +20,9 @@ public class AddDiscipline implements Command {
     public void execute(UI ui) {
         ArrayList<Member> members = MANAGER.getMembers();
 
-        //Brug en metode istedet for de næste 3 linjer??
         MANAGER.getShowCompetitors().execute(ui);
-        ui.displayLn("Enter the Member Number of the Competitor who you want to add disciplines to: ");
-        int choice = ui.getInt();
+
+        int choice = MANAGER.getMenuNumber("Enter the Member Number of the Competitor who you want to add disciplines to: ", ui);
 
         addDiscipline(members, choice, ui);
 

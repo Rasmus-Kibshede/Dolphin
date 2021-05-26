@@ -24,8 +24,7 @@ public class RemoveDiscipline implements Command {
         boolean removeMore;
 
         do {
-            ui.displayLn("Enter the Member Number of the Competitor who you want to remove disciplines from: ");
-            int choice = ui.getInt();
+            int choice = MANAGER.getMenuNumber("Enter the Member Number of the Competitor who you want to remove disciplines from: ", ui);
 
             removeDiscipline(members, choice, ui);
             ui.displayLn("Do you want to remove more? Enter Y for Yes and N for No: ");
@@ -41,8 +40,8 @@ public class RemoveDiscipline implements Command {
                 for (int i = 0; i < disciplines.size(); i++) {
                     ui.displayLn(((i) + 1) + ". " + disciplines.get(i).toString());
                 }
-                ui.displayLn("Enter the number of the discipline you want to remove: ");
-                int userChoice = ui.getInt();
+
+                int userChoice = MANAGER.getMenuNumber("Enter the number of the discipline you want to remove: ", ui);
                 MANAGER.removeFromTeam((Competitor) member, disciplines.get(userChoice - 1));
                 disciplines.remove(userChoice - 1);
             }

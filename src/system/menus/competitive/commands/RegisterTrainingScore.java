@@ -20,10 +20,9 @@ public class RegisterTrainingScore implements Command {
 
     @Override
     public void execute(UI ui) {
-        //Brug metode istedet for de næste 3 linjer
         MANAGER.getShowCompetitors().execute(ui);
-        ui.display("\nEnter Member Number of the Competitor whose training score you want to register: ");
-        int memberNumber = ui.getInt();
+
+        int memberNumber = MANAGER.getMenuNumber("\nEnter Member Number of the Competitor whose training score you want to register: ", ui);
 
         ui.display("\nPlease enter date dd-mm-yyyy: ");
         LocalDate date = ui.getDate();

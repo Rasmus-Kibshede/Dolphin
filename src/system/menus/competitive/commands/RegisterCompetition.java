@@ -22,10 +22,10 @@ public class RegisterCompetition implements Command {
 
     @Override
     public void execute(UI ui) {
-        //Brug en metode istedet for linje de næste 3 linjer??
+
         MANAGER.getShowCompetitors().execute(ui);
-        ui.display("Enter member number for member you want to get: ");
-        int memberNumber = ui.getInt();
+
+        int memberNumber = MANAGER.getMenuNumber("Enter member number for member you want to get: ", ui);
 
         ui.display("Enter competition name: ");
         String competitionName = ui.getString();
