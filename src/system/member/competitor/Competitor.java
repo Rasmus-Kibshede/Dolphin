@@ -73,6 +73,8 @@ public class Competitor extends Member implements Comparable<Competitor>{
             if (this.getTrainingScores().get(i).getTIME().toMillis() == o.)
         }
         if (this.)
+
+
         return 0;
     }
     /*

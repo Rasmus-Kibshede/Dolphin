@@ -28,10 +28,11 @@ public class RegisterTrainingScore implements Command {
         LocalDate date = ui.getDate();
         Duration time = ui.getTime();
 
-        showCompetitorsDisciplines(memberNumber, ui);
+        //VI må lige se om det virker imorgen
+        //showCompetitorsDisciplines(memberNumber, ui);
+        MANAGER.getDisciplines();
 
         ui.display("Please choose a discipline: ");
-        //Det er ikke den rigtige disciplin der bliver valgt...
         Discipline discipline = ui.getDiscipline();
 
         TrainingScore trainingScore = new TrainingScore(date, time, discipline);
