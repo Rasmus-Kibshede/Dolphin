@@ -20,7 +20,7 @@ public class EditMemberDebt implements Command {
     public void execute(UI ui) {
         MANAGER.getShowMembers().execute(ui);
 
-        ArrayList<Member> members = MANAGER.getMembers(); // Den kender ikke member nu, vel? What do u mean?
+        ArrayList<Member> members = MANAGER.getMembers();
         ui.display("\nPlease enter member number of member to be edited: ");
         int memberNumber = ui.getInt();
 
