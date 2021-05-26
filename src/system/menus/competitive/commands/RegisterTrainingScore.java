@@ -12,18 +12,16 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class RegisterTrainingScore implements Command {
-    //SKal være final
-    private Manager manager;
+    private final Manager MANAGER;
 
     public RegisterTrainingScore(Manager manager) {
-        this.manager = manager;
+        this.MANAGER = manager;
     }
 
     @Override
     public void execute(UI ui) {
-
         //Brug metode istedet for de næste 3 linjer
-        manager.getShowCompetitors().execute(ui);
+        MANAGER.getShowCompetitors().execute(ui);
         ui.display("\nEnter Member Number of the Competitor whose training score you want to register: ");
         int memberNumber = ui.getInt();
 
@@ -41,11 +39,11 @@ public class RegisterTrainingScore implements Command {
 
         addTrainingScore(memberNumber, trainingScore, ui);
 
-        manager.getFileHandler().saveFile(manager.getMembers());
+        MANAGER.getFileHandler().saveFile(MANAGER.getMembers());
     }
 
     private void addTrainingScore(int memberNumber, TrainingScore trainingScore, UI ui){
-        for (Member member : manager.getMembers()) {
+        for (Member member : MANAGER.getMembers()) {
             if (memberNumber == member.getMemberNumber()) {
                 if (member instanceof Competitor) {
                     TrainingScore checkExistence = getTrainingScore((Competitor) member, trainingScore);
@@ -62,7 +60,6 @@ public class RegisterTrainingScore implements Command {
                     } else {
                         ((Competitor) member).getTrainingScores().add(trainingScore);
                     }
-
                 } else {
                     ui.display("The member number you entered does not match a competitor.");
                 }
@@ -71,9 +68,11 @@ public class RegisterTrainingScore implements Command {
     }
 
     private void showCompetitorsDisciplines(int memberNumber, UI ui){
-        for(Member m : manager.getMembers()){
+        for(Member m : MANAGER.getMembers()){
+
             if(m instanceof Competitor && m.getMemberNumber() == memberNumber){
                 ArrayList<Discipline> disciplines = ((Competitor) m).getDisciplines();
+
                 for(int i = 0; i < disciplines.size(); i++){
                     ui.displayLn(((i) + 1) + ". " + disciplines.get(i).toString().replaceAll("\\[","").
                         replaceAll("]",""));
@@ -85,6 +84,7 @@ public class RegisterTrainingScore implements Command {
     private boolean checkIfBetter(TrainingScore trainingScoreOne, TrainingScore trainingScoreTwo) {
         if (trainingScoreOne.getDISCIPLINE() == trainingScoreTwo.getDISCIPLINE()) {
             long originalTime = trainingScoreOne.getTIME().toMillis();
+
             if (originalTime == 0) {
                 return true;
             }

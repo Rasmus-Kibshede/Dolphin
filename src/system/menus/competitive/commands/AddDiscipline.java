@@ -10,25 +10,24 @@ import system.manager.ui.UI;
 import java.util.ArrayList;
 
 public class AddDiscipline implements Command {
-    //Skal være final
-    private Manager manager;
+    private final Manager MANAGER;
 
     public AddDiscipline(Manager manager) {
-        this.manager = manager;
+        this.MANAGER = manager;
     }
 
     @Override
     public void execute(UI ui) {
-        ArrayList<Member> members = manager.getMembers();
+        ArrayList<Member> members = MANAGER.getMembers();
 
         //Brug en metode istedet for de næste 3 linjer??
-        manager.getShowCompetitors().execute(ui);
+        MANAGER.getShowCompetitors().execute(ui);
         ui.displayLn("Enter the Member Number of the Competitor who you want to add disciplines to: ");
         int choice = ui.getInt();
 
         addDiscipline(members, choice, ui);
 
-        manager.getFileHandler().saveFile(members);
+        MANAGER.getFileHandler().saveFile(members);
     }
 
     public void addDiscipline(ArrayList<Member> members, int choice, UI ui){
@@ -37,7 +36,7 @@ public class AddDiscipline implements Command {
         for (Member m : members) {
             if (m instanceof Competitor && m.getMemberNumber() == choice) {
                 do {
-                    ui.displayLn(manager.getDisciplines());
+                    ui.displayLn(MANAGER.getDisciplines());
                     ui.displayLn("Enter the number of the discipline you want to add: Write 0 when done");
 
                     Discipline discipline;
@@ -48,14 +47,14 @@ public class AddDiscipline implements Command {
                     ((Competitor) m).getDisciplines().add(discipline);
 
                     ui.displayLn("Do you want to add more? Enter Y for Yes and N for No: ");
-                    addMore = setMoreDiscipline(Character.toLowerCase(ui.getChar('y', 'n')));
+                    addMore = checkAddMore(Character.toLowerCase(ui.getChar('y', 'n')));
                 } while (addMore);
-                manager.addToTeam();
+                MANAGER.addToTeam();
             }
         }
     }
 
-    private boolean setMoreDiscipline(Character c) {
+    private boolean checkAddMore(Character c) {
         if (c == 'y') {
             return true;
         }

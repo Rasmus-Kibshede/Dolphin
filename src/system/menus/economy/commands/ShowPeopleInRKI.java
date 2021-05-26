@@ -9,7 +9,6 @@ import system.manager.ui.UI;
  This class implements the Interface Command. This class displays the people in RKI to the user.
  */
 public class ShowPeopleInRKI implements Command {
-
   private final Manager MANAGER;
 
   public ShowPeopleInRKI(Manager MANAGER) {

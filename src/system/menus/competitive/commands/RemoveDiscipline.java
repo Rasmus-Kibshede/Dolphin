@@ -10,18 +10,17 @@ import system.manager.ui.UI;
 import java.util.ArrayList;
 
 public class RemoveDiscipline implements Command {
-    //Skal være final
-    private Manager manager;
+    private final Manager MANAGER;
 
     public RemoveDiscipline(Manager manager) {
-        this.manager = manager;
+        this.MANAGER = manager;
     }
 
     @Override
     public void execute(UI ui) {
-        manager.getShowCompetitors().execute(ui);
+        MANAGER.getShowCompetitors().execute(ui);
 
-        ArrayList<Member> members = manager.getMembers();
+        ArrayList<Member> members = MANAGER.getMembers();
         boolean removeMore;
 
         do {
@@ -32,7 +31,7 @@ public class RemoveDiscipline implements Command {
             ui.displayLn("Do you want to remove more? Enter Y for Yes and N for No: ");
             removeMore = setRemoveDiscipline(Character.toLowerCase(ui.getChar('y', 'n')));
         } while (removeMore);
-      manager.getFileHandler().saveFile(members);
+      MANAGER.getFileHandler().saveFile(members);
     }
 
     public void removeDiscipline(ArrayList<Member> members, int choice, UI ui){
@@ -43,10 +42,9 @@ public class RemoveDiscipline implements Command {
                     ui.displayLn(((i) + 1) + ". " + disciplines.get(i).toString());
                 }
                 ui.displayLn("Enter the number of the discipline you want to remove: ");
-                //Kan man ikke genbruge den første choice??
-                int choice1 = ui.getInt();
-                manager.removeFromTeam((Competitor) member, disciplines.get(choice1 - 1));
-                disciplines.remove(choice1 - 1);
+                int userChoice = ui.getInt();
+                MANAGER.removeFromTeam((Competitor) member, disciplines.get(userChoice - 1));
+                disciplines.remove(userChoice - 1);
             }
         }
     }

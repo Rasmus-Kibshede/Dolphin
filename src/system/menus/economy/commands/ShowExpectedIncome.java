@@ -9,7 +9,6 @@ import system.manager.ui.UI;
  This class implements the Command Interface. This class displays the clubs expected income from all members.
  */
 public class ShowExpectedIncome implements Command {
-
   private final Manager MANAGER;
 
   public ShowExpectedIncome(Manager MANAGER) {
@@ -22,7 +21,6 @@ public class ShowExpectedIncome implements Command {
     for (Member member: MANAGER.getMembers()) {
       totalIncome += member.getMembershipPrice();
     }
-
     ui.displayLn("Expected Income: " + totalIncome + " kr");
   }
 

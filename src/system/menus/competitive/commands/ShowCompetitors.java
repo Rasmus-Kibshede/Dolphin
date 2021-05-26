@@ -10,17 +10,16 @@ import system.manager.ui.UI;
  * This class (implements command) is to show the members which are competitors.
  */
 public class ShowCompetitors implements Command {
-  //Skal være fianl
-  private Manager manager;
+  private final Manager MANAGER;
 
   public ShowCompetitors(Manager manager) {
-    this.manager = manager;
+    this.MANAGER = manager;
   }
 
   @Override
   public void execute(UI ui) {
     ui.displayParameters();
-    for (Member member : manager.getMembers()) {
+    for (Member member : MANAGER.getMembers()) {
       if (member instanceof Competitor) {
         ui.displayMember(member);
       }
