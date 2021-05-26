@@ -33,8 +33,8 @@ public class FileHandler {
   private final ArrayList<Member> ALL_MEMBERS = new ArrayList<>();
   private int memberNumber;
 
-  private final File MEMBER_FILE = new File("Members.txt");
-  private final File MEMBERS_IN_RKI_FILE = new File("MembersInRKI.txt");
+  private final File MEMBERS_FILE = new File("Members.txt");
+  private final File PEOPLE_IN_RKI_FILE = new File("PeopleInRKI.txt");
   private final File COMPETITORS_FILE = new File("Competitors.txt");
   private final File MEMBER_NUMBER_FILE = new File("MemberNumber");
 
@@ -58,7 +58,7 @@ public class FileHandler {
       saveCompetitor(onlyCompetitors);
       fileWriter.close();
 
-      fileWriter = new FileWriter(MEMBER_FILE);
+      fileWriter = new FileWriter(MEMBERS_FILE);
       saveMember(onlyMembers);
       fileWriter.close();
 
@@ -86,7 +86,7 @@ public class FileHandler {
   public void saveRKI(ArrayList<Member> members) {
     try {
 
-      fileWriter = new FileWriter(MEMBERS_IN_RKI_FILE);
+      fileWriter = new FileWriter(PEOPLE_IN_RKI_FILE);
       saveMember(members);
       fileWriter.close();
 
@@ -98,7 +98,7 @@ public class FileHandler {
   public ArrayList<Member> loadRKI() {
     ArrayList<Member> membersInRKI = new ArrayList<>();
     try {
-      Scanner fileReader = new Scanner(MEMBERS_IN_RKI_FILE);
+      Scanner fileReader = new Scanner(PEOPLE_IN_RKI_FILE);
 
       while (fileReader.hasNext()) {
         String memberName = fileReader.next();
@@ -145,7 +145,7 @@ public class FileHandler {
   }
 
   private void loadMember() throws FileNotFoundException {
-    Scanner fileReaderMember = new Scanner(MEMBER_FILE);
+    Scanner fileReaderMember = new Scanner(MEMBERS_FILE);
 
     while (fileReaderMember.hasNext()) {
       String memberName = fileReaderMember.next();
