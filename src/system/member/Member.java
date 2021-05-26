@@ -8,7 +8,6 @@ public class Member implements Comparable<Member>{
     private String email;
     private String phoneNumber;
     private boolean active;
-
     private boolean inDebt;
     private double membershipPrice;
     private int memberNumber;
