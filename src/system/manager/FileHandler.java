@@ -88,6 +88,7 @@ public class FileHandler {
 
       fileWriter = new FileWriter(MEMBERS_IN_RKI_FILE);
       saveMember(members);
+      fileWriter.close();
 
     } catch (IOException e) {
       e.printStackTrace();
@@ -104,7 +105,8 @@ public class FileHandler {
         LocalDate dateOfBirth = LocalDate.parse(fileReader.next()); //Husk at sikre formattering.
         String email = fileReader.next();
         String phoneNumber = fileReader.next();
-        Boolean active = Boolean.parseBoolean(fileReader.next());
+        boolean active = Boolean.parseBoolean(fileReader.next());
+        boolean inDebt = Boolean.parseBoolean(fileReader.next());
         String payment = fileReader.next();
         int memberNumber = fileReader.nextInt();
 

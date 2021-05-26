@@ -26,6 +26,12 @@ public class RemovePersonFromRKI implements Command {
 
     ui.displayLn("Removal of person from RKI");
 
+    for (Member RKI : MANAGER.getPeopleInRKI()) {
+      ui.display(RKI.getMemberNumber() + ". ");
+      ui.display(RKI.getName() + ". ");
+      ui.displayLn(RKI.getEmail());
+    }
+
     ui.display("Which person is to be removed? Please enter their member number:");
     int number = ui.getInt();
 
