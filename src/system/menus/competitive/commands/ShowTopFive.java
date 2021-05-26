@@ -45,8 +45,6 @@ public class ShowTopFive implements Command {
           top5 = new ArrayList<>(longs.subList(0, longs.size()));
         }
 
-        //for (int i = 0; i < top5.size(); i++) {
-
 
         for (Competitor competitor : team.getCompetitors()) {
           for (TrainingScore trainingScore : competitor.getTrainingScores()) {
@@ -57,7 +55,6 @@ public class ShowTopFive implements Command {
           }
         }
 
-        //}
 
       } else {
         ui.displayLn("The team is empty");

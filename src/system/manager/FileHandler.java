@@ -316,10 +316,13 @@ public class FileHandler {
 
       memberNumber = Integer.parseInt(fileReader.next());
 
+      return memberNumber;
+
     } catch (FileNotFoundException e) {
       System.out.println(e.getMessage());
 
       //TODO throw here
+      //Create new file
     }
 
     //TODO Not correct!!! Throw exception if there is no file, instead sending a number back
