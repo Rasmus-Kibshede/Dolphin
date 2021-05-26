@@ -8,23 +8,21 @@ import system.manager.ui.UI;
 import java.util.ArrayList;
 
 public class EditMemberActive implements Command {
-  private Manager manager;
+  private final Manager MANAGER;
 
   public EditMemberActive(Manager manager) {
-    this.manager = manager;
+    this.MANAGER = manager;
   }
 
   @Override
   public void execute(UI ui) {
-    ArrayList<Member> members = manager.getMembers();
-    //manager.getShowMembers().execute(ui);
+    ArrayList<Member> members = MANAGER.getMembers();
 
     displayMembers(members, ui);
 
+    int memberNumber = MANAGER.getMenuNumber("Enter the Member Number of the member you want to edit: ", ui);
 
-    int memberNumber = manager.getMenuNumber("Enter the Member Number of the member you want to edit: ", ui);
-
-    manager.getFileHandler().saveFile(editActivityOfMember(members, memberNumber, ui));
+    MANAGER.getFileHandler().saveFile(editActivityOfMember(members, memberNumber, ui));
   }
 
   public void displayMembers(ArrayList<Member> members, UI ui){

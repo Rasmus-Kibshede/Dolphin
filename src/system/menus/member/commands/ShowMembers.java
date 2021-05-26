@@ -6,18 +6,18 @@ import system.manager.ui.UI;
 import java.util.Collections;
 
 public class ShowMembers implements Command {
-    private Manager manager;
+    private final Manager MANAGER;
 
     public ShowMembers(Manager manager) {
-        this.manager = manager;
+        this.MANAGER = manager;
     }
 
     @Override
     public void execute(UI ui) {
         ui.displayParameters();
-        for (int i = 0; i < manager.getMembers().size(); i++) {
-            Collections.sort(manager.getMembers());
-            ui.displayMember(manager.getMembers().get(i));
+        for (int i = 0; i < MANAGER.getMembers().size(); i++) {
+            Collections.sort(MANAGER.getMembers());
+            ui.displayMember(MANAGER.getMembers().get(i));
         }
     }
 

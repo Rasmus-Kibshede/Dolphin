@@ -9,10 +9,10 @@ import system.menus.member.commands.EditMemberName;
 import system.menus.member.commands.EditMemberPhoneNumber;
 
 public class EditMemberMenu extends MenuCommand {
-  private Manager manager;
+  private final Manager MANAGER;
 
   public EditMemberMenu(Manager manager) {
-    this.manager = manager;
+    this.MANAGER = manager;
   }
 
   @Override
@@ -23,10 +23,10 @@ public class EditMemberMenu extends MenuCommand {
   @Override
   protected Command[] getCommands() {
     return new Command[] {
-            new EditMemberName(manager),
-            new EditMemberEmail(manager),
-            new EditMemberPhoneNumber(manager),
-            new EditMemberActive(manager)
+            new EditMemberName(MANAGER),
+            new EditMemberEmail(MANAGER),
+            new EditMemberPhoneNumber(MANAGER),
+            new EditMemberActive(MANAGER)
     };
   }
 }

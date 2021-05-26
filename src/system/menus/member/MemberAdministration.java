@@ -8,11 +8,10 @@ import system.menus.member.commands.ShowMembers;
 import system.menus.MenuCommand;
 
 public class MemberAdministration extends MenuCommand {
-
-  private Application application;
+  private final Application APPLICATION;
 
   public MemberAdministration(Application application) {
-    this.application = application;
+    this.APPLICATION = application;
   }
 
   @Override
@@ -23,10 +22,10 @@ public class MemberAdministration extends MenuCommand {
   @Override
   protected Command[] getCommands() {
     return new Command[]{
-        new ShowMembers(this.application.getMANAGER()),
-        new CreateMember(this.application.getMANAGER()),
-        new EditMemberMenu(this.application.getMANAGER()),
-        new RemoveMember(this.application.getMANAGER()),
+        new ShowMembers(this.APPLICATION.getMANAGER()),
+        new CreateMember(this.APPLICATION.getMANAGER()),
+        new EditMemberMenu(this.APPLICATION.getMANAGER()),
+        new RemoveMember(this.APPLICATION.getMANAGER()),
     };
   }
 }

@@ -8,23 +8,19 @@ import system.manager.ui.UI;
 import java.util.ArrayList;
 
 public class EditMemberEmail implements Command {
-  private Manager manager;
+  private final Manager MANAGER;
 
   public EditMemberEmail(Manager manager) {
-    this.manager = manager;
+    this.MANAGER = manager;
   }
 
   @Override
   public void execute(UI ui) {
+    ArrayList<Member> members = MANAGER.getMembers();
 
-    ArrayList<Member> members = manager.getMembers();
-
-
-    //manager.getShowMembers().execute(ui);
     displayMembers(members, ui);
 
-
-    int memberNumber = manager.getMenuNumber("Enter the Member Number of the member you want to edit: ", ui);
+    int memberNumber = MANAGER.getMenuNumber("Enter the Member Number of the member you want to edit: ", ui);
 
     for (Member m : members) {
       if (m.getMemberNumber() == memberNumber) {
@@ -33,7 +29,7 @@ public class EditMemberEmail implements Command {
         m.setEmail(newEmail);
       }
     }
-    manager.getFileHandler().saveFile(members);
+    MANAGER.getFileHandler().saveFile(members);
   }
 
   public void displayMembers(ArrayList<Member> members, UI ui) {

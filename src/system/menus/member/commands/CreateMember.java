@@ -10,10 +10,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class CreateMember implements Command {
-    private Manager manager;
+    private final Manager MANAGER;
 
     public CreateMember(Manager manager) {
-        this.manager = manager;
+        this.MANAGER = manager;
     }
 
     @Override
@@ -37,7 +37,7 @@ public class CreateMember implements Command {
                 ArrayList<Discipline> disciplines = new ArrayList<>();
                 boolean moreDiscipline;
                 do{
-                    ui.displayLn(manager.getDisciplines());
+                    ui.displayLn(MANAGER.getDisciplines());
                     ui.displayLn("Enter the number of the discipline you want to add: ");
                     int disciplineChoice = ui.getInt();
                     disciplines = setDisciplines(disciplineChoice, disciplines);
@@ -46,19 +46,19 @@ public class CreateMember implements Command {
                     moreDiscipline = setMoreDiscipline(Character.toLowerCase(ui.getChar('y','n')));
                 } while (moreDiscipline);
 
-                manager.getMembers().add(new Competitor(memberName, dateOfBirth, email, phoneNumber, active, memberNumber, disciplines));
-                for (int i = 0; i < manager.getMembers().size(); i++) {
-                    if (manager.getMembers().get(i).getMemberNumber() == memberNumber) {
-                        manager.addToTeam();
+                MANAGER.getMembers().add(new Competitor(memberName, dateOfBirth, email, phoneNumber, active, memberNumber, disciplines));
+                for (int i = 0; i < MANAGER.getMembers().size(); i++) {
+                    if (MANAGER.getMembers().get(i).getMemberNumber() == memberNumber) {
+                        MANAGER.addToTeam();
                     }
                 }
             } else {
-                manager.getMembers().add(new Member(memberName, dateOfBirth, email, phoneNumber, active, memberNumber));
+                MANAGER.getMembers().add(new Member(memberName, dateOfBirth, email, phoneNumber, active, memberNumber));
             }
         } else {
-            manager.getMembers().add(new Member(memberName, dateOfBirth, email, phoneNumber, active, memberNumber));
+            MANAGER.getMembers().add(new Member(memberName, dateOfBirth, email, phoneNumber, active, memberNumber));
         }
-        manager.getFileHandler().saveFile(manager.getMembers());
+        MANAGER.getFileHandler().saveFile(MANAGER.getMembers());
     }
 
     @Override
@@ -74,8 +74,8 @@ public class CreateMember implements Command {
     }
 
     public int setMemberNumber() {
-        int memberNumber = manager.getFileHandler().loadMemberNumber();
-        manager.getFileHandler().saveMemberNumber();
+        int memberNumber = MANAGER.getFileHandler().loadMemberNumber();
+        MANAGER.getFileHandler().saveMemberNumber();
         return memberNumber;
     }
 
@@ -86,12 +86,7 @@ public class CreateMember implements Command {
         return true;
     }
 
-    public void showDisciplines(UI ui){
-
-    }
-
     public ArrayList<Discipline> setDisciplines(int disciplineChoice, ArrayList<Discipline> disciplines){
-        //ArrayList<Discipline> disciplines = new ArrayList<>();
         if (disciplineChoice == 1) {
             disciplines.add(Discipline.BUTTERFLY);
         } else if (disciplineChoice == 2) {
