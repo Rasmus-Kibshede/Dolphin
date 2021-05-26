@@ -10,17 +10,17 @@ import system.manager.ui.UI;
  */
 public class Application {
   private final Manager MANAGER;
-  private UI ui;
-  private Command command;
+  private final UI UI;
+  private final Command COMMAND;
 
   public Application() {
     MANAGER = new Manager();
-    ui = new UI();
-    command = new MainMenu(this);
+    UI = new UI();
+    COMMAND = new MainMenu(this);
   }
 
   public void start() {
-    this.command.execute(this.ui);
+    this.COMMAND.execute(this.UI);
   }
 
   public Manager getMANAGER() {

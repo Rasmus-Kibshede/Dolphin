@@ -24,11 +24,11 @@ public class MoveMemberToRKI implements Command {
 
     for(int i = 0; i < MANAGER.getMembers().size(); i++){
       if(memberNumber == MANAGER.getMembers().get(i).getMemberNumber()){
-        MANAGER.getMembersInRKI().add(MANAGER.getMembers().get(i));
+        MANAGER.getPeopleInRKI().add(MANAGER.getMembers().get(i));
         MANAGER.getMembers().remove(MANAGER.getMembers().get(i));
       }
     }
-    MANAGER.getFileHandler().saveToRKI(MANAGER.getMembersInRKI());
+    MANAGER.getFileHandler().saveRKI(MANAGER.getPeopleInRKI());
   }
 
   @Override

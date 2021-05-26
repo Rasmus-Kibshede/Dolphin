@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class Manager {
     private FileHandler fileHandler = new FileHandler();
     private ArrayList<Member> members = fileHandler.loadFile();
-    private ArrayList<Member> membersInRKI = fileHandler.loadToRKI();
+    private ArrayList<Member> peopleInRKI = fileHandler.loadRKI();
     private ShowMembers showMembers = new ShowMembers(this);
     private Team[] teams;
     private Discipline[] disciplines = Discipline.values();
@@ -43,8 +43,8 @@ public class Manager {
         return members;
     }
 
-    public ArrayList<Member> getMembersInRKI() {
-        return membersInRKI;
+    public ArrayList<Member> getPeopleInRKI() {
+        return peopleInRKI;
     }
 
     public FileHandler getFileHandler() {
@@ -73,7 +73,6 @@ public class Manager {
     }
 
     public void addToTeam() {
-
         ArrayList<Competitor> competitors = new ArrayList<>();
 
         for (Member member : members) {
@@ -81,7 +80,6 @@ public class Manager {
                 competitors.add((Competitor) member);
             }
         }
-
 
         for (Competitor competitor : competitors) {
 
@@ -128,7 +126,6 @@ public class Manager {
     }
 
     public void removeFromTeam(Competitor competitor, Discipline discipline) {
-
         for (int i = 0; i < competitor.getDisciplines().size(); i++) {
             LocalDate dateOfBirth = competitor.getDateOfBirth();
             int age = Period.between(dateOfBirth, LocalDate.now()).getYears();

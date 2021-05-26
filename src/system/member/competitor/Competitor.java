@@ -14,14 +14,30 @@ public class Competitor extends Member {
     private ArrayList<TrainingScore> trainingScores = new ArrayList<>();
     private ArrayList<Competition> competitions = new ArrayList<>();
 
-    public Competitor(String name, LocalDate dateOfBirth, String email, String phoneNumber, boolean active, int memberNumber, ArrayList<TrainingScore> trainingScores, ArrayList<Discipline> disciplines, ArrayList<Competition> competitions) {
+    public Competitor(String name,
+                      LocalDate dateOfBirth,
+                      String email,
+                      String phoneNumber,
+                      boolean active,
+                      int memberNumber,
+                      ArrayList<TrainingScore> trainingScores,
+                      ArrayList<Discipline> disciplines,
+                      ArrayList<Competition> competitions
+    ) {
         super(name, dateOfBirth, email, phoneNumber, active, memberNumber);
         setTrainingScores(trainingScores);
         setDisciplines(disciplines);
         setCompetitions(competitions);
     }
 
-    public Competitor(String name, LocalDate dateOfBirth, String email, String phoneNumber, boolean active, int memberNumber, ArrayList<Discipline> disciplines) {
+    public Competitor(String name,
+                      LocalDate dateOfBirth,
+                      String email,
+                      String phoneNumber,
+                      boolean active,
+                      int memberNumber,
+                      ArrayList<Discipline> disciplines
+    ) {
         super(name, dateOfBirth, email, phoneNumber, active, memberNumber);
         setDisciplines(disciplines);
     }

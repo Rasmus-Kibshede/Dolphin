@@ -11,9 +11,9 @@ public class Competition {
   private final int COMPETITOR_PLACEMENT;
   private final Duration COMPETITOR_TIME;
 
-  public Competition(String competitionName, int competitiorPlacement, Duration time) {
+  public Competition(String competitionName, int competitorPlacement, Duration time) {
     this.COMPETITION_NAME = competitionName;
-    this.COMPETITOR_PLACEMENT = competitiorPlacement;
+    this.COMPETITOR_PLACEMENT = competitorPlacement;
     this.COMPETITOR_TIME = time;
   }
 

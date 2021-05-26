@@ -5,7 +5,6 @@ import system.member.competitor.Discipline;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -31,12 +30,12 @@ public class UI {
     }
 
     public int getInt() {
-        int number = getValidateInt();
+        int number = validateInt();
         scanner.nextLine();
         return number;
     }
 
-    private int getValidateInt() {
+    private int validateInt() {
         while (!scanner.hasNextInt()) {
             display("Whoopsie - I would like a number.");
             scanner.next();
@@ -48,7 +47,7 @@ public class UI {
         return scanner.nextLine();
     }
 
-    public int validateRange(int maxRange) {
+    public int getValidRange(int maxRange) {
         int choice = getInt();
 
         while (choice < 0 || choice > maxRange) {
@@ -107,8 +106,6 @@ public class UI {
         } while (choice < 0 || choice > 5);
         return null;
     }
-
-
 
     public void displayMember(Member member){
         displayLn(member.toString());

@@ -11,15 +11,15 @@ public class Member implements Comparable<Member>{
     private boolean inDebt;
     private double membershipPrice;
     private int memberNumber;
-    private Payment payment = new Payment();
+    private final Payment PAYMENT = new Payment();
 
     public Member(String name,
                   LocalDate dateOfBirth,
                   String email,
                   String phoneNumber,
                   boolean active,
-                  int memberNumber) {
-
+                  int memberNumber
+    ) {
         setName(name);
         setDateOfBirth(dateOfBirth);
         setEmail(email);
@@ -30,7 +30,7 @@ public class Member implements Comparable<Member>{
         setMemberNumber(memberNumber);
     }
 
-    //SETTER
+    //-------------------------------SETTER-----------------------------------------------
     public void setName(String name) {
         this.name = name;
     }
@@ -56,14 +56,14 @@ public class Member implements Comparable<Member>{
     }
 
     public void setMembershipPrice() {
-        this.membershipPrice = payment.getPrice(this.dateOfBirth, this.active);
+        this.membershipPrice = PAYMENT.getPrice(this.dateOfBirth, this.active);
     }
 
     public void setMemberNumber(int memberNumber) {
         this.memberNumber = memberNumber;
     }
 
-    //GETTER
+    //--------------------------------GETTER--------------------------------------------
     public double getMembershipPrice() {
         return membershipPrice;
     }

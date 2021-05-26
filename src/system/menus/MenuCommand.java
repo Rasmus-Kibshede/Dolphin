@@ -42,6 +42,6 @@ public abstract class MenuCommand implements Command {
     }
 
     private int chooseMenuNumber(Command[] commands) {
-        return ui.validateRange(commands.length);
+        return ui.getValidRange(commands.length);
     }
 }

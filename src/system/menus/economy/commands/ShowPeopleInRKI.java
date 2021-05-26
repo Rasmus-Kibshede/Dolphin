@@ -18,7 +18,7 @@ public class ShowPeopleInRKI implements Command {
 
   @Override
   public void execute(UI ui) {
-    for (Member member : MANAGER.getMembersInRKI()) {
+    for (Member member : MANAGER.getPeopleInRKI()) {
       ui.displayLn(member.toString());
     }
   }
