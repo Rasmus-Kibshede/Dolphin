@@ -6,24 +6,23 @@ import system.menus.MenuCommand;
 import system.menus.competitive.commands.*;
 
 public class CompetitiveAdministration extends MenuCommand {
-  //Skal vi ikke bare lave den final??
-  private Application application;
+  private final Application APPLICATION;
 
   public CompetitiveAdministration(Application application) {
-  this.application = application;
+  this.APPLICATION = application;
   }
 
   @Override
   protected Command[] getCommands() {
 
     return new Command[]{
-        new ShowTeams(this.application.getMANAGER()),
-        new ShowCompetitors(this.application.getMANAGER()),
-        new ShowTopFive(this.application.getMANAGER()),
-        new RegisterTrainingScore(this.application.getMANAGER()),
-        new RegisterCompetition(this.application.getMANAGER()),
-        new RemoveDiscipline(this.application.getMANAGER()),
-        new AddDiscipline(this.application.getMANAGER())
+        new ShowTeams(this.APPLICATION.getMANAGER()),
+        new ShowCompetitors(this.APPLICATION.getMANAGER()),
+        new ShowTopFive(this.APPLICATION.getMANAGER()),
+        new RegisterTrainingScore(this.APPLICATION.getMANAGER()),
+        new RegisterCompetition(this.APPLICATION.getMANAGER()),
+        new RemoveDiscipline(this.APPLICATION.getMANAGER()),
+        new AddDiscipline(this.APPLICATION.getMANAGER())
     };
   }
 

@@ -5,21 +5,20 @@ import system.member.competitor.Team;
 import system.manager.ui.UI;
 
 public class ShowTeam implements Command {
-    //Skal være final
-    private Team team;
+    private final Team TEAM;
 
     public ShowTeam(Team team) {
-        this.team = team;
+        this.TEAM = team;
     }
 
     @Override
     public void execute(UI ui) {
-        ui.displayLn(team.toString());
+        ui.displayLn(TEAM.toString());
     }
 
     @Override
     public String getName() {
         return "Show Team: "
-                +team.getTeamName();
+                + TEAM.getTeamName();
     }
 }

@@ -14,19 +14,16 @@ import java.time.Duration;
  competition so the user can add this competition to a competitors arrayList of competitions.
  */
 public class RegisterCompetition implements Command {
-    //Skal være final
-    private Manager manager;
+    private final Manager MANAGER;
 
     public RegisterCompetition(Manager manager) {
-        this.manager = manager;
+        this.MANAGER = manager;
     }
-
 
     @Override
     public void execute(UI ui) {
-
         //Brug en metode istedet for linje de næste 3 linjer??
-        manager.getShowCompetitors().execute(ui);
+        MANAGER.getShowCompetitors().execute(ui);
         ui.display("Enter member number for member you want to get: ");
         int memberNumber = ui.getInt();
 
@@ -41,14 +38,14 @@ public class RegisterCompetition implements Command {
     }
 
     public void addCompetition(int memberNumber, String competitionName, int placement, Duration time){
-        for (Member member : manager.getMembers()) {
+        for (Member member : MANAGER.getMembers()) {
             if (member.getMemberNumber() == memberNumber) {
                 if (member instanceof Competitor) {
                     ((Competitor) member).getCompetitions().add(new Competition(competitionName, placement, time));
                 }
             }
         }
-        manager.getFileHandler().saveFile(manager.getMembers());
+        MANAGER.getFileHandler().saveFile(MANAGER.getMembers());
     }
 
     @Override
