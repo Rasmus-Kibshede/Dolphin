@@ -14,7 +14,7 @@ public class ShowMembers implements Command {
 
     @Override
     public void execute(UI ui) {
-        ui.displayParameters();
+        ui.displayLine();
         for (int i = 0; i < MANAGER.getMembers().size(); i++) {
             Collections.sort(MANAGER.getMembers());
             ui.displayMember(MANAGER.getMembers().get(i));

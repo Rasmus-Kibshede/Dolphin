@@ -18,7 +18,7 @@ public class ShowCompetitors implements Command {
 
   @Override
   public void execute(UI ui) {
-    ui.displayParameters();
+    ui.displayLine();
     for (Member member : MANAGER.getMembers()) {
       if (member instanceof Competitor) {
         ui.displayMember(member);

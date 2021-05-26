@@ -109,10 +109,10 @@ public class UI {
 
     public void displayMember(Member member){
         displayLn(member.toString());
-        displayParameters();
+        displayLine();
     }
 
-    public void displayParameters(){
+    public void displayLine(){
         displayLn("");
         displayLn("----------------------------------------------");
         displayLn("");
