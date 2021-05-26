@@ -20,7 +20,6 @@ public class RemovePersonFromRKI implements Command {
   public void execute(UI ui) {
     ArrayList<Member> members = MANAGER.getPeopleInRKI();
 
-    // er det her ikke teknisk set showmember in rki? altså det i for each loop?
     for (Member member: members) {
       ui.displayLn(member.toString());
     }
