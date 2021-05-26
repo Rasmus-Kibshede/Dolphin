@@ -31,30 +31,33 @@ public class ShowTopFive implements Command {
         for (Competitor competitor : team.getCompetitors()) {
 
           for (TrainingScore trainingScore : competitor.getTrainingScores()) {
-            if (trainingScore.getDISCIPLINE() == team.getDiscipline()) {
+            if (trainingScore.getDISCIPLINE() == team.getDiscipline() && trainingScore.getTIME().toMillis() != 0) {
               longs.add(trainingScore.getTIME().toMillis());
             }
           }
         }
-
         Collections.sort(longs);
         ArrayList<Long> top5;
 
-        if (longs.size() > 5){
+        if (longs.size() > 5) {
           top5 = new ArrayList<>(longs.subList(0, 5));
-        }else {
+        } else {
           top5 = new ArrayList<>(longs.subList(0, longs.size()));
         }
 
-        for (int i = 0; i < top5.size(); i++) {
-          int RankIndex = ((i) + 1);
-          for (TrainingScore trainingScore : team.getCompetitors().get(i).getTrainingScores()) {
-            if (top5.contains(trainingScore.getTIME().toMillis())){
-              ui.display(RankIndex + ". ");
-              ui.displayLn(team.getCompetitors().get(i).getName());
+        //for (int i = 0; i < top5.size(); i++) {
+
+
+        for (Competitor competitor : team.getCompetitors()) {
+          for (TrainingScore trainingScore : competitor.getTrainingScores()) {
+            if (top5.contains(trainingScore.getTIME().toMillis())) {
+              ui.display((top5.indexOf(trainingScore.getTIME().toMillis()) + 1) + ". ");
+              ui.displayLn(competitor.getName());
             }
           }
         }
+
+        //}
 
       } else {
         ui.displayLn("The team is empty");
