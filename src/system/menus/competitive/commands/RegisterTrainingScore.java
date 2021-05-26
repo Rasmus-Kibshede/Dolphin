@@ -83,13 +83,13 @@ public class RegisterTrainingScore implements Command {
     }
 
     private boolean checkIfBetter(TrainingScore trainingScoreOne, TrainingScore trainingScoreTwo) {
-        if (trainingScoreOne.getDiscipline() == trainingScoreTwo.getDiscipline()) {
-            long originalTime = trainingScoreOne.getTime().toMillis();
+        if (trainingScoreOne.getDISCIPLINE() == trainingScoreTwo.getDISCIPLINE()) {
+            long originalTime = trainingScoreOne.getTIME().toMillis();
             if (originalTime == 0) {
                 return true;
             }
 
-            long newTime = trainingScoreTwo.getTime().toMillis();
+            long newTime = trainingScoreTwo.getTIME().toMillis();
             return originalTime > newTime;
         }
         return false;
@@ -97,7 +97,7 @@ public class RegisterTrainingScore implements Command {
 
     private TrainingScore getTrainingScore(Competitor competitor, TrainingScore trainingScore) {
         for (int i = 0; i < competitor.getTrainingScores().size(); i++) {
-            if (competitor.getTrainingScores().get(i).getDiscipline() == trainingScore.getDiscipline()) {
+            if (competitor.getTrainingScores().get(i).getDISCIPLINE() == trainingScore.getDISCIPLINE()) {
                 return competitor.getTrainingScores().get(i);
             }
         }

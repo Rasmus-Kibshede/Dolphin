@@ -31,8 +31,8 @@ public class ShowTopFive implements Command {
         for (Competitor competitor : team.getCompetitors()) {
 
           for (TrainingScore trainingScore : competitor.getTrainingScores()) {
-            if (trainingScore.getDiscipline() == team.getDiscipline()) {
-              longs.add(trainingScore.getTime().toMillis());
+            if (trainingScore.getDISCIPLINE() == team.getDiscipline()) {
+              longs.add(trainingScore.getTIME().toMillis());
             }
           }
         }
@@ -49,7 +49,7 @@ public class ShowTopFive implements Command {
         for (int i = 0; i < top5.size(); i++) {
           int RankIndex = ((i) + 1);
           for (TrainingScore trainingScore : team.getCompetitors().get(i).getTrainingScores()) {
-            if (top5.contains(trainingScore.getTime().toMillis())){
+            if (top5.contains(trainingScore.getTIME().toMillis())){
               ui.display(RankIndex + ". ");
               ui.displayLn(team.getCompetitors().get(i).getName());
             }

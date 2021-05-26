@@ -4,30 +4,30 @@ import java.time.Duration;
 import java.time.LocalDate;
 
 public class TrainingScore {
-  private LocalDate date;
-  private Duration time;
-  private Discipline discipline;
+  private final LocalDate DATE;
+  private final Duration TIME;
+  private final Discipline DISCIPLINE;
 
   public TrainingScore(LocalDate date, Duration time, Discipline discipline) {
-    this.date = date;
-    this.time = time;
-    this.discipline = discipline;
+    this.DATE = date;
+    this.TIME = time;
+    this.DISCIPLINE = discipline;
   }
 
-  public LocalDate getDate() {
-    return date;
+  public LocalDate getDATE() {
+    return DATE;
   }
 
-  public Duration getTime() {
-    return time;
+  public Duration getTIME() {
+    return TIME;
   }
 
-  public Discipline getDiscipline() {
-    return discipline;
+  public Discipline getDISCIPLINE() {
+    return DISCIPLINE;
   }
 
   @Override
   public String toString() {
-    return "Date: " + date + ". Time: " + time.toMillis() + "ms" + ". Discipline: " + discipline;
+    return "Date: " + DATE + ". Time: " + TIME.toMillis() + "ms" + ". Discipline: " + DISCIPLINE;
   }
 }

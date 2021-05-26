@@ -9,7 +9,7 @@ import java.util.ArrayList;
  disciplines, trainingscores pr. discipline and competitions connected to them.
  */
 public class Competitor extends Member {
-    // Maybe this should be a normal Array, since they can only participate in four disciplines?
+
     private ArrayList<Discipline> disciplines = new ArrayList<>();
     private ArrayList<TrainingScore> trainingScores = new ArrayList<>();
     private ArrayList<Competition> competitions = new ArrayList<>();

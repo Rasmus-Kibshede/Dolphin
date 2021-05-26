@@ -172,22 +172,22 @@ public class FileHandler {
             StringBuilder trainingScores = new StringBuilder();
             for (TrainingScore trainingScore : competitor.getTrainingScores()) {
                 trainingScores
-                        .append(trainingScore.getDate())
+                        .append(trainingScore.getDATE())
                         .append(" ")
-                        .append(trainingScore.getTime().toMillis())
+                        .append(trainingScore.getTIME().toMillis())
                         .append(" ")
-                        .append(trainingScore.getDiscipline())
+                        .append(trainingScore.getDISCIPLINE())
                         .append(" ");
             }
 
             StringBuilder competitions = new StringBuilder();
             for (Competition competition : competitor.getCompetitions()) {
                 competitions
-                        .append(competition.getCompetitionName())
+                        .append(competition.getCOMPETITION_NAME())
                         .append(" ")
-                        .append(competition.getCompetitorPlacement())
+                        .append(competition.getCOMPETITOR_PLACEMENT())
                         .append(" ")
-                        .append(competition.getCompetitorTime().toMillis())
+                        .append(competition.getCOMPETITOR_TIME().toMillis())
                         .append(" ");
             }
 

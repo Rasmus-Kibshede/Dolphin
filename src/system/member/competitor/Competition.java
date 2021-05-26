@@ -7,35 +7,35 @@ import java.time.Duration;
  competitor time
  */
 public class Competition {
-  private String competitionName;
-  private int competitorPlacement;
-  private Duration competitorTime;
+  private final String COMPETITION_NAME;
+  private final int COMPETITOR_PLACEMENT;
+  private final Duration COMPETITOR_TIME;
 
   public Competition(String competitionName, int competitiorPlacement, Duration time) {
-    this.competitionName = competitionName;
-    this.competitorPlacement = competitiorPlacement;
-    this.competitorTime = time;
+    this.COMPETITION_NAME = competitionName;
+    this.COMPETITOR_PLACEMENT = competitiorPlacement;
+    this.COMPETITOR_TIME = time;
   }
 
-  public String getCompetitionName() {
-    return competitionName;
+  public String getCOMPETITION_NAME() {
+    return COMPETITION_NAME;
   }
 
-  public int getCompetitorPlacement() {
-    return competitorPlacement;
+  public int getCOMPETITOR_PLACEMENT() {
+    return COMPETITOR_PLACEMENT;
   }
 
-  public Duration getCompetitorTime() {
-    return competitorTime;
+  public Duration getCOMPETITOR_TIME() {
+    return COMPETITOR_TIME;
   }
 
   @Override
   public String toString() {
     return "Competition name: "
-            + competitionName
+            + COMPETITION_NAME
             + "  Placement: "
-            + competitorPlacement
+            + COMPETITOR_PLACEMENT
             + " Time: "
-            + competitorTime.toMillis();
+            + COMPETITOR_TIME.toMillis();
   }
 }
