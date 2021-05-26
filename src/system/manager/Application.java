@@ -9,12 +9,12 @@ import system.manager.ui.UI;
  starts the whole program via instances of MainMenu, UI and Manager.
  */
 public class Application {
-  private Manager manager;
+  private final Manager MANAGER;
   private UI ui;
   private Command command;
 
   public Application() {
-    manager = new Manager();
+    MANAGER = new Manager();
     ui = new UI();
     command = new MainMenu(this);
   }
@@ -23,7 +23,7 @@ public class Application {
     this.command.execute(this.ui);
   }
 
-  public Manager getManager() {
-    return manager;
+  public Manager getMANAGER() {
+    return MANAGER;
   }
 }

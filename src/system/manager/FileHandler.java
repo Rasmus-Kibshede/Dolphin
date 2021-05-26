@@ -36,7 +36,7 @@ public class FileHandler {
     private final File COMPETITORS_FILE = new File("Competitors.txt");
     private final File MEMBER_NUMBER_FILE = new File("MemberNumber");
 
-    private ArrayList<Member> allMembers = new ArrayList<>();
+    private final ArrayList<Member> ALL_MEMBERS = new ArrayList<>();
     //private ArrayList<Discipline> disciplines = new ArrayList<>();
     private int memberNumber;
 
@@ -71,7 +71,7 @@ public class FileHandler {
 
     public ArrayList<Member> loadFile() {
         try {
-            allMembers.clear();
+            ALL_MEMBERS.clear();
 
             loadMember();
 
@@ -80,7 +80,7 @@ public class FileHandler {
                 FileNotFoundException e) {
             e.printStackTrace();
         }
-        return allMembers;
+        return ALL_MEMBERS;
     }
 
     //----------------------------------------- RKI -------------------------------------
@@ -154,7 +154,7 @@ public class FileHandler {
             String payment = fileReaderMember.next();
             int memberNumber = fileReaderMember.nextInt();
 
-            allMembers.add(new Member(memberName, dateOfBirth, email, phoneNumber, active, memberNumber));
+            ALL_MEMBERS.add(new Member(memberName, dateOfBirth, email, phoneNumber, active, memberNumber));
         }
         fileReaderMember.close();
     }
@@ -271,7 +271,7 @@ public class FileHandler {
                 Competition competition = new Competition(competitionName, placement, time);
                 competitions.add(competition);
             }
-            allMembers.add(new Competitor(
+            ALL_MEMBERS.add(new Competitor(
                     memberName,
                     dateOfBirth,
                     email,

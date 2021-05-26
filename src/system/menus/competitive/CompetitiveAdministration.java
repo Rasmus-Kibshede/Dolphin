@@ -17,13 +17,13 @@ public class CompetitiveAdministration extends MenuCommand {
   protected Command[] getCommands() {
 
     return new Command[]{
-        new ShowTeams(this.application.getManager()),
-        new ShowCompetitors(this.application.getManager()),
-        new ShowTopFive(this.application.getManager()),
-        new RegisterTrainingScore(this.application.getManager()),
-        new RegisterCompetition(this.application.getManager()),
-        new RemoveDiscipline(this.application.getManager()),
-        new AddDiscipline(this.application.getManager())
+        new ShowTeams(this.application.getMANAGER()),
+        new ShowCompetitors(this.application.getMANAGER()),
+        new ShowTopFive(this.application.getMANAGER()),
+        new RegisterTrainingScore(this.application.getMANAGER()),
+        new RegisterCompetition(this.application.getMANAGER()),
+        new RemoveDiscipline(this.application.getMANAGER()),
+        new AddDiscipline(this.application.getMANAGER())
     };
   }
 

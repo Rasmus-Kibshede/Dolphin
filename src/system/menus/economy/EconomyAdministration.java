@@ -20,11 +20,11 @@ public class EconomyAdministration extends MenuCommand {
   @Override
   protected Command[] getCommands() {
     return new Command[]{
-        new ShowExpectedIncome(this.APPLICATION.getManager()),
-        new ShowPeopleInRKI(this.APPLICATION.getManager()),
-        new EditMemberDebt(this.APPLICATION.getManager()),
-        new MoveMemberToRKI(this.APPLICATION.getManager()),
-        new RemovePersonFromRKI(this.APPLICATION.getManager())
+        new ShowExpectedIncome(this.APPLICATION.getMANAGER()),
+        new ShowPeopleInRKI(this.APPLICATION.getMANAGER()),
+        new EditMemberDebt(this.APPLICATION.getMANAGER()),
+        new MoveMemberToRKI(this.APPLICATION.getMANAGER()),
+        new RemovePersonFromRKI(this.APPLICATION.getMANAGER())
     };
   }
 }
