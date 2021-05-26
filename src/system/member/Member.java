@@ -8,6 +8,7 @@ public class Member implements Comparable<Member>{
     private String email;
     private String phoneNumber;
     private boolean active;
+
     private boolean inDebt;
     private double membershipPrice;
     private int memberNumber;
@@ -26,6 +27,24 @@ public class Member implements Comparable<Member>{
         setPhoneNumber(phoneNumber);
         setActive(active);
         this.inDebt = false;
+        setMembershipPrice();
+        setMemberNumber(memberNumber);
+    }
+
+    public Member(String name,
+                  LocalDate dateOfBirth,
+                  String email,
+                  String phoneNumber,
+                  boolean active,
+                  boolean inDebt,
+                  int memberNumber
+    ) {
+        setName(name);
+        setDateOfBirth(dateOfBirth);
+        setEmail(email);
+        setPhoneNumber(phoneNumber);
+        setActive(active);
+        this.inDebt = inDebt;
         setMembershipPrice();
         setMemberNumber(memberNumber);
     }
@@ -86,6 +105,10 @@ public class Member implements Comparable<Member>{
 
     public boolean getActive() {
         return active;
+    }
+
+    public boolean isInDebt() {
+        return inDebt;
     }
 
     public int getMemberNumber() {

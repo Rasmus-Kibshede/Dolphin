@@ -19,12 +19,13 @@ public class Competitor extends Member {
                       String email,
                       String phoneNumber,
                       boolean active,
+                      boolean inDebt,
                       int memberNumber,
                       ArrayList<TrainingScore> trainingScores,
                       ArrayList<Discipline> disciplines,
                       ArrayList<Competition> competitions
     ) {
-        super(name, dateOfBirth, email, phoneNumber, active, memberNumber);
+        super(name, dateOfBirth, email, phoneNumber, active, inDebt, memberNumber);
         setTrainingScores(trainingScores);
         setDisciplines(disciplines);
         setCompetitions(competitions);
@@ -35,10 +36,11 @@ public class Competitor extends Member {
                       String email,
                       String phoneNumber,
                       boolean active,
+                      boolean inDebt,
                       int memberNumber,
                       ArrayList<Discipline> disciplines
     ) {
-        super(name, dateOfBirth, email, phoneNumber, active, memberNumber);
+        super(name, dateOfBirth, email, phoneNumber, active, inDebt, memberNumber);
         setDisciplines(disciplines);
     }
 

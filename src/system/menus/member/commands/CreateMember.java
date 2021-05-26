@@ -46,7 +46,7 @@ public class CreateMember implements Command {
                     moreDiscipline = setMoreDiscipline(Character.toLowerCase(ui.getChar('y','n')));
                 } while (moreDiscipline);
 
-                MANAGER.getMembers().add(new Competitor(memberName, dateOfBirth, email, phoneNumber, active, memberNumber, disciplines));
+                MANAGER.getMembers().add(new Competitor(memberName, dateOfBirth, email, phoneNumber, active, false, memberNumber, disciplines));
                 for (int i = 0; i < MANAGER.getMembers().size(); i++) {
                     if (MANAGER.getMembers().get(i).getMemberNumber() == memberNumber) {
                         MANAGER.addToTeam();
