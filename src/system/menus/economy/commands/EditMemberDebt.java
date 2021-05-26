@@ -10,17 +10,17 @@ import java.util.ArrayList;
  This class implements Command interface. This class lets the user edit whether a member is in debt or not.
  */
 public class EditMemberDebt implements Command {
-    private Manager manager;
+    private final Manager MANAGER;
 
-    public EditMemberDebt(Manager manager) {
-        this.manager = manager;
+    public EditMemberDebt(Manager MANAGER) {
+        this.MANAGER = MANAGER;
     }
 
     @Override
     public void execute(UI ui) {
-        manager.getShowMembers().execute(ui);
+        MANAGER.getShowMembers().execute(ui);
 
-        ArrayList<Member> members = manager.getMembers(); // Den kender ikke member nu, vel? What do u mean?
+        ArrayList<Member> members = MANAGER.getMembers(); // Den kender ikke member nu, vel? What do u mean?
         ui.display("\nPlease enter member number of member to be edited: ");
         int memberNumber = ui.getInt();
 
@@ -35,7 +35,7 @@ public class EditMemberDebt implements Command {
                 }
             }
         }
-        manager.getFileHandler().saveFile(members);
+        MANAGER.getFileHandler().saveFile(members);
     }
 
     @Override
