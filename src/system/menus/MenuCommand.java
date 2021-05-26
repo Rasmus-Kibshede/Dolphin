@@ -4,8 +4,9 @@ import system.Command;
 import system.manager.ui.UI;
 
 public abstract class MenuCommand implements Command {
-    protected abstract Command[] getCommands();
     private UI ui;
+
+    protected abstract Command[] getCommands();
 
     @Override
     public void execute(UI ui) {
