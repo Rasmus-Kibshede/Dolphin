@@ -7,9 +7,11 @@ import system.member.Member;
 import system.member.competitor.Competitor;
 import system.member.competitor.Team;
 import system.member.competitor.TrainingScore;
+import system.menus.competitive.CompareCompetitor;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class ShowTopFive implements Command {
 
@@ -22,51 +24,39 @@ public class ShowTopFive implements Command {
 
   @Override
   public void execute(UI ui) {
-
     for (Team team : manager.getTeams()) {
       ui.displayLn("");
       ui.displayLn(team.getTeamName());
 
-      if (!team.getCompetitors().isEmpty()) {
-
-        ArrayList<Competitor> competitors = new ArrayList<>();
-
-        for (int i = 0; i < team.getCompetitors().size(); i++) {
-
-          Competitor competitor = team.getCompetitors().get(i);
-
-          for (int j = 0; j < competitor.getTrainingScores().size(); j++) {
-            if (competitor.getTrainingScores().get(j).getDISCIPLINE().equals(team.getDiscipline())) {
-              if (competitor.getTrainingScores().get(j).getTIME().toMillis() != 0) {
-                competitors.add(competitor);
-              }
-            }
-          }
-
-
-        }
-
-        Collections.sort(competitors);
-
-
-        int size = 0;
-        if (competitors.size() > 5) {
-          size = 5;
-        } else {
-          size = competitors.size();
-        }
-
-        for (int i = 0; i < size; i++) {
-          int rankIndex = ((i) + 1);
-          ui.displayLn(rankIndex + ". " + competitors.get(i).getName());
-        }
-
-      } else {
-        ui.displayLn("The team is empty");
-      }
+      displayTopFive(team, ui);
     }
   }
 
+  private void displayTopFive(Team team, UI ui) {
+    if (team.getCompetitors().isEmpty()) {
+      ui.displayLn("The team is empty");
+      return;
+    }
+
+    List<Competitor> competitors = team.getCompetitors();
+    competitors.sort(new CompareCompetitor(team.getDiscipline()));
+
+    if (competitors.size() > 5) {
+      // Reduces the competitors to top 5
+      competitors = competitors.subList(0, 5);
+    }
+
+    for (int i = 0; i < competitors.size(); i++) {
+      Competitor competitor = competitors.get(i);
+      ui.display((i + 1) + ". " + competitor.getName() + " Time: ");
+
+      for (TrainingScore trainingScore : competitor.getTrainingScores()) {
+        if (trainingScore.getDISCIPLINE().equals(team.getDiscipline())) {
+          ui.displayLn(trainingScore.getTIME().toMillis() + " ms");
+        }
+      }
+    }
+  }
 
   @Override
   public String getName() {
