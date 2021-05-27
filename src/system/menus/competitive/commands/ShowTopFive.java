@@ -27,7 +27,6 @@ public class ShowTopFive implements Command {
     for (Team team : manager.getTeams()) {
       ui.displayLn("");
       ui.displayLn(team.getTeamName());
-
       displayTopFive(team, ui);
     }
   }
@@ -46,15 +45,17 @@ public class ShowTopFive implements Command {
       competitors = competitors.subList(0, 5);
     }
 
+    // Displays top 5
     for (int i = 0; i < competitors.size(); i++) {
       Competitor competitor = competitors.get(i);
       ui.display((i + 1) + ". " + competitor.getName() + " Time: ");
 
       for (TrainingScore trainingScore : competitor.getTrainingScores()) {
         if (trainingScore.getDISCIPLINE().equals(team.getDiscipline())) {
-          ui.displayLn(trainingScore.getTIME().toMillis() + " ms");
+          ui.display(trainingScore.getTIME().toMillis() + " ms");
         }
       }
+      ui.displayLn("");
     }
   }
 
