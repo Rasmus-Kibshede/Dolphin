@@ -320,7 +320,6 @@ public class FileHandler {
       return memberNumber;
 
     } catch (FileNotFoundException e) {
-      e.printStackTrace();
 
       try {
         memberNumberBackUp++;
@@ -330,13 +329,10 @@ public class FileHandler {
 
       }catch (IOException ex){
         ex.printStackTrace();
-
       }
-      //TODO throw here
-      //Create new file
+      e.printStackTrace();
     }
 
-    //TODO Not correct!!! Throw exception if there is no file, instead sending a number back
     return memberNumber;
   }
 
