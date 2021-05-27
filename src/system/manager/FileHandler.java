@@ -32,6 +32,7 @@ public class FileHandler {
   private FileWriter fileWriter;
   private final ArrayList<Member> ALL_MEMBERS = new ArrayList<>();
   private int memberNumber;
+  private int memberNumberBackUp;
 
   private final File MEMBERS_FILE = new File("Members.txt");
   private final File PEOPLE_IN_RKI_FILE = new File("PeopleInRKI.txt");
@@ -319,8 +320,18 @@ public class FileHandler {
       return memberNumber;
 
     } catch (FileNotFoundException e) {
-      System.out.println(e.getMessage());
+      e.printStackTrace();
 
+      try {
+        memberNumberBackUp++;
+        FileWriter fileWriter = new FileWriter(MEMBER_NUMBER_FILE);
+        fileWriter.append(String.valueOf(memberNumberBackUp));
+        fileWriter.close();
+
+      }catch (IOException ex){
+        ex.printStackTrace();
+
+      }
       //TODO throw here
       //Create new file
     }
