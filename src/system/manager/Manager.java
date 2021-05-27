@@ -13,202 +13,216 @@ import java.time.Period;
 import java.util.ArrayList;
 
 /**
- This class is the Manager. It job is to know other classes and through the instances of them let other classes
- access information about them.
+ * This class is the Manager. It job is to know other classes and through the instances of them let other classes
+ * access information about them.
  */
 public class Manager {
-    private FileHandler fileHandler = new FileHandler();
-    private ArrayList<Member> members = fileHandler.loadFile();
-    private ArrayList<Member> peopleInRKI = fileHandler.loadRKI();
-    private ShowMembers showMembers = new ShowMembers(this);
-    private Team[] teams;
-    private Discipline[] disciplines = Discipline.values();
-    private ShowCompetitors showCompetitors = new ShowCompetitors(this);
+  private FileHandler fileHandler = new FileHandler();
+  private ArrayList<Member> members = fileHandler.loadFile();
+  private ArrayList<Member> peopleInRKI = fileHandler.loadRKI();
+  private ShowMembers showMembers = new ShowMembers(this);
+  private Team[] teams;
+  private Discipline[] disciplines = Discipline.values();
+  private ShowCompetitors showCompetitors = new ShowCompetitors(this);
 
-    public Manager() {
-        teams = new Team[8];
-        teams[0] = new Team("Stinna", "Junior Crawl", Discipline.CRAWL);
-        teams[1] = new Team("Benjamin", "Junior Back Crawl", Discipline.BACKCRAWL);
-        teams[2] = new Team("Benjamin", "Junior Butterfly", Discipline.BUTTERFLY);
-        teams[3] = new Team("Stinna", "Junior Breaststroke", Discipline.BREASTSTROKE);
-        teams[4] = new Team("Babette", "Senior Crawl", Discipline.CRAWL);
-        teams[5] = new Team("Tim", "Senior Back Crawl", Discipline.BACKCRAWL);
-        teams[6] = new Team("Babette", "Senior Butterfly", Discipline.BUTTERFLY);
-        teams[7] = new Team("Jim", "Senior Breaststroke", Discipline.BREASTSTROKE);
+  public Manager() {
+    teams = new Team[8];
+    teams[0] = new Team("Stinna", "Junior Crawl", Discipline.CRAWL);
+    teams[1] = new Team("Benjamin", "Junior Back Crawl", Discipline.BACKCRAWL);
+    teams[2] = new Team("Benjamin", "Junior Butterfly", Discipline.BUTTERFLY);
+    teams[3] = new Team("Stinna", "Junior Breaststroke", Discipline.BREASTSTROKE);
+    teams[4] = new Team("Babette", "Senior Crawl", Discipline.CRAWL);
+    teams[5] = new Team("Tim", "Senior Back Crawl", Discipline.BACKCRAWL);
+    teams[6] = new Team("Babette", "Senior Butterfly", Discipline.BUTTERFLY);
+    teams[7] = new Team("Jim", "Senior Breaststroke", Discipline.BREASTSTROKE);
 
-        addToTeam();
+    addToTeam();
+  }
+
+  public ArrayList<Member> getMembers() {
+    return members;
+  }
+
+  public ArrayList<Member> getPeopleInRKI() {
+    return peopleInRKI;
+  }
+
+  public FileHandler getFileHandler() {
+    return fileHandler;
+  }
+
+  public ShowMembers getShowMembers() {
+    this.members = fileHandler.loadFile();
+    return showMembers;
+  }
+
+  public Team[] getTeams() {
+    return teams;
+  }
+
+  public String getDisciplines() {
+    StringBuilder stringBuilder = new StringBuilder();
+    for (int i = 0; i < disciplines.length; i++) {
+      stringBuilder.append(((i) + 1)).append(". ").append(disciplines[i]).append("\n");
+    }
+    return stringBuilder.toString();
+  }
+
+  public ShowCompetitors getShowCompetitors() {
+    return showCompetitors;
+  }
+
+  public int getMenuNumber(String message, UI ui) {
+    ui.displayLn(message);
+    return ui.getInt();
+  }
+
+  public void addToTeam() {
+    members.clear();
+    members = fileHandler.loadFile();
+
+    ArrayList<Competitor> competitors = new ArrayList<>();
+
+    for (Member member : members) {
+      if (member instanceof Competitor) {
+        competitors.add((Competitor) member);
+      }
     }
 
-    public ArrayList<Member> getMembers() {
-        return members;
-    }
+    for (Competitor competitor : competitors) {
 
-    public ArrayList<Member> getPeopleInRKI() {
-        return peopleInRKI;
-    }
+      for (int i = 0; i < competitor.getDisciplines().size(); i++) {
+        Discipline discipline = competitor.getDisciplines().get(i);
+        LocalDate dateOfBirth = competitor.getDateOfBirth();
+        int age = Period.between(dateOfBirth, LocalDate.now()).getYears();
 
-    public FileHandler getFileHandler() {
-        return fileHandler;
-    }
+        if (discipline == Discipline.CRAWL) {
 
-    public ShowMembers getShowMembers() {
-        this.members = fileHandler.loadFile();
-        return showMembers;
-    }
-
-    public Team[] getTeams() {
-        return teams;
-    }
-
-    public String getDisciplines() {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < disciplines.length; i++) {
-            stringBuilder.append(((i) + 1)).append(". ").append(disciplines[i]).append("\n");
-        }
-        return stringBuilder.toString();
-    }
-
-    public ShowCompetitors getShowCompetitors() {
-        return showCompetitors;
-    }
-
-    public int getMenuNumber(String message, UI ui){
-        ui.displayLn(message);
-        return ui.getInt();
-    }
-
-    public void addToTeam() {
-        members.clear();
-        members = fileHandler.loadFile();
-
-        ArrayList<Competitor> competitors = new ArrayList<>();
-
-        for (Member member : members) {
-            if (member instanceof Competitor){
-                competitors.add((Competitor) member);
+          if (age >= 18) {
+            if (teams[4].getCompetitors().size() == 0) {
+              teams[4].getCompetitors().add((competitor));
+            } else {
+              for (int j = 0; j < teams[4].getCompetitors().size(); j++) {
+                if (teams[4].getCompetitors().get(j).getMemberNumber() == competitor.getMemberNumber()) {
+                  return;
+                } else {
+                  teams[4].getCompetitors().add(competitor);
+                }
+              }
             }
-        }
-
-        for (Competitor competitor : competitors) {
-
-            for (int i = 0; i < competitor.getDisciplines().size(); i++) {
-                Discipline discipline = competitor.getDisciplines().get(i);
-                LocalDate dateOfBirth = competitor.getDateOfBirth();
-                int age = Period.between(dateOfBirth, LocalDate.now()).getYears();
-
-                if (discipline == Discipline.CRAWL) {
-
-                    if (age >= 18) {
-                        for(int j = 0; j < teams[4].getCompetitors().size(); j++) {
-                            if (teams[4].getCompetitors().get(j).getMemberNumber() == competitor.getMemberNumber()) {
-                                return;
-                            } else {
-                                teams[4].getCompetitors().add(competitor);
-                            }
-                        }
-                    }else {
-                        for (int j = 0; j < teams[0].getCompetitors().size(); j++) {
-                            if (teams[0].getCompetitors().get(j).getMemberNumber() == competitor.getMemberNumber()) {
-                                return;
-                            } else {
-                                teams[0].getCompetitors().add(competitor);
-                            }
-                        }
-                    }
-
-                } else if (discipline == Discipline.BACKCRAWL) {
-
-                    if (age >= 18) {
-                        for(int j = 0; j < teams[5].getCompetitors().size(); j++) {
-                            if (teams[5].getCompetitors().get(j).getMemberNumber() == competitor.getMemberNumber()) {
-                                return;
-                            } else {
-                                teams[5].getCompetitors().add(competitor);
-                            }
-                        }
-                    }else {
-                        for(int j = 0; j < teams[1].getCompetitors().size(); j++) {
-                            if (teams[1].getCompetitors().get(j).getMemberNumber() == competitor.getMemberNumber()) {
-                                return;
-                            } else {
-                                teams[1].getCompetitors().add(competitor);
-                            }
-                        }
-                    }
-
-                } else if (discipline == Discipline.BUTTERFLY) {
-
-                    if (age >= 18) {
-                        for(int j = 0; j < teams[6].getCompetitors().size(); j++) {
-                            if (teams[6].getCompetitors().get(j).getMemberNumber() == competitor.getMemberNumber()) {
-                                return;
-                            } else {
-                                teams[6].getCompetitors().add(competitor);
-                            }
-                        }
-                    }else {
-                        for(int j = 0; j < teams[2].getCompetitors().size(); j++) {
-                            if (teams[2].getCompetitors().get(j).getMemberNumber() == competitor.getMemberNumber()) {
-                                return;
-                            } else {
-                                teams[2].getCompetitors().add(competitor);
-                            }
-                        }
-                    }
-
-                } else if (discipline == Discipline.BREASTSTROKE) {
-
-                    if (age >= 18) {
-                        for(int j = 0; j < teams[7].getCompetitors().size(); j++) {
-                            if (teams[7].getCompetitors().get(j).getMemberNumber() == competitor.getMemberNumber()) {
-                                return;
-                            } else {
-                                teams[7].getCompetitors().add(competitor);
-                            }
-                        }
-                    }else {
-                        for(int j = 0; j < teams[3].getCompetitors().size(); j++) {
-                            if (teams[3].getCompetitors().get(j).getMemberNumber() == competitor.getMemberNumber()) {
-                                return;
-                            } else {
-                                teams[3].getCompetitors().add(competitor);
-                            }
-                        }
-                    }
+          } else {
+            if (teams[0].getCompetitors().size() == 0) {
+              for (int j = 0; j < teams[0].getCompetitors().size(); j++) {
+                if (teams[0].getCompetitors().get(j).getMemberNumber() == competitor.getMemberNumber()) {
+                  return;
+                } else {
+                  teams[0].getCompetitors().add(competitor);
                 }
+              }
             }
-        }
-    }
+          }
+        } else if (discipline == Discipline.BACKCRAWL) {
 
-    public void removeFromTeam(Competitor competitor, Discipline discipline) {
-        for (int i = 0; i < competitor.getDisciplines().size(); i++) {
-            LocalDate dateOfBirth = competitor.getDateOfBirth();
-            int age = Period.between(dateOfBirth, LocalDate.now()).getYears();
-
-            if (discipline == Discipline.CRAWL) {
-                if (age >= 18) {
-                    teams[4].getCompetitors().remove(competitor);
+          if (age >= 18) {
+            if (teams[5].getCompetitors().size() == 0) {
+              for (int j = 0; j < teams[5].getCompetitors().size(); j++) {
+                if (teams[5].getCompetitors().get(j).getMemberNumber() == competitor.getMemberNumber()) {
+                  return;
+                } else {
+                  teams[5].getCompetitors().add(competitor);
                 }
-                teams[0].getCompetitors().remove(competitor);
-            } else if (discipline == Discipline.BACKCRAWL) {
-                if (age >= 18) {
-                    teams[5].getCompetitors().remove(competitor);
-                }
-                teams[1].getCompetitors().remove(competitor);
-            } else if (discipline == Discipline.BUTTERFLY) {
-                if (age >= 18) {
-                    teams[6].getCompetitors().remove(competitor);
-                }
-                teams[2].getCompetitors().remove(competitor);
-            } else if (discipline == Discipline.BREASTSTROKE) {
-                if (age >= 18) {
-                    teams[7].getCompetitors().remove(competitor);
-                }
-                teams[3].getCompetitors().remove(competitor);
+              }
             }
-        }
-    }
+          } else {
+            if (teams[1].getCompetitors().size() == 0) {
+              for (int j = 0; j < teams[1].getCompetitors().size(); j++) {
+                if (teams[1].getCompetitors().get(j).getMemberNumber() == competitor.getMemberNumber()) {
+                  return;
+                } else {
+                  teams[1].getCompetitors().add(competitor);
+                }
+              }
+            }
+          }
+        } else if (discipline == Discipline.BUTTERFLY) {
 
+          if (age >= 18) {
+            if (teams[6].getCompetitors().size() == 0) {
+              for (int j = 0; j < teams[6].getCompetitors().size(); j++) {
+                if (teams[6].getCompetitors().get(j).getMemberNumber() == competitor.getMemberNumber()) {
+                  return;
+                } else {
+                  teams[6].getCompetitors().add(competitor);
+                }
+              }
+            }
+          } else {
+            if (teams[2].getCompetitors().size() == 0) {
+              for (int j = 0; j < teams[2].getCompetitors().size(); j++) {
+                if (teams[2].getCompetitors().get(j).getMemberNumber() == competitor.getMemberNumber()) {
+                  return;
+                } else {
+                  teams[2].getCompetitors().add(competitor);
+                }
+              }
+            }
+          }
+        } else if (discipline == Discipline.BREASTSTROKE) {
+
+          if (age >= 18) {
+            if (teams[7].getCompetitors().size() == 0) {
+              for (int j = 0; j < teams[7].getCompetitors().size(); j++) {
+                if (teams[7].getCompetitors().get(j).getMemberNumber() == competitor.getMemberNumber()) {
+                  return;
+                } else {
+                  teams[7].getCompetitors().add(competitor);
+                }
+              }
+            }
+          } else {
+            if (teams[3].getCompetitors().size() == 0) {
+              for (int j = 0; j < teams[3].getCompetitors().size(); j++) {
+                if (teams[3].getCompetitors().get(j).getMemberNumber() == competitor.getMemberNumber()) {
+                  return;
+                } else {
+                  teams[3].getCompetitors().add(competitor);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  public void removeFromTeam(Competitor competitor, Discipline discipline) {
+    for (int i = 0; i < competitor.getDisciplines().size(); i++) {
+      LocalDate dateOfBirth = competitor.getDateOfBirth();
+      int age = Period.between(dateOfBirth, LocalDate.now()).getYears();
+
+      if (discipline == Discipline.CRAWL) {
+        if (age >= 18) {
+          teams[4].getCompetitors().remove(competitor);
+        }
+        teams[0].getCompetitors().remove(competitor);
+      } else if (discipline == Discipline.BACKCRAWL) {
+        if (age >= 18) {
+          teams[5].getCompetitors().remove(competitor);
+        }
+        teams[1].getCompetitors().remove(competitor);
+      } else if (discipline == Discipline.BUTTERFLY) {
+        if (age >= 18) {
+          teams[6].getCompetitors().remove(competitor);
+        }
+        teams[2].getCompetitors().remove(competitor);
+      } else if (discipline == Discipline.BREASTSTROKE) {
+        if (age >= 18) {
+          teams[7].getCompetitors().remove(competitor);
+        }
+        teams[3].getCompetitors().remove(competitor);
+      }
+    }
+  }
 
 
 }
