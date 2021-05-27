@@ -17,13 +17,14 @@ public class ShowPeopleInRKI implements Command {
 
   @Override
   public void execute(UI ui) {
+    ui.displayLine();
     for (Member member : MANAGER.getPeopleInRKI()) {
-      ui.displayLn(member.toString());
+      ui.displayMember(member);
     }
   }
 
   @Override
   public String getName() {
-    return "Show Members In RKI";
+    return "Show People In RKI";
   }
 }
