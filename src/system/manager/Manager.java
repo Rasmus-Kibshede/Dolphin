@@ -78,8 +78,8 @@ public class Manager {
     }
 
     public void addToTeam() {
-        this.members.clear();
-        this.members = fileHandler.loadFile();
+        members.clear();
+        members = fileHandler.loadFile();
 
         ArrayList<Competitor> competitors = new ArrayList<>();
 
