@@ -80,6 +80,12 @@ public class Manager {
   public void addToTeam() {
     ArrayList<Competitor> competitors = new ArrayList<>();
 
+    // Clears the list of teams
+    for (int i = 0; i < teams.length; i++){
+      teams[i].getCompetitors().clear();
+    }
+
+
     for (Member member : members) {
       if (member instanceof Competitor){
         competitors.add((Competitor) member);
