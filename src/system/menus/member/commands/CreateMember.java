@@ -61,7 +61,7 @@ public class CreateMember implements Command {
             MANAGER.getMembers().add(new Member(memberName, dateOfBirth, email, phoneNumber, active, memberNumber));
         }
         MANAGER.getFileHandler().saveFile(MANAGER.getMembers());
-        MANAGER.addToTeam();
+        //MANAGER.addToTeam();
     }
 
     @Override

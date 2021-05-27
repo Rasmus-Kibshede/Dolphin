@@ -78,13 +78,10 @@ public class Manager {
   }
 
   public void addToTeam() {
-    members.clear();
-    members = fileHandler.loadFile();
-
     ArrayList<Competitor> competitors = new ArrayList<>();
 
     for (Member member : members) {
-      if (member instanceof Competitor) {
+      if (member instanceof Competitor){
         competitors.add((Competitor) member);
       }
     }
@@ -99,85 +96,35 @@ public class Manager {
         if (discipline == Discipline.CRAWL) {
 
           if (age >= 18) {
-            if (teams[4].getCompetitors().size() == 0) {
-              teams[4].getCompetitors().add((competitor));
-            } else {
-              for (int j = 0; j < teams[4].getCompetitors().size(); j++) {
-                if (teams[4].getCompetitors().get(j).getMemberNumber() == competitor.getMemberNumber()) {
-                  return;
-                } else {
-                  teams[4].getCompetitors().add(competitor);
-                }
-              }
-            }
-          } else {
-            for (int j = 0; j < teams[0].getCompetitors().size(); j++) {
-              if (teams[0].getCompetitors().get(j).getMemberNumber() == competitor.getMemberNumber()) {
-                return;
-              } else {
-                teams[0].getCompetitors().add(competitor);
-              }
-            }
+            teams[4].getCompetitors().add(competitor);
+          }else {
+            teams[0].getCompetitors().add(competitor);
           }
+
         } else if (discipline == Discipline.BACKCRAWL) {
 
           if (age >= 18) {
-            for (int j = 0; j < teams[5].getCompetitors().size(); j++) {
-              if (teams[5].getCompetitors().get(j).getMemberNumber() == competitor.getMemberNumber()) {
-                return;
-              } else {
-                teams[5].getCompetitors().add(competitor);
-              }
-            }
-          } else {
-            for (int j = 0; j < teams[1].getCompetitors().size(); j++) {
-              if (teams[1].getCompetitors().get(j).getMemberNumber() == competitor.getMemberNumber()) {
-                return;
-              } else {
-                teams[1].getCompetitors().add(competitor);
-              }
-            }
+            teams[5].getCompetitors().add(competitor);
+          }else {
+            teams[1].getCompetitors().add(competitor);
           }
 
         } else if (discipline == Discipline.BUTTERFLY) {
 
           if (age >= 18) {
-            for (int j = 0; j < teams[6].getCompetitors().size(); j++) {
-              if (teams[6].getCompetitors().get(j).getMemberNumber() == competitor.getMemberNumber()) {
-                return;
-              } else {
-                teams[6].getCompetitors().add(competitor);
-              }
-            }
-          } else {
-            for (int j = 0; j < teams[2].getCompetitors().size(); j++) {
-              if (teams[2].getCompetitors().get(j).getMemberNumber() == competitor.getMemberNumber()) {
-                return;
-              } else {
-                teams[2].getCompetitors().add(competitor);
-              }
-            }
+            teams[6].getCompetitors().add(competitor);
+          }else {
+            teams[2].getCompetitors().add(competitor);
           }
 
         } else if (discipline == Discipline.BREASTSTROKE) {
 
           if (age >= 18) {
-            for (int j = 0; j < teams[7].getCompetitors().size(); j++) {
-              if (teams[7].getCompetitors().get(j).getMemberNumber() == competitor.getMemberNumber()) {
-                return;
-              } else {
-                teams[7].getCompetitors().add(competitor);
-              }
-            }
-          } else {
-            for (int j = 0; j < teams[3].getCompetitors().size(); j++) {
-              if (teams[3].getCompetitors().get(j).getMemberNumber() == competitor.getMemberNumber()) {
-                return;
-              } else {
-                teams[3].getCompetitors().add(competitor);
-              }
-            }
+            teams[7].getCompetitors().add(competitor);
+          }else {
+            teams[3].getCompetitors().add(competitor);
           }
+
         }
       }
     }
