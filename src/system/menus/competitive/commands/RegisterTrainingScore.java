@@ -28,7 +28,7 @@ public class RegisterTrainingScore implements Command {
         LocalDate date = ui.getDate();
         Duration time = ui.getTime();
 
-        ui.display("Please choose a discipline: ");
+        ui.display("Please choose a discipline: \n");
         ui.displayLn(MANAGER.getDisciplines());
         Discipline discipline = ui.getDiscipline();
 
