@@ -51,8 +51,9 @@ public class RegisterTrainingScore implements Command {
                         if (checkIfBetter) {
                             ((Competitor) member).getTrainingScores().remove(checkExistence);
                             ((Competitor) member).getTrainingScores().add(trainingScore);
+                        }else {
+                            ui.displayLn("New Score is not better than existing score.");
                         }
-                        ui.displayLn("New Score is not better than existing score.");
                         return;
                     } else {
                         ((Competitor) member).getTrainingScores().add(trainingScore);
