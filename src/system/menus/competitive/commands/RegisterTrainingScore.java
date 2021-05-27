@@ -64,20 +64,6 @@ public class RegisterTrainingScore implements Command {
         }
     }
 
-    private void showCompetitorsDisciplines(int memberNumber, UI ui){
-        for(Member m : MANAGER.getMembers()){
-
-            if(m instanceof Competitor && m.getMemberNumber() == memberNumber){
-                ArrayList<Discipline> disciplines = ((Competitor) m).getDisciplines();
-
-                for(int i = 0; i < disciplines.size(); i++){
-                    ui.displayLn(((i) + 1) + ". " + disciplines.get(i).toString().replaceAll("\\[","").
-                        replaceAll("]",""));
-                }
-            }
-        }
-    }
-
     private boolean checkIfBetter(TrainingScore trainingScoreOne, TrainingScore trainingScoreTwo) {
         if (trainingScoreOne.getDISCIPLINE() == trainingScoreTwo.getDISCIPLINE()) {
             long originalTime = trainingScoreOne.getTIME().toMillis();
