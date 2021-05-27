@@ -47,11 +47,13 @@ public class CreateMember implements Command {
                 } while (moreDiscipline);
 
                 MANAGER.getMembers().add(new Competitor(memberName, dateOfBirth, email, phoneNumber, active, false, memberNumber, disciplines));
-                for (int i = 0; i < MANAGER.getMembers().size(); i++) {
+                /*for (int i = 0; i < MANAGER.getMembers().size(); i++) {
                     if (MANAGER.getMembers().get(i).getMemberNumber() == memberNumber) {
-                        MANAGER.addToTeam();
-                    }
-                }
+
+                 */
+
+                   // }
+                //}
             } else {
                 MANAGER.getMembers().add(new Member(memberName, dateOfBirth, email, phoneNumber, active, memberNumber));
             }
@@ -59,6 +61,7 @@ public class CreateMember implements Command {
             MANAGER.getMembers().add(new Member(memberName, dateOfBirth, email, phoneNumber, active, memberNumber));
         }
         MANAGER.getFileHandler().saveFile(MANAGER.getMembers());
+        MANAGER.addToTeam();
     }
 
     @Override

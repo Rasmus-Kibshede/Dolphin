@@ -78,6 +78,9 @@ public class Manager {
     }
 
     public void addToTeam() {
+        this.members.clear();
+        this.members = fileHandler.loadFile();
+
         ArrayList<Competitor> competitors = new ArrayList<>();
 
         for (Member member : members) {
@@ -96,35 +99,64 @@ public class Manager {
                 if (discipline == Discipline.CRAWL) {
 
                     if (age >= 18) {
-                        teams[4].getCompetitors().add(competitor);
+                        if (teams[4].getCompetitors().contains(competitor)) {
+                            return;
+                        } else {
+                            teams[4].getCompetitors().add(competitor);
+                        }
                     }else {
-                        teams[0].getCompetitors().add(competitor);
+                        if (teams[0].getCompetitors().contains(competitor)) {
+                            return;
+                        } else {
+                            teams[0].getCompetitors().add(competitor);
+                        }
                     }
 
                 } else if (discipline == Discipline.BACKCRAWL) {
 
                     if (age >= 18) {
-                        teams[5].getCompetitors().add(competitor);
+                        if (teams[5].getCompetitors().contains(competitor)) {
+                            return;
+                        } else {
+                            teams[5].getCompetitors().add(competitor);
+                        }
                     }else {
-                        teams[1].getCompetitors().add(competitor);
+                        if (teams[1].getCompetitors().contains(competitor)) {
+                            return;
+                        } else {
+                            teams[1].getCompetitors().add(competitor);
+                        }
                     }
 
                 } else if (discipline == Discipline.BUTTERFLY) {
 
                     if (age >= 18) {
-                        teams[6].getCompetitors().add(competitor);
+                        if (teams[6].getCompetitors().contains(competitor)) {
+                            return;
+                        } else {
+                            teams[6].getCompetitors().add(competitor);
+                        }
                     }else {
-                        teams[2].getCompetitors().add(competitor);
+                        if (teams[2].getCompetitors().contains(competitor)) {
+                            return;
+                        } else {
+                            teams[2].getCompetitors().add(competitor);
+                        }
                     }
 
                 } else if (discipline == Discipline.BREASTSTROKE) {
 
                     if (age >= 18) {
+                        if (teams[7].getCompetitors().contains(competitor)) {
+                            return;
+                        }
                         teams[7].getCompetitors().add(competitor);
                     }else {
+                        if (teams[3].getCompetitors().contains(competitor)) {
+                            return;
+                        }
                         teams[3].getCompetitors().add(competitor);
                     }
-
                 }
             }
         }
